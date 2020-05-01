@@ -56,6 +56,9 @@ footer {
     padding-bottom: 60px;
     background-color: #f2f2f2;
 }
+footer a {
+    text-decoration: none;
+}
 a {
     color: grey;
 }
