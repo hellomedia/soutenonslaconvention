@@ -16,14 +16,6 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/convention-citoyenne", name="convention-citoyenne")
-     */
-    public function conventionCitoyenne()
-    {
-        return $this->render('default/convention-citoyenne.html.twig');
-    }
-
-    /**
      * @Route("/qui-sommes-nous", name="about")
      */
     public function about()

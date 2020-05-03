@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{% block title %}Soutenons la Convention{% endblock %}</title>
-        <link rel="stylesheet" href="/css/main.css" />
+        <link rel="stylesheet" href="/css/main.css?v=2" />
         {% block stylesheets '' %}
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-2063915-19"></script>
@@ -16,9 +16,9 @@
         </script>
     </head>
     <body>
-        {#% block header %}
+        {% block header %}
         {% include 'includes/menu.html.twig' %}
-        {% endblock %#}
+        {% endblock %}
 
         {% block content '' %}
 

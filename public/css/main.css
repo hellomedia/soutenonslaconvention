@@ -75,3 +75,16 @@ a {
 .btn:hover, .btn:active, .btn:visited {
     text-decoration: none;
 }
+
+
+.soutiens-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.soutiens-grid > div {
+
+}
+.soutiens-grid img {
+    max-height: 180px;
+}
