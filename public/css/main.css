@@ -84,11 +84,16 @@ a {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    align-items: center;
+    margin-right: -30px;
 }
 .soutiens-grid > div {
-
+    margin-right: 30px;
 }
 .soutiens-grid img {
+    max-height: 150px;
+}
+.soutiens-grid .bigger {
     max-height: 180px;
 }
 /* https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php **/
