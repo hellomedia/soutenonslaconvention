@@ -35,7 +35,12 @@ img {
 .menu a:hover, .menu a:active, .menu a:visited {
     text-decoration: none;
 }
-
+.copyright {
+    font-size: 14px;
+    font-style: italic;
+    position: relative;
+    top: -8px;
+}
 .home {
     position: relative;
     top: 6px;
