@@ -45,8 +45,8 @@ img {
     margin-bottom: 0;
 }
 .banner img {
-    max-height: 330px;
-    margin-left: -52px;
+    max-height: 315px;
+    margin-left: -38px;
 }
 @media (max-width: 830px) {
     .banner img {
