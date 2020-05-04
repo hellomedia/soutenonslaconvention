@@ -28,8 +28,11 @@ img {
 }
 .menu a {
     margin-right: 30px;
-    color: #555;
+    color: #999;
     text-decoration: none;
+}
+.menu a.active {
+    color: #555;
 }
 .menu a:hover, .menu a:active, .menu a:visited {
     text-decoration: none;
