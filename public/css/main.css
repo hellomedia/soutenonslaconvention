@@ -17,7 +17,6 @@ img {
     font: 18px/1.5 sans-serif;
 }
 .header {
-    border-bottom: 1px solid #999;
     font-size: 15px;
 }
 .header .wrapper {
@@ -34,6 +33,22 @@ img {
 }
 .menu a:hover, .menu a:active, .menu a:visited {
     text-decoration: none;
+}
+.banner {
+    background-color: #6cd289;
+    margin-bottom: 0;
+}
+.banner .container {
+    margin-bottom: 0;
+}
+.banner img {
+    max-height: 330px;
+    margin-left: -52px;
+}
+@media (max-width: 830px) {
+    .banner img {
+        margin-left: 0;
+    }
 }
 .copyright {
     font-size: 14px;
