@@ -115,6 +115,7 @@ a {
 }
 .soutiens-grid > div {
     margin-right: 30px;
+    margin-bottom: 20px;
 }
 .soutiens-grid img {
     max-height: 150px;
