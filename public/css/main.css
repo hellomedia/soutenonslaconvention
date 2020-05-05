@@ -95,7 +95,7 @@ a {
     padding: 14px 50px;
     border-radius: 3px;
     border: 0;
-    background-color: green;
+    background-color: var(--green);
     color: #fff;
     cursor: pointer;
     font-size: 18px;
