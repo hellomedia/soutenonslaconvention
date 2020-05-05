@@ -83,10 +83,12 @@ footer {
     margin-top: 50px;
     padding-top: 20px;
     padding-bottom: 60px;
-    background-color: #f2f2f2;
+    background-color: var(--green);
+    color: rgba(255, 255, 255, 0.9);
 }
 footer a {
     text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
 }
 a {
     color: grey;
