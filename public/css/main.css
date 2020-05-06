@@ -43,6 +43,7 @@ img {
 .banner {
     background-color: var(--green);
     margin-bottom: 0;
+    max-height: 315px;
 }
 .banner .container {
     margin-bottom: 0;
