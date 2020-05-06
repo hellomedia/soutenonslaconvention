@@ -5,5 +5,10 @@
             <a href="{{ path('about') }}" {{ app.request.get('_route') == 'about' ? 'class="active"' }}>Qui sommes-nous</a>
         </div>
     </div>
-    <div class="wrapper banner"><div class="container"><img src="{{ asset('img/soutenons-la-convention.svg') }}" alt="Soutenons La Convention"></div></div>
+    <div class="wrapper banner">
+        <div class="container">
+            <img src="{{ asset('img/soutenons-la-convention.png') }}?v={{ asset_version }}"
+                alt="Soutenons La Convention">
+            </div>
+        </div>
 </header>
