@@ -22,4 +22,12 @@ class DefaultController extends AbstractController
     {
         return $this->render('default/about.html.twig');
     }
+
+    /**
+     * @Route("/soutiens", name="soutiens")
+     */
+    public function soutiens()
+    {
+        return $this->render('default/soutiens.html.twig');
+    }
 }

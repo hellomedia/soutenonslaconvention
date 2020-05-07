@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+<div class="wrapper">
+<div class="container">
+
+    <h2>Nos soutiens</h2>
+
+    <p>
+        Cette initiative est apolitique et inclusive.
+    </p>
+    <p>
+        Les soutiens ci-dessous ont été
+        ajoutés au fil du temps.
+    </p>
+    <p>
+        Si vous vous retrouvez dans la pétition, rejoignez-nous !
+    </p>
+
+    <h3>Associations</h3>
+    {% include 'includes/associations.html.twig' %}
+
+    <p style="margin: 50px 0 80px 0;">
+        <a class="btn" target="_blank" href="mailto:contact@soutenonslaconvention.fr">
+            Ajoutez votre organisation
+        </a>
+    </p>
+
+    <h3>Personnalités</h3>
+    <p>
+        Matthieu Ricard
+    </p>
+
+    <p style="margin: 50px 0 80px 0;">
+        <a class="btn" target="_blank" href="mailto:contact@soutenonslaconvention.fr">
+            Ajoutez votre soutien
+        </a>
+    </p>
+
+</div>
+</div>
+
+
+{% endblock %}
