@@ -57,29 +57,11 @@ img {
         margin-left: 0;
     }
 }
-.copyright {
-    font-size: 14px;
-    font-style: italic;
-    position: relative;
-    top: -8px;
-}
-.home {
-    position: relative;
-    top: 6px;
-    margin: 0;
-    height: 40px;
-    /* police =  convergence */
-}
-.logo {
-    height: 200px;
-    margin: -30px -45px;
-}
+
 .grey-bg {
     background-color: #f2f2f2;
 }
-.headline {
-    font-size: 21px;
-}
+
 footer {
     margin-top: 50px;
     padding-top: 20px;
@@ -93,10 +75,12 @@ footer a {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.9);
 }
+
 a {
     color: grey;
 }
 .btn {
+    display: inline-block;
     padding: 14px 50px;
     border-radius: 3px;
     border: 0;
@@ -109,35 +93,19 @@ a {
 .btn:hover, .btn:active, .btn:visited {
     text-decoration: none;
 }
+@media (max-width: 500px) {
+    .btn {
+        width: 100%;
+        padding: 15px 0;
+        text-align: center;
+    }
+}
 
-
-.soutiens-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-right: -30px;
-}
-.soutiens-grid > div {
-    margin-right: 30px;
-    margin-bottom: 20px;
-}
-.soutiens-grid img {
-    max-height: 150px;
-}
-.soutiens-grid .bigger {
-    max-height: 180px;
-}
 /* https://css-tricks.com/NetMag/FluidWidthVideo/Article-FluidWidthVideo.php **/
 .youtube-video-wrapper {
 	position: relative;
-    /* fluid width with max 900px */
-    /* wrong padding-bottom creates black stripes around video */
-    width: 100%; /* fallback for old/mobile browsers */
-    width: min(900px, 100%);
-	padding-bottom: 52.6%; /* fallback for old/mobile browsers */
-	padding-bottom: min(481px, 52.6%); /* pour video en 16:9 */
-	padding-top: 25px;
+    width: 100%;
+	padding-bottom: 56.25%;
 	height: 0;
     margin: 30px auto;
 }

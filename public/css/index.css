@@ -1,0 +1,65 @@
+
+.petition-cta {
+    margin-top: 30px;
+    margin-right: -50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+.petition-cta > * {
+    margin-right: 50px;
+}
+.counter {
+    margin-top: 0px;
+    color: var(--green);
+    font-weight: normal;
+    line-height: 30px;
+}
+.counter > * {
+    display: block;
+}
+.counter-count {
+    font-size: 50px;
+    font-weight: bold;
+}
+.counter-sign {
+    font-size: 33px;
+    margin-top: 6px;
+}
+.counter-since {
+    font-size: 20px;
+}
+.copyright {
+    font-size: 14px;
+    font-style: italic;
+    position: relative;
+    top: -8px;
+}
+.who-are-we-cta {
+    margin-top: 40px;
+}
+@media (max-width: 600px) {
+    .petition-cta {
+        margin-right: -35px;
+    }
+    .petition-cta > * {
+        margin-right: 35px;
+    }
+}
+@media (max-width: 500px) {
+    .petition-cta {
+        margin-right: 0;
+        justify-content: center;
+    }
+    .petition-cta > * {
+        display: block;
+        margin-right: 0;
+    }
+    .counter {
+        margin-top: 40px;
+    }
+    .who-are-we-cta {
+        margin-top: 30px;
+    }
+}
