@@ -41,6 +41,7 @@ img {
     text-decoration: none;
 }
 .banner {
+    background-color: #44a777;
     background-color: var(--green);
     margin-bottom: 0;
     max-height: 315px;
@@ -65,6 +66,7 @@ img {
 footer {
     margin-top: 50px;
     padding-top: 20px;
+    background-color: #44a777;
     background-color: var(--green);
     color: rgba(255, 255, 255, 0.9);
 }
@@ -84,6 +86,7 @@ a {
     padding: 14px 50px;
     border-radius: 3px;
     border: 0;
+    background-color: #44a777;
     background-color: var(--green);
     color: #fff;
     cursor: pointer;

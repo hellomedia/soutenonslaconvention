@@ -12,6 +12,7 @@
 }
 .counter {
     margin-top: 0px;
+    color: #44a777;
     color: var(--green);
     font-weight: normal;
     line-height: 30px;
