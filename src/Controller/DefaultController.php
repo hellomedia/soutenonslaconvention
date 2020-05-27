@@ -30,4 +30,12 @@ class DefaultController extends AbstractController
     {
         return $this->render('default/soutiens.html.twig');
     }
+
+    /**
+     * @Route("/test", name="test")
+     */
+    public function test()
+    {
+        return $this->render('default/test.html.twig');
+    }
 }
