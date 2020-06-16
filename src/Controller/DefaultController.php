@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends AbstractController
 {
@@ -12,7 +13,13 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
-        return $this->render('default/index.html.twig');
+        $response = new Response($this->renderView('default/index.html.twig'), 200);
+
+        $response->headers->set('X-Robots-Tag','index');
+
+        return $response;
+
+        //return $this->render('default/index.html.twig');
     }
 
     /**
@@ -20,7 +27,13 @@ class DefaultController extends AbstractController
      */
     public function about()
     {
-        return $this->render('default/about.html.twig');
+        $response = new Response($this->renderView('default/about.html.twig'), 200);
+
+        $response->headers->set('X-Robots-Tag','index');
+
+        return $response;
+
+        //return $this->render('default/about.html.twig');
     }
 
     /**
@@ -28,7 +41,13 @@ class DefaultController extends AbstractController
      */
     public function soutiens()
     {
-        return $this->render('default/soutiens.html.twig');
+        $response = new Response($this->renderView('default/soutiens.html.twig'), 200);
+
+        $response->headers->set('X-Robots-Tag','index');
+
+        return $response;
+
+        //return $this->render('default/soutiens.html.twig');
     }
 
     /**
