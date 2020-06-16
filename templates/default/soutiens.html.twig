@@ -8,14 +8,15 @@
     <h2 style="margin-top: 0;">Nos soutiens</h2>
 
     <p>
-        Cette initiative est apolitique et inclusive.
+        Cette initiative est apolitique, transpartisane et inclusive.
     </p>
     <p>
-        Si vous vous retrouvez dans la pétition, rejoignez-nous !
+        Si vous soutenez la Convention Citoyenne, rejoignez-nous !
     </p>
 
     <h3>Associations</h3>
-    {% include 'includes/associations.html.twig' %}
+
+    {% include 'soutiens/associations.html.twig' %}
 
     <p style="margin: 50px 0 80px 0;">
         <a class="btn" target="_blank" href="mailto:contact@soutenonslaconvention.fr">
@@ -24,39 +25,13 @@
     </p>
 
     <h3>Personnalités</h3>
-    <p>
-        <a target="_blank" href="https://www.matthieuricard.org/">Matthieu Ricard</a> <i style="margin-left:15px">philosophe, écrivain</i>
-    </p>
-    <p>
-        <a target="_blank" href="http://nicolasvanier.com/">Nicolas Vanier</a> <i style="margin-left:15px">aventurier</i>
-    </p>
-    <p>
-        <a target="_blank" href="https://fr.wikipedia.org/wiki/Serge_Morand">Serge Morand</a> <i style="margin-left:15px">écologue</i>
-    </p>
-    <p>
-        <a target="_blank" href="http://jeandominiquemichel.com/">Jean-Dominique MICHEL</a> <i style="margin-left:15px">antropologue de la santé</i>
-    </p>
+
+    {% include 'soutiens/personalities.html.twig' %}
 
 
-    <h3>Personnalités de la Santé</h3>
-    <p>
-        Professeur Charles Sultan <i style="margin-left:15px">Chef du Service d’hormonologie au CHU de Montpellier</i>
-    </p>
-    <p>
-        Professeur Bernard Guillois <i style="margin-left:15px">chef du service néonatalogie du CHU de Caen</i>
-    </p>
-    <p>
-        Professeur Eric Feraille <i style="margin-left:15px"></i>
-    </p>
-    <p>
-        Professeur Pierre Lecompte <i style="margin-left:15px">Endocrinologie Diabétologie du CHRU de Tours</i>
-    </p>
-    <p>
-        Professeur Jean-Paul Viard <i style="margin-left:15px">Immunologie à l’APHP Hôtel Dieu Paris</i>
-    </p>
-    <p>
-        Professeur Dominique Belpomme <i style="margin-left:15px">Cancérologue, Président de ARTAC, PARIS</i>
-    </p>
+    <h3 style="margin-top: 50px;">Personnalités de la Santé</h3>
+
+    {% include 'soutiens/health-personalities.html.twig' %}
 
     <p style="margin: 50px 0 80px 0;">
         <a class="btn" target="_blank" href="mailto:contact@soutenonslaconvention.fr">
@@ -70,7 +45,7 @@
             <img src="{{ asset('img/icon-facebook.png')}}" alt="">
         </a>
         Suivez-nous sur facebook pour être tenu au courant de l'évolution
-        de la pétition et des prochaines initiatives de soutien à la Convention.
+        et des initiatives de soutien à la Convention.
     </p>
 
 
