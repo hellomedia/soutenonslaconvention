@@ -4,11 +4,22 @@
 
 <div class="wrapper">
 <div class="container">
+
+    {% set difference = date('06/22/2020').diff(date('now')) %}
+    {% set daysLeft = difference.days %}
+    <div class="countdown">
+        <span class="countdown-number">J - {{ daysLeft }}</span>
+        <span class="countdown-text">
+            <span class="countdown-text-line1">AVANT LA REMISE DES</span>
+            <span class="countdown-text-line2">PROPOSITIONS</span>
+        </span>
+    </div>
+
     <p>
         La France a une chance que d’autres pays n’ont pas.
     </p>
     <p>
-        Il y a 8 mois a démarré
+        Il y a 9 mois a démarré
         un processus démocratique qui répond aux enjeux du moment :
         la Convention Citoyenne pour le Climat.
     </p>
@@ -27,8 +38,7 @@
     <p>
         Soutenons-les !
     </p>
-    <div class="petition-cta">
-
+    <!--div class="petition-cta">
         <a class="btn" target="_blank"
         href="https://www.mesopinions.com/petition/nature-environnement/sortie-crise-soutenons-convention-citoyenne-climat/86134">
         Voir / Signer la pétition</a>
@@ -38,9 +48,7 @@
             <span class="counter-sign">signatures</span>
             <span class="counter-since">depuis le 13 avril</span>
         </div>
-
-
-</div>
+    </div-->
 
 </div>
 </div>
