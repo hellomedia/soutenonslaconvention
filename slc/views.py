@@ -11,3 +11,7 @@ def homepage(request):
 
 def templated_page(request, template):
     return piglet.render(template, {})
+
+
+def support_us(request):
+    return piglet.render("default/support-us.html", {})

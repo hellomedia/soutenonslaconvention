@@ -1,0 +1,78 @@
+<py:extends href="../base.html">
+
+<py:block name="content">
+
+<div class="wrapper">
+<div class="container">
+    <style type="text/css">
+    :root {
+        --sigin-border-color: var(--green);
+        --sigin-divider-color: var(--green);
+    }
+    .SigninField {
+        border: 1px solid var(--sigin-border-color);
+    }
+    .SigninField + .btn {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+    .SigninOptionsDivider {
+        text-align: center;
+        display: block;
+        overflow: hidden;
+        position: relative;
+    }
+    .SigninOptionsDivider::before {
+        border-top: 1px solid var(--sigin-divider-color);
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        top: 50%;
+        height: 5px;
+        z-index: -1;
+    }
+    .SigninOptionsDivider > *{
+        display: inline-block;
+        background: white;
+        padding: 0.5em;
+    }
+    .SigninOption {
+        width: 100%;
+        display: block;
+        font-size: 1.2rem;
+        text-align: center;
+        padding: 1em;
+    }
+    </style>
+    <div class="petition-cta">
+        <div class="u-Spaced" style="max-width: 30em; margin: auto;">
+            <form method="post">
+                <input class="SigninField SigninOption" type="email" placeholder="Votre adresse email"/>
+                <a class="btn" style="width:100%; text-align: center;" href="">Soutenez-nous</a>
+            </form>
+            <a class="SigninOptionsDivider"><span>OU</span></a>
+            <div class="u-Spaced">
+                <a class="SigninOption btn" href="">
+                    <div class="u-Flex">
+                        <img src="${static('img/btn_google_light_normal_ios.svg')}" style="width: 2.8em" alt=""/>
+                        Signaler votre support avec votre compte Google
+                    </div>
+                </a>
+                <a class="SigninOption btn" href="">
+                    <div class="u-Flex">
+                        <img src="${static('img/icon-facebook.png')}" alt=""/>
+                        Signaler votre support avec votre compte Facebook
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+
+</py:block>
+</py:extends>
