@@ -17,8 +17,10 @@ options = app.options
 
 from slc import routes  # noqa
 from slc import contextprocessors  # noqa
+from slc import assets  # noqa
 
 app.include("/", routes)
+app.route_wsgi("/assets", assets.assetbuilder)
 
 slc.queries = embrace.module(
     resource_filename(__name__, "queries"),
