@@ -1,0 +1,14 @@
+<header class="header">
+    <div class="wrapper">
+        <div class="container menu" py:with="route_name = context.route_traversal.route.name">
+            <a href="${urlfor('index')}" class="${'active' if route_name == 'index' else ''}">Accueil</a>
+            <a href="${urlfor('about')}" class="${'active' if route_name == 'about' else ''}">Qui sommes-nous</a>
+            <a href="${urlfor('soutiens')}" class="${'active' if route_name == 'soutiens' else ''}">Soutiens</a>
+        </div>
+    </div>
+    <div class="wrapper banner">
+        <div class="container">
+            <img src="${static('img/soutenons-la-convention.png')}" alt="Soutenons La Convention"/>
+        </div>
+    </div>
+</header>

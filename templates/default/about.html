@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+<py:extends href="../base.html">
 
-{% block content %}
+<py:block name="content">
 
 <div class="wrapper">
 <div class="container">
@@ -28,7 +28,7 @@
 
     <h3>Initiatives liées</h3>
     <p>
-        <a target="_blank" href="{{ asset('pdf/appel-soigants.pdf') }}">Appel des soignants à soutenir la Convention Citoyenne pour le Climat</a>
+        <a target="_blank" href="${static('pdf/appel-soigants.pdf')}">Appel des soignants à soutenir la Convention Citoyenne pour le Climat</a>
     </p>
 
 
@@ -77,4 +77,5 @@
 </div>
 
 
-{% endblock %}
+</py:block>
+</py:extends>

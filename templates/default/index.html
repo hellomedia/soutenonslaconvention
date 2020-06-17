@@ -1,14 +1,12 @@
-{% extends 'base.html.twig' %}
+<py:extends href="../base.html">
 
-{% block content %}
+<py:block name="content">
 
 <div class="wrapper">
 <div class="container">
 
-    {% set difference = date('06/22/2020').diff(date('now')) %}
-    {% set daysLeft = difference.days %}
     <div class="countdown">
-        <span class="countdown-number">J - {{ daysLeft }}</span>
+        <span class="countdown-number">J - $days_left</span>
         <span class="countdown-text">
             <span class="countdown-text-line1">AVANT LA REMISE DES</span>
             <span class="countdown-text-line2">PROPOSITIONS</span>
@@ -62,9 +60,9 @@
 
     <p>
 
-        <img src="{{ asset('img/membres-convention.jpg')}}"
-            alt="les 150 membres de la Convention Citoyenne pour le Climat">
-        <span class="copyright">©Katrin Baumann</a>
+        <img src="${static('img/membres-convention.jpg')}"
+            alt="les 150 membres de la Convention Citoyenne pour le Climat"/>
+        <span class="copyright">©Katrin Baumann</span>
     </p>
     <p>
         La <a target="_blank" href="https://www.conventioncitoyennepourleclimat.fr/">Convention
@@ -87,7 +85,7 @@
     <p>
         Ils sont libres de se concentrer
         pleinement sur leur <span style="white-space: nowrap">mandat :</span>
-        <br>
+        <br/>
         <i>Trouver des mesures pour réduire les
         émission de gaz à effet de serre d’au moins 40% d’ici 2030, dans un
         esprit de justice sociale</i>.
@@ -97,7 +95,7 @@
     <div class="youtube-video-wrapper">
         <iframe width="560" height="315"
             src="https://www.youtube.com/embed/SIyoEGizt8M?start=3026"
-            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
         </iframe>
     </div>
 
@@ -115,26 +113,24 @@
         population à leur démarche.
     </p>
     <p class="who-are-we-cta">
-        <a class="btn" href="{{ path('about')}}">
+        <a class="btn" href="${urlfor('about')}">
             Plus d'infos
         </a>
     </p>
     <p class="who-are-we-cta">
-        <a class="btn"  href="{{ path('soutiens') }}">
+        <a class="btn"  href="${urlfor('soutiens')}">
             Voir / Rejoindre nos soutiens
         </a>
     </p>
     <p class="who-are-we-cta">
         <a style="float:left; margin-right: 20px; position: relative; top: -10px;"
             target="_blank" href="https://www.facebook.com/Soutenons-la-Convention-102637561438247">
-            <img src="{{ asset('img/icon-facebook.png')}}" alt="">
+            <img src="${static('img/icon-facebook.png')}" alt=""/>
         </a>
         Suivez-nous sur facebook pour être tenu au courant de l'évolution
         et des initiatives de soutien à la Convention.
     </p>
 </div>
 </div>
-
-
-
-{% endblock %}
+</py:block>
+</py:extends>
