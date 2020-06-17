@@ -1,0 +1,74 @@
+:root {
+    --u-spaced-margin: 1em;
+    --u-Flex-gap-row: 0;
+    --u-Flex-gap-col: 0;
+}
+.u-Flex {
+    display: flex;
+	margin-top: calc(-1 * var(--u-Flex-gap-row));
+	margin-left: calc(-1 * var(--u-Flex-gap-col));
+}
+.u-Flex>* {
+	margin-top: var(--u-Flex-gap-row);
+	margin-left: var(--u-Flex-gap-col);
+}
+.u-Flex-rowGap {
+    --u-Flex-gap-row: 1em;
+}
+.u-Flex-colGap {
+    --u-Flex-gap-col: 1em;
+}
+.u-Flex-wrap {
+    flex-wrap: wrap;
+}
+.u-Flex-justifyBetween {
+    justify-content: space-between;
+}
+.u-Flex-justifyCenter {
+    justify-content: center;
+}
+.u-Flex-alignItemsStretch {
+    align-items: stretch;
+}
+.u-Flex-alignItemsStart {
+    align-items: start;
+}
+.u-Flex-alignItemsEnd {
+    align-items: end;
+}
+.u-Flex-alignItemsCenter {
+    align-items: center;
+}
+.u-Flex-col {
+    flex-direction: column;
+}
+.u-AlignLeft {
+    text-align: left;
+}
+.u-AlignRight {
+    text-align: right;
+}
+.u-AlignCenter {
+    text-align: center;
+}
+.u-StructuralLists ul,
+.u-StructuralLists ol  {
+    list-style: none;
+    padding: 0;
+}
+
+.u-Spaced>* + * {
+	margin-top: var(--u-spaced-margin);
+}
+.u-Spaced>* + h1 {
+	margin-top: calc(var(--u-spaced-margin) * 2);
+}
+.u-Spaced>*[hidden] + * {
+	margin-top: 0;
+}
+.u-Spaced-xl {
+    --u-spaced-margin: 2.5em;
+}
+.u-Spaced-s {
+    --u-spaced-margin: 0.5em;
+}

@@ -20,6 +20,6 @@ assetbuilder.set_default_build_command("gup -u {path}")
 
 assetbuilder.add_paths(
     "default-css",
-    ["css/main.css", "css/index.css", "css/soutiens.css"],
+    ["css/main.css", "css/index.css", "css/soutiens.css", "css/util.css"],
     CSSDEPS,
 )

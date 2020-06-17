@@ -22,4 +22,5 @@ __routes__ = [
     Route(
         "/test", GET=templated_page, template="default/test.html", name="test",
     ),
+    Route("/support", GET="slc.views.support_us", name="support-us"),
 ]

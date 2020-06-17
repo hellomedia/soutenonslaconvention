@@ -7,6 +7,7 @@ gup -u \
     ./_build/css/main.css \
     ./_build/css/index.css \
     ./_build/css/soutiens.css \
+    ./_build/css/util.css \
     ./_build/img/airsanteclimat.png \
     ./_build/img/alter-pub.jpg \
     ./_build/img/alter-pub.png \
@@ -40,3 +41,4 @@ gup -u \
     ./_build/img/wecf.png \
     ./_build/img/youth-for-climate-france.png \
     ./_build/img/zea.png \
+    ./_build/img/btn_google_light_normal_ios.svg \
