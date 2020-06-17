@@ -28,7 +28,8 @@ piglet-templates==1.0.0   # via -r requirements.in
 portalocker==1.7.0        # via assetbuilder
 psycopg2==2.8.5           # via -r requirements.in
 pytz==2020.1              # via -r requirements.in, babel
-six==1.15.0               # via astunparse
+scour==0.37               # via -r requirements.in
+six==1.15.0               # via astunparse, scour
 sqlparse==0.3.1           # via embrace, yoyo-migrations
 tabulate==0.8.7           # via yoyo-migrations
 toml==0.10.1              # via -r requirements.in

@@ -1,3 +1,4 @@
+scour
 gunicorn
 gevent
 fresco
