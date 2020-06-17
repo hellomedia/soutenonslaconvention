@@ -5,7 +5,8 @@
 CREATE OR REPLACE TABLE supporters (
     id SERIAL,
     email TEXT UNIQUE,
-    social_username TEXT UNIQUE,
+    social_provider TEXT,
+    social_id TEXT UNIQUE,
     picture_url TEXT,
     first_name TEXT,
     last_name TEXT,
