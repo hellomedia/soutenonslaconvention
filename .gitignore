@@ -8,3 +8,9 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+
+.gup
+/.env.*.local.toml
+_build
+/venv
+/yoyo.local.ini

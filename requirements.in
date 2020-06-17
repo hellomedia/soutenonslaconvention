@@ -1,0 +1,14 @@
+gunicorn
+gevent
+fresco
+embrace-sql
+piglet-templates
+psycopg2
+fresco-template
+diskcache
+toml
+yoyo-migrations
+pytz
+https://hg.sr.ht/~olly/fresco-i18n/archive/a3672a8dd6dc.tar.gz#egg=fresco-i18n
+assetbuilder
+fresco-static

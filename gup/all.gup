@@ -1,0 +1,6 @@
+#!/bin/sh
+
+gup -u \
+    requirements.txt \
+    venv/bin/gunicorn \
+    .env.secret.local

@@ -1,0 +1,34 @@
+build-venv:
+    venv/**/*
+
+
+build-brotli:
+    _build/*.br
+    _build/**/*.br
+
+build-sass:
+    _build/*.css
+
+build-svg:
+    _build/*.svg
+    _build/**/*.svg
+
+build-png:
+    _build/*.png
+    _build/**/*.png
+
+build-copy-file:
+    *.pdf
+    **/*.pdf
+    *.jpg
+    **/*.jpg
+    *.jpeg
+    **/*.jpeg
+    **/*.eot
+    **/*.otf
+    **/*.ttf
+    **/*.woff
+    **/*.woff2
+    _build/css/*
+    _build/js/*
+    _build/images/*
