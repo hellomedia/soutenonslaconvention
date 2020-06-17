@@ -36,6 +36,8 @@ connection_pool = options.connection_pool = embrace.pool.ConnectionPool(
     limit=options.DATABASE_POOL_CONNECTION_LIMIT,
 )
 
+app.add_middleware(XForwarded, trusted=options.UPSTREAM_PROXIES)
+
 app.static = StaticFiles(app)
 app.static.add_package("slc", "../_build", cache_max_age=120)
 
