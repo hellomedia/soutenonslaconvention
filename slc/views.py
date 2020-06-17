@@ -5,7 +5,7 @@ from slc import options
 def homepage(request):
     return piglet.render(
         "default/index.html",
-        {"days_left": (request.now.date() - options.CONVENTION_DATE).days},
+        {"days_left": (options.CONVENTION_DATE - request.now.date()).days - 1},
     )
 
 
