@@ -17,6 +17,7 @@ class Request(FrescoRequest):
     SESSION_ENV_KEY = "ob.session"
     _now = None
     _conn = None
+    _user_id = None
 
     format = Formatter("fr")
 
@@ -48,3 +49,18 @@ class Request(FrescoRequest):
 
         self._conn = context.app.options.connection_pool.getconn()
         return self._conn
+
+    def get_user_id(self):
+        return self.session["user_id"]
+
+    def is_authenticated(self):
+        return self.session.get("user_id")
+
+    def remember_user_id(self, user_id: str):
+        self._userid = user_id
+        self.session["user_id"] = user_id
+
+    def forget_user(self):
+        self._userid = None
+        if "user_id" in self.session:
+            del self.session["user_id"]
