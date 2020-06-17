@@ -15,6 +15,7 @@
 # limitations under the License.
 
 
-. $(hg root)/gup/GUPVARS
+PROJECT_ROOT=$(hg root 2>/dev/null || git rev-parse --show-toplevel)
+. $PROJECT_ROOT/gup/GUPVARS
 
-cp -l $SRC $1
+cp -l "$SRC" "$1"
