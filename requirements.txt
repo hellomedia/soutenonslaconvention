@@ -22,6 +22,7 @@ greenlet==0.4.16          # via gevent
 gunicorn==20.0.4          # via -r requirements.in
 itsdangerous==1.1.0       # via assetbuilder
 markupsafe==1.1.1         # via piglet-templates
+obsession==1.0.0          # via -r requirements.in
 parsley==1.3              # via piglet-templates
 pathlib==1.0.1            # via assetbuilder
 piglet-templates==1.0.0   # via -r requirements.in

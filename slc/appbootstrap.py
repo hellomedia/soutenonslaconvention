@@ -5,6 +5,7 @@ from fresco_static import StaticFiles
 from pkg_resources import resource_filename
 import embrace
 import embrace.pool
+import obsession
 import psycopg2
 import psycopg2.extras
 
@@ -37,6 +38,13 @@ connection_pool = options.connection_pool = embrace.pool.ConnectionPool(
 )
 
 app.add_middleware(XForwarded, trusted=options.UPSTREAM_PROXIES)
+app.add_middleware(
+    obsession.SessionMiddleware,
+    backend=obsession.FileBackend(directory=options.SESSION_DIR),
+    id_persister=obsession.CookieIdPersistence(
+        cookie_name="s", max_age=86400, path="/"
+    ),
+)
 
 app.static = StaticFiles(app)
 app.static.add_package("slc", "../_build", cache_max_age=120)
