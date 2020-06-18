@@ -22,7 +22,12 @@ __routes__ = [
     Route(
         "/test", GET=templated_page, template="default/test.html", name="test",
     ),
-    Route("/support", GET="slc.views.support_us", name="support-us"),
+    Route(
+        "/support",
+        GET="slc.views.support_us",
+        POST="slc.views.support_us_email",
+        name="support-us",
+    ),
     Route(
         "/oauth/<provider:str>", GET="slc.views.oauth_login", name="oauth-login"
     ),
@@ -31,4 +36,5 @@ __routes__ = [
         GET="slc.views.oauth_callback",
         name="oauth-callback",
     ),
+    Route("/v/<token:str>", GET="slc.views.verify_email", name="verify-email"),
 ]

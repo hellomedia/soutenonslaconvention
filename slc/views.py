@@ -1,3 +1,5 @@
+import uuid
+
 from fresco import Response
 from fresco import Route
 from fresco import context
@@ -5,9 +7,11 @@ from fresco import object_or_404
 from fresco import urlfor
 from fresco.exceptions import Forbidden
 
+from slc import caching
 from slc import options
 from slc import supporters
 from slc import queries
+from slc.mailer import mailer
 from slc.oauthlogin import OAUTH_PROVIDERS
 from slc.oauthlogin import fetch_profile
 from slc.oauthlogin import get_oauth2session
@@ -28,6 +32,34 @@ def templated_page(request, template):
 
 def support_us(request):
     return piglet.render("default/support-us.html", {})
+
+
+def support_us_email(request):
+
+    from email_validator import validate_email, EmailNotValidError
+
+    email = request.get("email", "").strip().lower()
+    try:
+        validate_email(email)
+    except EmailNotValidError:
+        raise
+
+    token = str(uuid.uuid4())
+    url = urlfor("verify-email", token=token)
+    caching.cache.set(f"verify-email:{token}", (email, request.now))
+    mailer.send(
+        options.MAIL_FROM,
+        "Please confirm your email address",
+        recipients=[email],
+        body=url,
+    )
+    return Response("ok")
+
+
+def verify_email(request, token):
+    email, when = caching.cache.get(f"verify-email:{token}")
+    print(email, when)
+    return Response("ok")
 
 
 @Route.filter(Response.redirect)
