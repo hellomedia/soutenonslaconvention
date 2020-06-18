@@ -51,10 +51,10 @@ class Request(FrescoRequest):
         return self._conn
 
     def get_user_id(self):
-        return self.session["user_id"]
+        return self.session.get("user_id")
 
     def is_authenticated(self):
-        return self.session.get("user_id")
+        return "user_id" in self.session
 
     def remember_user_id(self, user_id: str):
         self._userid = user_id
