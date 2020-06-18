@@ -22,7 +22,10 @@ def load_options(options=Options()):
 
     projectroot = Path(__file__).parent.parent
     sources = ["settings.py", ".env*"]
-    sources = sorted(path for s in sources for path in projectroot.glob(s))
+    sources = sorted(
+        (path for s in sources for path in projectroot.glob(s)),
+        key=lambda x: (".local" in str(x), x),
+    )
 
     for path in sources:
         logger.warning(f"Loading config from {path}")
