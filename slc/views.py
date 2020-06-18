@@ -62,9 +62,10 @@ def support_us_email(request):
 
 def verify_email(request, token):
     try:
-        email, when = caching.cache.get(f"verify-email:{token}")
+        user_id, email, when = caching.cache.get(f"verify-email:{token}")
     except TypeError:
         return piglet.render("default/token-expired.html")
+    request.remember_user_id(user_id)
     return Response("ok")
 
 
@@ -94,9 +95,11 @@ def oauth_callback(request, provider, success_redirect="index"):
 
     conn = request.getconn()
     with queries.transaction(conn):
-        supporters.add_supporter_from_social_profile(conn, provider, profile)
+        user_id = supporters.add_supporter_from_social_profile(
+            conn, provider, profile
+        )
 
-    request.remember_user_id(user_id_from_profile(provider, profile))
+    request.remember_user_id(user_id)
 
     return urlfor(success_redirect)
 
