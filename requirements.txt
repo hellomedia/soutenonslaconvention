@@ -4,6 +4,8 @@
 #
 #    gup requirements.txt
 #
+--find-links file:///home/oliver/.cache/pip-wheelhouse
+
 assetbuilder==1.0.0       # via -r requirements.in
 astunparse==1.6.3         # via piglet-templates
 attrs==19.3.0             # via piglet-templates
@@ -23,6 +25,7 @@ fresco==1.0.1             # via -r requirements.in, fresco-i18n, fresco-static, 
 gevent==20.6.2            # via -r requirements.in
 greenlet==0.4.16          # via gevent
 gunicorn==20.0.4          # via -r requirements.in
+huey==2.2.0               # via -r requirements.in
 idna==2.9                 # via email-validator, requests
 itsdangerous==1.1.0       # via assetbuilder
 mailsend==1.1.0           # via -r requirements.in

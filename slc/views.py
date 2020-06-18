@@ -13,7 +13,7 @@ from slc import caching
 from slc import options
 from slc import supporters
 from slc import queries
-from slc.mailer import mailer
+from slc.queuing import queue_send_mail
 from slc.oauthlogin import OAUTH_PROVIDERS
 from slc.oauthlogin import fetch_profile
 from slc.oauthlogin import get_oauth2session
@@ -50,7 +50,7 @@ def support_us_email(request):
     token = str(uuid.uuid4())
     url = urlfor("verify-email", token=token)
     caching.cache.set(f"verify-email:{token}", (email, request.now))
-    mailer.send(
+    queue_send_mail(
         options.MAIL_FROM,
         "Please confirm your email address",
         recipients=[email],
