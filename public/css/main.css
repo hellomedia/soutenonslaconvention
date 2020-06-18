@@ -1,5 +1,7 @@
 :root {
     --green: #44a777;
+    --buttonBg: var(--green);
+    --buttonFg: #fff;
 }
 *, *::before, *::after {
     box-sizing: border-box;
@@ -90,11 +92,16 @@ a {
     border-radius: 3px;
     border: 0;
     background-color: #44a777;
-    background-color: var(--green);
+    background-color: var(--buttonBg);
     color: #fff;
+    color: var(--buttonFg);
     cursor: pointer;
     font-size: 18px;
     text-decoration: none;
+}
+.btn-secondary {
+    --buttonBg: #bbbbbb;
+    --buttonFg: #444444;
 }
 .btn:hover, .btn:active, .btn:visited {
     text-decoration: none;
