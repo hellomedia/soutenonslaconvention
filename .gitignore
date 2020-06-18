@@ -10,7 +10,9 @@
 ###< symfony/framework-bundle ###
 
 .gup
-/.env.*.local.toml
+/.env.local.*
+/.env.*.local.*
 _build
 /venv
 /yoyo.local.ini
+/slc/__pycache__/
