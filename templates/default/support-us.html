@@ -48,18 +48,18 @@
     <div class="petition-cta">
         <div class="u-Spaced" style="max-width: 30em; margin: auto;">
             <form method="post">
-                <input class="SigninField SigninOption" type="email" placeholder="Votre adresse email"/>
-                <a class="btn" style="width:100%; text-align: center;" href="">Soutenez-nous</a>
+                <input class="SigninField SigninOption" name="email" type="email" placeholder="Votre adresse email"/>
+                <button class="btn" style="width:100%; text-align: center;" type="submit">Soutenez-nous</button>
             </form>
             <a class="SigninOptionsDivider"><span>OU</span></a>
             <div class="u-Spaced">
-                <a class="SigninOption btn" href="">
+                <a class="SigninOption btn" href="${urlfor('oauth-login', provider='google')}">
                     <div class="u-Flex">
                         <img src="${static('img/btn_google_light_normal_ios.svg')}" style="width: 2.8em" alt=""/>
                         Signaler votre support avec votre compte Google
                     </div>
                 </a>
-                <a class="SigninOption btn" href="">
+                <a class="SigninOption btn" href="${urlfor('oauth-login', provider='facebook')}">
                     <div class="u-Flex">
                         <img src="${static('img/icon-facebook.png')}" alt=""/>
                         Signaler votre support avec votre compte Facebook

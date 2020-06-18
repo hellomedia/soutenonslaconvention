@@ -8,14 +8,17 @@ OAUTH_PROVIDERS = {
         "authorization_base_url": "https://graph.facebook.com/oauth/authorize",
         "token_url": "https://graph.facebook.com/oauth/access_token",
         "profile_url": "https://graph.facebook.com/me?fields=email,picture,gender,first_name,name",
-        "base_url": "https://graph.facebook.com/",
         "scope": ["public_profile", "email"],
     },
     "google": {
+        "authorization_base_url": "https://accounts.google.com/o/oauth2/v2/auth",
+        "token_url": "https://www.googleapis.com/oauth2/v4/token",
+        "profile_url": "https://www.googleapis.com/oauth2/v1/userinfo",
         "scope": [
-            "https://www.googleapis.com/auth/userinfo.email",
+            "openid",
             "https://www.googleapis.com/auth/userinfo.profile",
-        ]
+            "https://www.googleapis.com/auth/userinfo.email",
+        ],
     },
 }
 
@@ -24,7 +27,7 @@ def get_oauth2session(
     provider: str, client_id: str, state=None
 ) -> OAuth2Session:
     app = context.app
-    provider_info = app.options.OAUTH_CREDENTIALS.get(provider)
+    provider_info = OAUTH_PROVIDERS.get(provider)
     if provider_info is None:
         return None
     redirect_uri = app.urlfor("oauth-callback", provider=provider)

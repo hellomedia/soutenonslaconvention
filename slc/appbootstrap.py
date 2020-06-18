@@ -3,6 +3,7 @@ from functools import partial
 from fresco.middleware import XForwarded
 from fresco_static import StaticFiles
 from pkg_resources import resource_filename
+import yoyo
 import embrace
 import embrace.pool
 import obsession
@@ -16,6 +17,16 @@ from slc import loadoptions
 loadoptions.configure_app(app)
 options = app.options
 
+
+def apply_migrations():
+    backend = yoyo.get_backend(options.DATABASE)
+    migrations = yoyo.read_migrations(
+        resource_filename(__name__, "../migrations")
+    )
+    with backend.lock():
+        backend.apply_migrations(backend.to_apply(migrations))
+
+
 from slc import routes  # noqa
 from slc import contextprocessors  # noqa
 from slc import assets  # noqa
@@ -27,6 +38,8 @@ slc.queries = embrace.module(
     resource_filename(__name__, "queries"),
     auto_reload=app.options.EMBRACE_AUTO_RELOAD,
 )
+
+apply_migrations()
 
 connection_pool = options.connection_pool = embrace.pool.ConnectionPool(
     partial(

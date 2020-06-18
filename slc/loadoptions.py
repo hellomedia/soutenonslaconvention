@@ -1,6 +1,8 @@
 from fresco.options import Options
-import logging
 from pathlib import Path
+import logging
+import json
+
 import toml
 
 logger = logging.getLogger(__name__)
@@ -20,7 +22,11 @@ def load_options(options=Options()):
 
     projectroot = Path(__file__).parent.parent
     sources = ["settings.py", ".env*"]
-    sources = sorted(path for s in sources for path in projectroot.glob(s))
+    sources = sorted(
+        (path for s in sources for path in projectroot.glob(s)),
+        key=lambda x: (".local" in str(x), x),
+    )
+    sources = (path for path in sources if path.suffix != ".sample")
 
     for path in sources:
         logger.warning(f"Loading config from {path}")
@@ -29,6 +35,9 @@ def load_options(options=Options()):
         elif path.suffix == ".toml":
             with path.open("r") as f:
                 options.update(toml.load(f))
+        elif path.suffix == ".json":
+            with path.open("r") as f:
+                options.update(json.load(f))
         else:
             with path.open("r") as f:
                 options.update(load_key_value_pairs(f))
