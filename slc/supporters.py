@@ -16,7 +16,7 @@ def add_supporter_from_social_profile(
         picture_url = picture_data
     elif isinstance(picture_data, dict):
         try:
-            picture_url = picture_url["data"]["url"]
+            picture_url = picture_data["data"]["url"]
         except (KeyError, TypeError):
             picture_url = None
     else:
