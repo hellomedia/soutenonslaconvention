@@ -26,6 +26,7 @@ def load_options(options=Options()):
         (path for s in sources for path in projectroot.glob(s)),
         key=lambda x: (".local" in str(x), x),
     )
+    sources = (path for path in sources if path.suffix != ".sample")
 
     for path in sources:
         logger.warning(f"Loading config from {path}")
