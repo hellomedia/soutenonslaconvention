@@ -17,7 +17,6 @@ from slc.mailer import mailer
 from slc.oauthlogin import OAUTH_PROVIDERS
 from slc.oauthlogin import fetch_profile
 from slc.oauthlogin import get_oauth2session
-from slc.oauthlogin import user_id_from_profile
 from slc.templating import piglet
 
 

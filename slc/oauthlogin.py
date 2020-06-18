@@ -39,10 +39,6 @@ def get_oauth2session(
     )
 
 
-def user_id_from_profile(provider, profile):
-    return f"{provider}{profile['id']}"
-
-
 def fetch_profile(provider: str, state, code: str, current_url: str):
     urls = object_or_404(OAUTH_PROVIDERS.get(provider))
     credentials = object_or_404(
