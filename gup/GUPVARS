@@ -2,12 +2,12 @@
 
 ROOT=$(hg root 2>/dev/null || git rev-parse --show-toplevel)
 
-VENV=$ROOT/venv
-NPM=$ROOT/node_modules
-NPMBIN=$NPM/.bin
-PATH=$NPMBIN:$PATH
-STATIC=$ROOT/icbbweb/static
-DEST=$ROOT/_build
+VENV="$ROOT/venv"
+NPM="$ROOT/node_modules"
+NPMBIN="$NPM/.bin"
+PATH="$NPMBIN:$PATH"
+STATIC="$ROOT/public"
+DEST="$ROOT/_build"
 
 SASS="$NPMBIN/sass -I$NPM"
 AUTOPREFIXER=$NPMBIN/autoprefixer-cli
@@ -17,8 +17,8 @@ if [ "x$ASSETS_PRODUCTION" != "x" ]; then
     CLEANCSS="$NPMBIN/cleancss --s0 --semantic-merging"
     BROTLI_LEVEL="-best"
 else
-    UGLIFYJS=cat
-    CLEANCSS=cat
+    UGLIFYJS="cat"
+    CLEANCSS="cat"
     BROTLI_LEVEL="4"
 fi
 
@@ -31,22 +31,22 @@ SRC=$(python -c "import re;print(re.sub('_build/', 'public/', '$TARGET'))")
 SRC_STEM=${SRC%.*}
 
 # Mapped source directory
-SRC_DIR=$(dirname $SRC)
+SRC_DIR=$(dirname "$SRC")
 
 findscssimports() {
-	basedir=$(dirname $1)
-	for f in $(sed -Ene $'/@(use|import)/s/@[a-z]* ["\'](.*)["\'];/\\1/p' < $1); do
+	basedir=$(dirname "$1")
+	for f in $(sed -Ene "/@(use|import)/s/@[a-z]* [\"\'](.*)[\"\'];/\\1/p" < "$1"); do
 		try_paths="$basedir/$f $basedir/$f.scss $basedir/_$f.scss $NPM/$f"
 		found=false
 		for p in $try_paths; do
-		    if [ -f $p ]; then
-		    	echo $p
-		    	(findscssimports $p);
+		    if [ -f "$p" ]; then
+		    	echo "$p"
+		    	(findscssimports "$p");
 		    	found=true
 		    	break
 		    fi
 		done
-		if [ \! $found ]; then
+		if [ ! $found ]; then
 		    echo "Can't find $f" >&2
 		    exit 1;
 		fi;
