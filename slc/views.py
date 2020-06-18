@@ -101,11 +101,3 @@ def oauth_callback(request, provider, success_redirect="index"):
     request.remember_user_id(user_id)
 
     return urlfor(success_redirect)
-
-
-__routes__ = [
-    Route("/<provider:str>/", GET=oauth_login, name="oauth-login"),
-    Route(
-        "/<provider:str>/callback", GET=oauth_callback, name="oauth-callback",
-    ),
-]
