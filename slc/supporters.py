@@ -34,3 +34,19 @@ def add_supporter_from_social_profile(
         picture_url=picture_url,
         account_confirmed=True,
     )
+
+
+def add_supporter_from_email(conn, email: str) -> int:
+
+    return queries.upsert_supporter(
+        conn,
+        provider=None,
+        social_id=None,
+        email=email,
+        full_name=None,
+        first_name=None,
+        last_name=None,
+        locale=None,
+        picture_url=None,
+        account_confirmed=False,
+    )

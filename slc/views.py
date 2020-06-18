@@ -1,5 +1,7 @@
 import uuid
 
+from email_validator import validate_email
+from email_validator import EmailNotValidError
 from fresco import Response
 from fresco import Route
 from fresco import context
@@ -36,13 +38,15 @@ def support_us(request):
 
 def support_us_email(request):
 
-    from email_validator import validate_email, EmailNotValidError
-
     email = request.get("email", "").strip().lower()
     try:
         validate_email(email)
     except EmailNotValidError:
         raise
+
+    conn = request.getconn()
+    with queries.transaction(conn):
+        supporters.add_supporter_from_email(conn, email)
 
     token = str(uuid.uuid4())
     url = urlfor("verify-email", token=token)
@@ -57,8 +61,10 @@ def support_us_email(request):
 
 
 def verify_email(request, token):
-    email, when = caching.cache.get(f"verify-email:{token}")
-    print(email, when)
+    try:
+        email, when = caching.cache.get(f"verify-email:{token}")
+    except TypeError:
+        return piglet.render("default/token-expired.html")
     return Response("ok")
 
 
