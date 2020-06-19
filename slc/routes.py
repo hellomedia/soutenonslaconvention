@@ -43,4 +43,7 @@ __routes__ = [
         name="oauth-callback",
     ),
     Route("/v/<token:str>", GET="slc.views.verify_email", name="verify-email"),
+    Route(
+        "/filepond/", POST="slc.views.filepond_upload", name="filepond-upload"
+    ),
 ]

@@ -61,6 +61,8 @@ app.add_middleware(
 
 app.static = StaticFiles(app)
 app.static.add_package("slc", "../_build", cache_max_age=120)
+app.media = StaticFiles(app, prefix="/media", route_name="media")
+app.media.add_directory("media-files", "media", cache_max_age=3600)
 
 
 @app.process_teardown

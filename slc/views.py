@@ -10,6 +10,7 @@ from fresco import urlfor
 from fresco.exceptions import Forbidden
 
 from slc import caching
+from slc import fileuploads
 from slc import options
 from slc import supporters
 from slc import queries
@@ -132,3 +133,16 @@ def support_step_submit(request):
         with queries.transaction(conn):
             supporters.update_profile(conn, id=request.get_user_id(), **data)
     return Response.redirect(support_step, _query={"step": step + 1})
+
+
+def filepond_upload(request, media_dir="media/"):
+    """
+    See https://pqina.nl/filepond/docs/patterns/api/server/
+
+    Expects a single field with two values: metadata, then upload
+    """
+    form = request.form
+    key = next(form.keys())
+    metadata, upload = form.getlist(key)
+    filename, _ = fileuploads.upload(media_dir, upload)
+    return Response([filename], content_type="text/plain")
