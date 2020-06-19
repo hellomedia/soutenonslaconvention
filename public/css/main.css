@@ -182,11 +182,11 @@ footer a {
 }
 
 a {
-    font-family: 'Montserrat', sans-serif;
     color: grey;
     font-weight: 400;
 }
 .btn {
+    font-family: 'Montserrat', sans-serif;
     display: inline-block;
     padding: 14px 50px;
     border-radius: 3px;
