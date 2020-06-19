@@ -2,6 +2,7 @@
     --u-spaced-margin: 1em;
     --u-Flex-gap-row: 0;
     --u-Flex-gap-col: 0;
+    --constrained-width: 40em;
 }
 .u-Flex {
     display: flex;
@@ -71,4 +72,23 @@
 }
 .u-Spaced-s {
     --u-spaced-margin: 0.5em;
+}
+.u-Constrained {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, var(--constrained-width)) 1fr;
+}
+body > .u-Constrained {
+    grid-gap: 0 2vw;
+}
+.u-Constrained-l {
+    --constrained-width: 960px;
+}
+.u-Constrained-s {
+    --constrained-width: 28em;
+}
+.u-Constrained>* {
+    grid-column: 2;
+}
+.u-Unconstrained {
+    grid-column: 1 span 3;
 }
