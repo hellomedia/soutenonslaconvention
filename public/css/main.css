@@ -104,8 +104,8 @@ a {
     text-align: center;
 }
 .btn-secondary {
-    --buttonBg: #bbbbbb;
-    --buttonFg: #444444;
+    --buttonBg: #eeeeee;
+    --buttonFg: #666;
 }
 .btn:hover, .btn:active, .btn:visited {
     text-decoration: none;
