@@ -1,0 +1,25 @@
+<py:extends href="support-us-step-2.html">
+<py:block name="heading">Une dernière chose…</py:block>
+<py:block name="form">
+    <p>
+        Avez-vous une suggestion à faire sur la façon dont vous pourriez aider à faire connaître ce projet?
+    </p>
+    <textarea name="suggestion"></textarea>
+    <hr/>
+    <p>Et finissons par faire un peu de bruit sur les réseaux sociaux!</p>
+    <input type="hidden" name="step" value="$step"/>
+    <ul>
+        <li>
+            <p><a target="_blank" href="https://twitter.com/intent/tweet?text=…&amp;url=https%3A%2F%2Fsoutienslaconvention.fr%2F%3Futm_source%3Dtwitter%26utm_medium%3Dweb%26utm_campaign%3Dpost-support-tweet">Tweeter</a></p>
+        </li>
+        <li>
+            <p><a target="_blank" href="https://www.facebook.com/dialog/share?app_id=145634995501895&amp;display=popup&amp;href=https%3A%2F%2Fsoutienslaconvention.fr%2F%3Futm_source%3Dtwitter%26utm_medium%3Dweb%26utm_campaign%3Dpost-support-fb-share&amp;redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer">Partager sur Facebook</a></p>
+        </li>
+    </ul>
+    <hr/>
+    <div class="u-Flex u-Flex-justifyBetween">
+        <button class="btn btn-secondary" name="skip" type="submit">Passer cette étape</button>
+        <button class="btn" type="submit">Continuer</button>
+    </div>
+</py:block>
+</py:extends>

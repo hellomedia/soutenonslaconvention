@@ -29,6 +29,12 @@ __routes__ = [
         name="support-us",
     ),
     Route(
+        "/support-step",
+        GET="slc.views.support_step",
+        POST="slc.views.support_step_submit",
+        name="support-step",
+    ),
+    Route(
         "/oauth/<provider:str>", GET="slc.views.oauth_login", name="oauth-login"
     ),
     Route(

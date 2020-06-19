@@ -1,0 +1,51 @@
+<py:extends href="../base.html" py:whitespace="strip">
+<py:block name="stylesheets">
+    <link py:for="u in assets.urls('forms-css', environ=request.environ)" rel="stylesheet" href="$u" />
+</py:block>
+<py:block name="banner"/>
+<py:block name="content">
+    <div class="wrapper">
+        <div class="container" hx-boost="true">
+            <div class="u-Constrained u-Constrained-s">
+                <h1 py:block="heading">Merci !</h1>
+                <form method="POST" hx-target=".js-form-target">
+                    <input type="hidden" name="step" value="$step"/>
+                    <div py:block="form" class="BlockBg js-form-target u-Spaced">
+                        <p>
+                            Saviez-vous que le fait de montrer qui nous
+                            soutient et pourquoi aidera d'autres personnes à
+                            nous rejoindre ?
+                        </p>
+                        <label>
+                            Nom (ou pseudo) à montrer sur la liste de supporters
+                            <input name="display_name" type="text" value="${supporter.display_name or supporter.full_name}" placeholder="Prénom + nom (ou pseudo)"/>
+                        </label>
+                        <label>Je suis…
+                            <select>
+                                <option>…</option>
+                                <option>Citoyen·ne</option>
+                                <option>Scientifique</option>
+                                <option>Personnalité de la Santé</option>
+                            </select>
+                        </label>
+                        <label>
+                            Choisir un photo? <br/><input name="image" type="file" />
+                        </label>
+
+                        <textarea name="reason" placeholder="Pourquoi soutenez-vous (facultatif)?"></textarea>
+                        <p style="line-height: 1.3; font-size: 0.8rem">
+                            Un soutien diversifié pour le CCC en ordre aidera à faire une réelle pression pour le changement. Mais tout le monde a des points de vue différents : votre raison pourrait être celle qui résonne.
+                        </p>
+
+                        <hr/>
+                        <div class="u-Flex u-Flex-justifyBetween">
+                            <button class="btn btn-secondary" name="skip" type="submit">Passer cette étape</button>
+                            <button class="btn" type="submit">Continuer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</py:block>
+</py:extends>

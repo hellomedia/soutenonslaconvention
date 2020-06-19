@@ -45,8 +45,9 @@ def support_us_email(request):
 
     conn = request.getconn()
     with queries.transaction(conn):
-        supporters.add_supporter_from_email(conn, email)
+        user_id = supporters.add_supporter_from_email(conn, email)
 
+    request.remember_user_id(user_id)
     token = str(uuid.uuid4())
     url = urlfor("verify-email", token=token)
     caching.cache.set(f"verify-email:{token}", (email, request.now))
@@ -56,7 +57,7 @@ def support_us_email(request):
         recipients=[email],
         body=url,
     )
-    return Response("ok")
+    return Response.redirect(support_step, _query={"step": 2})
 
 
 def verify_email(request, token):
@@ -64,28 +65,25 @@ def verify_email(request, token):
         user_id, email, when = caching.cache.get(f"verify-email:{token}")
     except TypeError:
         return piglet.render("default/token-expired.html")
-    request.remember_user_id(user_id)
     return Response("ok")
 
 
-@Route.filter(Response.redirect)
 def oauth_login(request, provider, already_logged_in_redirect="index"):
     app = context.app
     session = request.session
     credentials = object_or_404(app.options.OAUTH_CREDENTIALS.get(provider))
     provider_info = object_or_404(OAUTH_PROVIDERS.get(provider))
 
-    if request.is_authenticated():
-        return already_logged_in_redirect
+    # if request.is_authenticated():
+    #    return Response.redirect(already_logged_in_redirect)
     oauth = get_oauth2session(provider, credentials["id"])
     url, session["oauth_state"] = oauth.authorization_url(
         provider_info["authorization_base_url"]
     )
-    return url
+    return Response.redirect(url)
 
 
-@Route.filter(Response.redirect)
-def oauth_callback(request, provider, success_redirect="index"):
+def oauth_callback(request, provider):
     session = request.session
 
     state = object_or_404(session.get("oauth_state"), Forbidden)
@@ -99,5 +97,38 @@ def oauth_callback(request, provider, success_redirect="index"):
         )
 
     request.remember_user_id(user_id)
+    return Response.redirect(support_step, _query={"step": 2})
 
-    return urlfor(success_redirect)
+
+def support_step(request):
+    if not request.is_authenticated():
+        return Response.redirect(support_us)
+    try:
+        step = int(request.get("step"))
+    except (TypeError, ValueError):
+        return Response.redirect(support_us)
+
+    supporter = supporters.get_supporter_by_id(
+        request.getconn(), request.get_user_id()
+    )
+    template = f"default/support-us-step-{step}.html"
+    return piglet.render(template, {"step": step, "supporter": supporter})
+
+
+def support_step_submit(request):
+    if not request.is_authenticated():
+        return Response.redirect(support_us)
+    try:
+        step = int(request.get("step"))
+    except (TypeError, ValueError):
+        return Response.redirect(support_us)
+
+    conn = request.getconn()
+    if "skip" not in request:
+        data = dict(request.form)
+        data.pop("step")
+        # TODO: image uploading
+        data.pop("image", None)
+        with queries.transaction(conn):
+            supporters.update_profile(conn, id=request.get_user_id(), **data)
+    return Response.redirect(support_step, _query={"step": step + 1})

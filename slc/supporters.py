@@ -1,10 +1,24 @@
 import logging
+from dataclasses import dataclass
 from typing import Any
+from typing import Optional
 from typing import Dict
 
 from slc import queries
 
 logger = logging.getLogger(__name__)
+
+
+@dataclass
+class Supporter:
+    id: int
+    display_name: Optional[str]
+    full_name: Optional[str]
+    email: Optional[str]
+    reason: Optional[str]
+    suggestion: Optional[str]
+    image_path: Optional[str]
+    picture_url: Optional[str]
 
 
 def add_supporter_from_social_profile(
@@ -49,4 +63,27 @@ def add_supporter_from_email(conn, email: str) -> int:
         locale=None,
         picture_url=None,
         account_confirmed=False,
+    )
+
+
+def get_supporter_by_id(conn, id: int) -> Supporter:
+    data = queries.get_supporter_info(conn, id=id)
+    return Supporter(**data._asdict())
+
+
+def update_profile(
+    conn,
+    id: int,
+    display_name=None,
+    reason=None,
+    suggestion=None,
+    image_path=None,
+):
+    return queries.update_supporter_profile(
+        conn,
+        id=id,
+        display_name=display_name,
+        reason=reason,
+        suggestion=suggestion,
+        image_path=image_path,
     )
