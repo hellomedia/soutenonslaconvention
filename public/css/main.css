@@ -154,3 +154,17 @@ a {
     width: 100%;
     height: 100%;
 }
+.BlockBg {
+    background: var(--green);
+    color: white;
+    padding: 1em;
+    --buttonBg: rgba(0, 0, 0, 0.3);
+}
+.BlockBg a,
+.BlockBg a:link,
+.BlockBg a:visited,
+.BlockBg a:hover,
+.BlockBg a:active
+{
+    color: rgba(255, 255, 255, 0.9);
+}
