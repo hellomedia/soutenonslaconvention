@@ -64,7 +64,7 @@ img {
     font-size: 50px;
     white-space: nowrap;
     letter-spacing: -3px;
-    padding-top: 30px;
+    padding-top: 40px;
     margin: 0;
     transition: 0.3s;
 }
@@ -89,6 +89,7 @@ img {
     line-height: 35px;
     padding-bottom: 50px;
     padding-left: 30px;
+    transition: 0.3s;
 }
 .hashtag1 {
     transition: 0.3s;
@@ -103,10 +104,11 @@ img {
     }
     .title-line2 {
         font-size: 36px;
-        margin-top: -15px;
+        margin-top: -12px;
     }
     .hashtags {
         font-size: 26px;
+        line-height: 30px;
     }
 }
 @media (max-width: 600px) {
