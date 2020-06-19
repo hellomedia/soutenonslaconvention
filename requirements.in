@@ -15,6 +15,6 @@ https://hg.sr.ht/~olly/fresco-i18n/archive/a3672a8dd6dc.tar.gz#egg=fresco-i18n
 assetbuilder >= 1.0.1
 fresco-static
 requests-oauthlib
-mailsend >= 1.1.0
+mailsend >= 1.1.1
 email_validator
 huey
