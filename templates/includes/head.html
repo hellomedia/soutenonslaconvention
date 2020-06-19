@@ -13,7 +13,7 @@
 <meta name="twitter:title" content="Soutenons la Convention"/>
 <meta name="twitter:description" content="Soutenons un processus démocratique qui répond aux enjeux du moment. #SoutenonsLaConvention #avecLes150"/>
 <title py:block="title">Soutenons la Convention</title>
-<link rel="stylesheet" href="${assets.url('default-css')}" />
+<link py:for="url in assets.urls('default-css', environ=request.environ)" href="$url" rel="stylesheet" />
 <py:block name="stylesheets"/>
 <!--! Global site tag (gtag.js) - Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-2063915-19"></script>
