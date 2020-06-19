@@ -5,8 +5,11 @@ from typing import Any
 from typing import Optional
 from typing import Dict
 
-from slc import queries
+import requests
+
+from slc import fileuploads
 from slc import options
+from slc import queries
 from slc import queuing
 
 logger = logging.getLogger(__name__)
@@ -121,3 +124,16 @@ def register_suggestion(conn, supporter_id, suggestion):
             reply_to=supporter.email,
             body=suggestion,
         )
+
+
+def download_social_image(conn, supporter_id):
+    supporter = get_supporter_by_id(conn, supporter_id)
+    r = requests.get(supporter.picture_url, stream=True)
+
+    with fileuploads.content_addressed_file(options.MEDIA_DIR) as (
+        f,
+        get_filename,
+    ):
+        for chunk in r.iter_content(chunk_size=1024):
+            f.write(chunk)
+    update_profile(conn, supporter_id, image_path=get_filename())

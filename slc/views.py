@@ -96,7 +96,7 @@ def oauth_callback(request, provider):
         user_id = supporters.add_supporter_from_social_profile(
             conn, provider, profile
         )
-
+        supporters.download_social_image(conn, user_id)
     request.remember_user_id(user_id)
     return Response.redirect(support_step, _query={"step": 2})
 
