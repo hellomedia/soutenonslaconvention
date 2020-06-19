@@ -4,8 +4,8 @@ from assetbuilder import AssetBuilder
 from slc import app
 
 GUPFILES = ["../gup/**/*.gup"]
-CSSFILES = ["public/css/**"]
-JSFILES = ["public/js/**"]
+CSSFILES = ["css/**"]
+JSFILES = ["js/**"]
 
 CSSDEPS = CSSFILES + GUPFILES
 JSDEPS = JSFILES + GUPFILES
@@ -13,7 +13,7 @@ JSDEPS = JSFILES + GUPFILES
 assetbuilder = AssetBuilder(
     "/assets",
     resource_filename(__name__, "../_build"),
-    depdirs=[resource_filename(__name__, "static")],
+    depdirs=[resource_filename(__name__, "../public")],
     autobuild=app.options.ASSETS_AUTO_BUILD,
 )
 assetbuilder.set_default_build_command("gup -u {path}")
