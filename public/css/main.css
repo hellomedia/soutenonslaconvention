@@ -34,6 +34,7 @@ img {
 }
 .header .wrapper {
     padding: 0;
+    margin: 0;
 }
 .menu {
     display: flex;
@@ -68,10 +69,10 @@ img {
 .title-line1 {
     font-family: 'Open Sans';
     font-weight: 700;
-    font-size: 54px;
+    font-size: 50px;
     white-space: nowrap;
     letter-spacing: -3px;
-    padding-top: 30px;
+    padding-top: 40px;
     margin: 0;
     transition: 0.3s;
 }
@@ -80,8 +81,9 @@ img {
     font-weight: 300;
     letter-spacing: -2px;
     white-space: nowrap;
-    font-size: 48px;
-    margin-top: -20px;
+    font-size: 40px;
+    padding-left: 30px;
+    margin-top: -15px;
     margin-bottom: 20px;
     transition: 0.3s;
 }
@@ -94,6 +96,8 @@ img {
     margin: 0;
     line-height: 35px;
     padding-bottom: 50px;
+    padding-left: 30px;
+    transition: 0.3s;
 }
 .hashtag1 {
     transition: 0.3s;
@@ -107,11 +111,12 @@ img {
         letter-spacing: -3px;
     }
     .title-line2 {
-        font-size: 40px;
-        margin-top: -15px;
+        font-size: 36px;
+        margin-top: -12px;
     }
     .hashtags {
         font-size: 26px;
+        line-height: 30px;
     }
 }
 @media (max-width: 600px) {
@@ -120,7 +125,7 @@ img {
         letter-spacing: -3px;
     }
     .title-line2 {
-        font-size: 36px;
+        font-size: 32px;
         margin-top: -10px;
     }
     .hashtags {
@@ -134,33 +139,22 @@ img {
         letter-spacing: -3px;
     }
     .title-line2 {
-        font-size: 30px;
-        margin-top: -10px;
+        font-size: 28px;
+        margin-top: -7px;
+        padding-left: 0;
     }
     .hashtags {
         font-size: 22px;
+        padding-left: 0;
     }
 }
 @media (max-width: 450px) {
     .title-line1 {
-        font-size: 33px;
-        letter-spacing: -3px;
-    }
-    .title-line2 {
-        font-size: 28px;
-        margin-top: -5px;
-    }
-    .hashtags {
-        font-size: 21px;
-    }
-}
-@media (max-width: 400px) {
-    .title-line1 {
         font-size: 30px;
         letter-spacing: -3px;
     }
     .title-line2 {
-        font-size: 25px;
+        font-size: 24px;
         margin-top: -5px;
     }
     .hashtags {
@@ -189,11 +183,11 @@ footer a {
 }
 
 a {
-    font-family: 'Montserrat', sans-serif;
     color: grey;
     font-weight: 400;
 }
 .btn {
+    font-family: 'Montserrat', sans-serif;
     display: inline-block;
     padding: 14px 50px;
     border-radius: 3px;
