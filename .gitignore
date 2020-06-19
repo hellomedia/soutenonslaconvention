@@ -16,3 +16,4 @@ _build
 /venv
 /yoyo.local.ini
 /slc/__pycache__/
+.gunicorn.pid
