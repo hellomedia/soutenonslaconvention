@@ -49,7 +49,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:soutien-item-title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -68,7 +68,7 @@
        inkscape:export-ydpi="96" />
   </g>
   <g
-     inkscape:label="Title lower"
+     inkscape:label="soutien-item-title lower"
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-213.65623)"
@@ -133,7 +133,7 @@
   <g
      inkscape:groupmode="layer"
      id="layer3"
-     inkscape:label="Title CAPS"
+     inkscape:label="soutien-item-title CAPS"
      style="display:none">
     <text
        transform="translate(0,-213.65623)"

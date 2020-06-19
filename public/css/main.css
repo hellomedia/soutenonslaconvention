@@ -5,6 +5,9 @@ body {
     margin: 0;
     padding: 0;
     color: #444;
+    font-family: sans-serif;
+    font-size: 19px;
+    line-height: 1.5;
 }
 img {
     max-width: 100%;
@@ -17,7 +20,6 @@ img {
     margin: 1em auto 1em;
     max-width: 800px;
     width: 90%;
-    font: 18px/1.5 sans-serif;
 }
 .header {
     font-size: 15px;
@@ -28,6 +30,8 @@ img {
 .menu {
     display: flex;
     align-items: baseline;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
 }
 .menu a {
     margin-right: 30px;
@@ -49,15 +53,119 @@ img {
 .banner .container {
     margin-bottom: 0;
 }
-.banner img {
-    max-height: 315px;
-    margin-left: -38px;
+.title {
+    color: #fff;
+    margin: 0;
 }
-@media (max-width: 830px) {
-    .banner img {
-        margin-left: 0;
+.title-line1 {
+    font-family: 'Open Sans';
+    font-weight: 800;
+    font-size: 54px;
+    white-space: nowrap;
+    letter-spacing: -3px;
+    padding-top: 30px;
+    margin: 0;
+}
+.title-line2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    white-space: nowrap;
+    font-size: 48px;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    letter-spacing: 0px;
+}
+.hashtags {
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-size: 30px;
+    margin: 0;
+    line-height: 35px;
+    padding-bottom: 50px;
+}
+.hashtag1 {
+}
+.hashtag2 {
+}
+@media (max-width: 750px) {
+    .title-line1 {
+        font-size: 46px;
+        letter-spacing: -3px;
+    }
+    .title-line2 {
+        font-size: 40px;
+        letter-spacing: 0px;
+        margin-top: -15px;
+    }
+    .hashtags {
+        letter-spacing: 1px;
+        font-size: 26px;
     }
 }
+@media (max-width: 600px) {
+    .title-line1 {
+        font-size: 40px;
+        letter-spacing: -3px;
+    }
+    .title-line2 {
+        font-size: 36px;
+        letter-spacing: 0px;
+        margin-top: -10px;
+    }
+    .hashtags {
+        letter-spacing: 1px;
+        font-size: 22px;
+        line-height: 25px;
+    }
+}
+@media (max-width: 500px) {
+    .title-line1 {
+        font-size: 36px;
+        letter-spacing: -3px;
+    }
+    .title-line2 {
+        font-size: 30px;
+        letter-spacing: 0px;
+        margin-top: -10px;
+    }
+    .hashtags {
+        letter-spacing: 1px;
+        font-size: 22px;
+    }
+}
+@media (max-width: 450px) {
+    .title-line1 {
+        font-size: 33px;
+        letter-spacing: -3px;
+    }
+    .title-line2 {
+        font-size: 28px;
+        letter-spacing: 0px;
+        margin-top: -5px;
+    }
+    .hashtags {
+        letter-spacing: 1px;
+        font-size: 21px;
+    }
+}
+@media (max-width: 400px) {
+    .title-line1 {
+        font-size: 30px;
+        letter-spacing: -3px;
+    }
+    .title-line2 {
+        font-size: 25px;
+        letter-spacing: 0px;
+        margin-top: -5px;
+    }
+    .hashtags {
+        letter-spacing: 1px;
+        font-size: 20px;
+    }
+}
+
 
 .grey-bg {
     background-color: #f2f2f2;
@@ -79,7 +187,9 @@ footer a {
 }
 
 a {
+    font-family: 'Montserrat', sans-serif;
     color: grey;
+    font-weight: 400;
 }
 .btn {
     display: inline-block;
