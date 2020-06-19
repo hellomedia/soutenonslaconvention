@@ -19,6 +19,16 @@ class Supporter:
     suggestion: Optional[str]
     image_path: Optional[str]
     picture_url: Optional[str]
+    display_image: Optional[str]
+
+    def display_image_url(self):
+        from fresco import context
+
+        if not self.display_image:
+            return None
+        if "://" in self.display_image:
+            return self.display_image
+        return context.app.urlfor("media", path=self.display_image)
 
 
 def add_supporter_from_social_profile(
@@ -87,4 +97,5 @@ def update_profile(
         reason=reason,
         suggestion=suggestion,
         image_path=image_path,
+        display_image=display_image,
     )
