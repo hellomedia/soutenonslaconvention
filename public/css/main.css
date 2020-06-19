@@ -245,3 +245,9 @@ a {
     width: 100%;
     height: 100%;
 }
+
+.footnotes {
+    margin-top: 50px;
+    font-size: 14px;
+    text-align: right;
+}

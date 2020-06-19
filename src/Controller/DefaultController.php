@@ -51,10 +51,16 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/test", name="test")
+     * @Route("/politique-de-confidentialite", name="privacy")
      */
-    public function test()
+    public function privacy()
     {
-        return $this->render('default/test.html.twig');
+        $response = new Response($this->renderView('default/privacy.html.twig'), 200);
+
+        $response->headers->set('X-Robots-Tag','index');
+
+        return $response;
+
+        //return $this->render('default/privacy.html.twig');
     }
 }
