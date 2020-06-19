@@ -2,8 +2,8 @@
     <div class="wrapper">
         <div class="container menu">
             <a href="{{ path('index') }}"  {{ app.request.get('_route') == 'index' ? 'class="active"' }}>Accueil</a>
-            <a href="{{ path('about') }}" {{ app.request.get('_route') == 'about' ? 'class="active"' }}>Qui sommes-nous</a>
             <a href="{{ path('soutiens') }}" {{ app.request.get('_route') == 'soutiens' ? 'class="active"' }}>Soutiens</a>
+            <a href="{{ path('about') }}" {{ app.request.get('_route') == 'about' ? 'class="active"' }}>Qui sommes-nous</a>
         </div>
     </div>
     <div class="wrapper banner">

@@ -65,8 +65,8 @@
     position: relative;
     top: -8px;
 }
-.who-are-we-cta {
-    margin-top: 40px;
+.who-are-we-facebook-cta {
+    margin-top: 60px;
 }
 
 @media (max-width: 900px) {
@@ -120,7 +120,7 @@
     .counter {
         margin-top: 40px;
     }
-    .who-are-we-cta {
+    .who-are-we-facebook-cta {
         margin-top: 30px;
     }
 }
