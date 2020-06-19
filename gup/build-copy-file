@@ -3,4 +3,6 @@
 PROJECT_ROOT=$(hg root 2>/dev/null || git rev-parse --show-toplevel)
 . $PROJECT_ROOT/gup/GUPVARS
 
+gup -u "$SRC"
+
 cp -l "$SRC" "$1"
