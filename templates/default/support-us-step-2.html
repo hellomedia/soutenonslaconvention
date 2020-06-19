@@ -78,10 +78,10 @@
                         </label>
                         <div class="u-Flex u-Flex-justifyBetween PhotoChooser">
                             <py:choose>
-                                <div py:when="bool(supporter.picture_url)">
-                                    <input id="photo-social" class="RadioChoice" type="radio" name="photo-option" value="social" checked=""/>
-                                    <label for="photo-social" class="u-Flex u-Flex-alignItemsCenter u-Flex-justifyCenter">
-                                        <img src="$supporter.picture_url" style="max-width: 4em"/>
+                                <div py:when="bool(supporter.image_path)">
+                                    <input id="photo-existing" class="RadioChoice" type="radio" name="photo-option" value="existing" checked=""/>
+                                    <label for="photo-existing">
+                                        <img src="${supporter.uploaded_image_url()}" style="max-width: 4em"/>
                                     </label>
                                 </div>
                                 <div py:when="bool(supporter.display_image)">

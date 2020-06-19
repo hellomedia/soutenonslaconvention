@@ -5,6 +5,7 @@ from typing import Any
 from typing import Optional
 from typing import Dict
 
+from fresco import context
 import requests
 
 from slc import fileuploads
@@ -28,13 +29,15 @@ class Supporter:
     display_image: Optional[str]
 
     def display_image_url(self):
-        from fresco import context
 
         if not self.display_image:
             return None
         if "://" in self.display_image:
             return self.display_image
         return context.app.urlfor("media", path=self.display_image)
+
+    def uploaded_image_url(self):
+        return context.app.urlfor("media", path=self.image_path)
 
 
 def add_supporter_from_social_profile(
