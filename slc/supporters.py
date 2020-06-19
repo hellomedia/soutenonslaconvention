@@ -6,6 +6,8 @@ from typing import Optional
 from typing import Dict
 
 from slc import queries
+from slc import options
+from slc import queuing
 
 logger = logging.getLogger(__name__)
 
@@ -103,3 +105,19 @@ def update_profile(
         image_path=image_path,
         display_image=display_image,
     )
+
+
+def register_suggestion(conn, supporter_id, suggestion):
+    if not suggestion.strip():
+        return
+    update_profile(conn, id=supporter_id, suggestion=suggestion)
+    supporter = get_supporter_by_id(conn, supporter_id)
+
+    if suggestion:
+        queuing.queue_send_mail(
+            options.MAIL_FROM,
+            f"Soutenons la Convention: une suggestions de {supporter.full_name}",
+            recipients=[options.CONTACT_EMAIL],
+            reply_to=supporter.email,
+            body=suggestion,
+        )

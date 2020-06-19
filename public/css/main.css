@@ -201,12 +201,20 @@ a {
     text-decoration: none;
     text-align: center;
 }
+.btn:hover, .btn:active, .btn:visited {
+    text-decoration: none;
+}
 .btn-secondary {
     --button-bg: #eeeeee;
     --button-fg: #666;
 }
-.btn:hover, .btn:active, .btn:visited {
-    text-decoration: none;
+.btn-s {
+    padding: 8px 20px;
+    font-size: 1rem;
+}
+.btn-xs {
+    padding: 6px 16px;
+    font-size: 0.9rem;
 }
 .btn-group {
     margin-top: 40px;

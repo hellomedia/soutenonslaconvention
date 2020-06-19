@@ -114,6 +114,7 @@ def support_step(request):
     )
     if supporter is None:
         return Response.redirect(support_us)
+
     template = f"default/support-us-step-{step}.html"
     return piglet.render(template, {"step": step, "supporter": supporter})
 
@@ -135,6 +136,17 @@ def support_step_submit(request):
         with queries.transaction(conn):
             supporters.update_profile(conn, id=request.get_user_id(), **data)
     return Response.redirect(support_step, _query={"step": step + 1})
+
+
+def submit_suggestion(request):
+    conn = request.getconn()
+    supporter_id = request.get_user_id()
+    suggestion = request.get("suggestion")
+    if suggestion and supporter_id:
+        with queries.transaction(conn):
+            supporters.register_suggestion(conn, supporter_id, suggestion)
+
+    return Response(headers=[("X-HX-Trigger", "suggestionSubmitted")])
 
 
 def filepond_upload(request, media_dir="media/"):
