@@ -158,5 +158,5 @@ def filepond_upload(request, media_dir="media/"):
     form = request.form
     key = next(form.keys())
     metadata, upload = form.getlist(key)
-    filename, _ = fileuploads.upload(media_dir, upload)
+    filename = fileuploads.upload(media_dir, upload)
     return Response([filename], content_type="text/plain")
