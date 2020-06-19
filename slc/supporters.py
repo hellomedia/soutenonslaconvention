@@ -1,5 +1,6 @@
 import logging
 from dataclasses import dataclass
+from embrace.exceptions import NoResultFound
 from typing import Any
 from typing import Optional
 from typing import Dict
@@ -77,7 +78,10 @@ def add_supporter_from_email(conn, email: str) -> int:
 
 
 def get_supporter_by_id(conn, id: int) -> Supporter:
-    data = queries.get_supporter_info(conn, id=id)
+    try:
+        data = queries.get_supporter_info(conn, id=id)
+    except NoResultFound:
+        return None
     return Supporter(**data._asdict())
 
 

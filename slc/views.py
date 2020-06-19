@@ -112,6 +112,8 @@ def support_step(request):
     supporter = supporters.get_supporter_by_id(
         request.getconn(), request.get_user_id()
     )
+    if supporter is None:
+        return Response.redirect(support_us)
     template = f"default/support-us-step-{step}.html"
     return piglet.render(template, {"step": step, "supporter": supporter})
 
