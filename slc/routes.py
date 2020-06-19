@@ -14,6 +14,12 @@ __routes__ = [
         template="default/about.html",
     ),
     Route(
+        "/politique-confidentialite",
+        GET=templated_page,
+        name="privacy",
+        template="default/privacy.html",
+    ),
+    Route(
         "/soutiens",
         GET=templated_page,
         template="default/soutiens.html",
