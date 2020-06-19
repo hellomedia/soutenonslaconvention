@@ -130,10 +130,19 @@ def support_step_submit(request):
     if "skip" not in request:
         data = dict(request.form)
         data.pop("step")
-        # TODO: image uploading
-        data.pop("image", None)
+        photo_option = data.pop("photo-option", "existing")
+        display_image = {
+            "upload": data.get("image_path"),
+            "existing": None,
+            "none": None,
+        }[photo_option]
         with queries.transaction(conn):
-            supporters.update_profile(conn, id=request.get_user_id(), **data)
+            supporters.update_profile(
+                conn,
+                id=request.get_user_id(),
+                display_image=display_image,
+                **data,
+            )
     return Response.redirect(support_step, _query={"step": step + 1})
 
 
