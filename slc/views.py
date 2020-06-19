@@ -3,7 +3,6 @@ import uuid
 from email_validator import validate_email
 from email_validator import EmailNotValidError
 from fresco import Response
-from fresco import Route
 from fresco import context
 from fresco import object_or_404
 from fresco import urlfor
