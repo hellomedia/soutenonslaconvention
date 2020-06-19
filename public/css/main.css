@@ -59,21 +59,23 @@ img {
 }
 .title-line1 {
     font-family: 'Open Sans';
-    font-weight: 800;
+    font-weight: 700;
     font-size: 54px;
     white-space: nowrap;
     letter-spacing: -3px;
     padding-top: 30px;
     margin: 0;
+    transition: 0.3s;
 }
 .title-line2 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
+    letter-spacing: -2px;
     white-space: nowrap;
     font-size: 48px;
     margin-top: -20px;
     margin-bottom: 20px;
-    letter-spacing: 0px;
+    transition: 0.3s;
 }
 .hashtags {
     color: #fff;
@@ -86,8 +88,10 @@ img {
     padding-bottom: 50px;
 }
 .hashtag1 {
+    transition: 0.3s;
 }
 .hashtag2 {
+    transition: 0.3s;
 }
 @media (max-width: 750px) {
     .title-line1 {
@@ -96,11 +100,9 @@ img {
     }
     .title-line2 {
         font-size: 40px;
-        letter-spacing: 0px;
         margin-top: -15px;
     }
     .hashtags {
-        letter-spacing: 1px;
         font-size: 26px;
     }
 }
@@ -111,11 +113,9 @@ img {
     }
     .title-line2 {
         font-size: 36px;
-        letter-spacing: 0px;
         margin-top: -10px;
     }
     .hashtags {
-        letter-spacing: 1px;
         font-size: 22px;
         line-height: 25px;
     }
@@ -127,11 +127,9 @@ img {
     }
     .title-line2 {
         font-size: 30px;
-        letter-spacing: 0px;
         margin-top: -10px;
     }
     .hashtags {
-        letter-spacing: 1px;
         font-size: 22px;
     }
 }
@@ -142,11 +140,9 @@ img {
     }
     .title-line2 {
         font-size: 28px;
-        letter-spacing: 0px;
         margin-top: -5px;
     }
     .hashtags {
-        letter-spacing: 1px;
         font-size: 21px;
     }
 }
@@ -157,11 +153,9 @@ img {
     }
     .title-line2 {
         font-size: 25px;
-        letter-spacing: 0px;
         margin-top: -5px;
     }
     .hashtags {
-        letter-spacing: 1px;
         font-size: 20px;
     }
 }
