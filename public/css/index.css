@@ -4,6 +4,7 @@
     font-weight: bold;
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 40px;
 }
 .countdown-number {
     font-size: 120px;
