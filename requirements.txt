@@ -4,8 +4,6 @@
 #
 #    gup requirements.txt
 #
---find-links file:///home/oliver/.cache/pip-wheelhouse
-
 assetbuilder==1.0.1       # via -r requirements.in
 astunparse==1.6.3         # via piglet-templates
 attrs==19.3.0             # via piglet-templates
