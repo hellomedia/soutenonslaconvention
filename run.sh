@@ -8,7 +8,7 @@ PIDFILE=".gunicorn.pid"
 SLC_SETTINGS=${SKC_SETTINGS:-"$(dirname $(realpath $0))/settings.py"}
 trap "trap - TERM && kill -- -$$" INT TERM EXIT
 
-./venv/bin/huey_consumer slc.queuing.huey &
+./venv/bin/huey_consumer -w1 -k process slc.queuing.huey &
 entr gup << "EOF" &
 requirements.in
 EOF
