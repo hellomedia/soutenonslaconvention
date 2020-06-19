@@ -1,7 +1,7 @@
 :root {
     --green: #44a777;
-    --buttonBg: var(--green);
-    --buttonFg: #fff;
+    --button-bg: var(--green);
+    --button-fg: #fff;
 }
 *, *::before, *::after {
     box-sizing: border-box;
@@ -95,17 +95,17 @@ a {
     border-radius: 3px;
     border: 0;
     background-color: #44a777;
-    background-color: var(--buttonBg);
+    background-color: var(--button-bg);
     color: #fff;
-    color: var(--buttonFg);
+    color: var(--button-fg);
     cursor: pointer;
     font-size: 18px;
     text-decoration: none;
     text-align: center;
 }
 .btn-secondary {
-    --buttonBg: #eeeeee;
-    --buttonFg: #666;
+    --button-bg: #eeeeee;
+    --button-fg: #666;
 }
 .btn:hover, .btn:active, .btn:visited {
     text-decoration: none;
@@ -158,7 +158,7 @@ a {
     background: var(--green);
     color: white;
     padding: 1em;
-    --buttonBg: rgba(0, 0, 0, 0.3);
+    --button-bg: rgba(0, 0, 0, 0.3);
 }
 .BlockBg a,
 .BlockBg a:link,
