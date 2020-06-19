@@ -98,6 +98,7 @@ a {
     cursor: pointer;
     font-size: 18px;
     text-decoration: none;
+    text-align: center;
 }
 .btn-secondary {
     --buttonBg: #bbbbbb;
@@ -106,11 +107,32 @@ a {
 .btn:hover, .btn:active, .btn:visited {
     text-decoration: none;
 }
+.btn-group {
+    margin-top: 40px;
+    margin-right: -20px;
+    margin-bottom: -20px;
+}
+.btn-group .btn {
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+@media (max-width: 800px) {
+    .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .btn-group .btn {
+        flex: 1 1 auto;
+    }
+}
 @media (max-width: 500px) {
     .btn {
         width: 100%;
         padding: 15px 0;
         text-align: center;
+    }
+    .btn-group {
+
     }
 }
 
