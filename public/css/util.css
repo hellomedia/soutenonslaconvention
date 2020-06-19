@@ -78,7 +78,7 @@
     grid-template-columns: 1fr minmax(0, var(--constrained-width)) 1fr;
 }
 body > .u-Constrained {
-    grid-gap: 0 2vw;
+    grid-gap: 0 1vw;
 }
 .u-Constrained-l {
     --constrained-width: 960px;

@@ -3,6 +3,7 @@ textarea {
     font-family: inherit;
     font-size: 0.9rem;
 }
+select,
 input[type=text],
 input[type=email],
 textarea {
@@ -11,5 +12,10 @@ textarea {
     font-family: inherit;
     color: inherit;
     padding: 0.5rem;
+    display: block;
+    background: white;
+    color: #000;
+}
+label {
     display: block;
 }

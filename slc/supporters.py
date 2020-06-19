@@ -78,6 +78,7 @@ def update_profile(
     reason=None,
     suggestion=None,
     image_path=None,
+    display_image=None,
 ):
     return queries.update_supporter_profile(
         conn,
