@@ -80,7 +80,7 @@
                             <py:choose>
                                 <div py:when="bool(supporter.image_path)">
                                     <input id="photo-existing" class="RadioChoice" type="radio" name="photo-option" value="existing" checked=""/>
-                                    <label for="photo-existing">
+                                    <label for="photo-existing" style="width: 100%; height: 100%;" class="u-Flex u-Flex-alignItemsCenter u-Flex-justifyCenter">
                                         <img src="${supporter.uploaded_image_url()}" style="max-width: 4em"/>
                                     </label>
                                 </div>
