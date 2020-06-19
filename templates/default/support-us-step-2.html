@@ -43,7 +43,7 @@
         FilePond.setOptions({server: '${urlfor("filepond-upload")}'});
         var inputElement = document.querySelector('input[type="file"]');
         var pond = FilePond.create(inputElement);
-        pond.labelIdle = 'glisser-déposer une photo ou <span class="filepond--label-action">choisir</span>';
+        pond.labelIdle = 'glisser-déposer ou <span class="filepond--label-action">choisir une photo</span>';
 
         document.querySelectorAll(".RadioChoice+*").forEach(function (node) {
             node.addEventListener("click", function () {
