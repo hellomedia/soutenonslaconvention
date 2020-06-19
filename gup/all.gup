@@ -5,6 +5,7 @@ gup -u \
     venv/bin/gunicorn \
     .env.secret.local \
     ./_build/css/main.css \
+    ./_build/css/forms.css \
     ./_build/css/index.css \
     ./_build/css/soutiens.css \
     ./_build/css/util.css \

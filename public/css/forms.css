@@ -1,0 +1,15 @@
+input,
+textarea {
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+input[type=text],
+input[type=email],
+textarea {
+    width: 100%;
+    display: block;
+    font-family: inherit;
+    color: inherit;
+    padding: 0.5rem;
+    display: block;
+}
