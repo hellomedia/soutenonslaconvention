@@ -12,10 +12,22 @@
         opacity: 0.6;
         transition: all 0.3s;
         padding: 4px;
+        width: 100%;
+        height: 100%;
     }
     .RadioChoice:checked + * {
         opacity: 1;
         background-color: rgba(255, 255, 255, 0.2);
+    }
+    .PhotoChooser {
+        display: flex;
+        justify-content: space-between;
+    }
+    .PhotoChooser * {
+        flex: 1 1 28%;
+    }
+    .PhotoChooser-Upload  {
+        flex: 1 1 44%;
     }
     </style>
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet"/>
@@ -30,6 +42,7 @@
         FilePond.setOptions({server: '${urlfor("filepond-upload")}'});
         var inputElement = document.querySelector('input[type="file"]');
         var pond = FilePond.create(inputElement);
+        pond.labelIdle = 'glisser-déposer une photo ou <span class="filepond--label-action">choisir</span>';
 
         document.querySelectorAll(".RadioChoice+*").forEach(function (node) {
             node.addEventListener("click", function () {
@@ -62,22 +75,22 @@
                                 <option>Personnalité de la Santé</option>
                             </select>
                         </label>
-                        <div class="u-Flex u-Flex-justifyBetween">
+                        <div class="u-Flex u-Flex-justifyBetween PhotoChooser">
                             <py:choose>
-                                <py:when test="supporter.picture_url">
-                                    <input id="photo-social" class="RadioChoice" type="radio" name="photo-option" value="social"/>
-                                    <label for="photo-social">
-                                        <img py:if="supporter.picture_url" src="$supporter.picture_url" style="max-width: 4em"/>
+                                <div py:when="bool(supporter.picture_url)">
+                                    <input id="photo-social" class="RadioChoice" type="radio" name="photo-option" value="social" checked=""/>
+                                    <label for="photo-social" class="u-Flex u-Flex-alignItemsCenter u-Flex-justifyCenter">
+                                        <img src="$supporter.picture_url" style="max-width: 4em"/>
                                     </label>
-                                </py:when>
-                                <py:when test="supporter.display_image">
-                                    <input id="photo-existing" class="RadioChoice" type="radio" name="photo-option" value="existing"/>
+                                </div>
+                                <div py:when="bool(supporter.display_image)">
+                                    <input id="photo-existing" class="RadioChoice" type="radio" name="photo-option" value="existing" checked=""/>
                                     <label for="photo-existing">
                                         <img src="${supporter.display_image_url()}" style="max-width: 4em"/>
                                     </label>
-                                </py:when>
+                                </div>
                             </py:choose>
-                            <div>
+                            <div class="PhotoChooser-Upload">
                                 <input id="photo-upload" type="radio" class="RadioChoice" name="photo-option" value="upload"/>
                                 <label for="photo-upload">
                                     Choisir un photo? <br/><input name="image" type="file" />

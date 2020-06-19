@@ -4,6 +4,8 @@
 #
 #    gup requirements.txt
 #
+--find-links file:///home/oliver/.cache/pip-wheelhouse
+
 assetbuilder==1.0.1       # via -r requirements.in
 astunparse==1.6.3         # via piglet-templates
 attrs==19.3.0             # via piglet-templates
@@ -38,11 +40,13 @@ psycopg2==2.8.5           # via -r requirements.in
 pytz==2020.1              # via -r requirements.in, babel
 requests-oauthlib==1.3.0  # via -r requirements.in
 requests==2.24.0          # via requests-oauthlib
+returns==0.14.0           # via -r requirements.in
 scour==0.37               # via -r requirements.in
 six==1.15.0               # via astunparse, scour
 sqlparse==0.3.1           # via embrace, yoyo-migrations
 tabulate==0.8.7           # via yoyo-migrations
 toml==0.10.1              # via -r requirements.in
+typing-extensions==3.7.4.2  # via returns
 urllib3==1.25.9           # via requests
 wheel==0.34.2             # via astunparse
 wrapt==1.12.1             # via embrace

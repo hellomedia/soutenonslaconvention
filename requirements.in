@@ -18,3 +18,4 @@ requests-oauthlib
 mailsend >= 1.1.1
 email_validator
 huey
+returns
