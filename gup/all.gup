@@ -2,8 +2,7 @@
 
 gup -u \
     requirements.txt \
-    venv/bin/gunicorn \
-    .env.secret.local \
+    runtime \
     ./_build/css/main.css \
     ./_build/css/forms.css \
     ./_build/css/index.css \
