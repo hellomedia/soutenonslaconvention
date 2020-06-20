@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -ex
+HOST=treacle.olly.io
+PORT=2204
+APP_PATH=/www/soutenonslaconvention.fr
+
+gup -u all
+hg push "ssh://$HOST:$PORT/$APP_PATH" -B pylive || true
+ssh -p "$PORT" "$HOST" "sh -c \"cd \\\"$APP_PATH\\\" && hg update && ./gup/gup runtime\""
+rsync -avz -P -e "ssh -p \"$PORT\"" _build "$HOST:$APP_PATH/"
