@@ -1,0 +1,3 @@
+<div class="FlashMessages u-Constrained" py:if="flash_messages" py:whitespace="strip">
+    <div py:for="level, m in flash_messages" class="FlashMessages-Item FlashMessages-Item-${level.lower()}">$m</div>
+</div>

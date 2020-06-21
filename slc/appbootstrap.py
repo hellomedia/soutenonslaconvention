@@ -2,6 +2,7 @@ from functools import partial
 
 from fresco.middleware import XForwarded
 from fresco_static import StaticFiles
+from fresco_flash import FlashMiddleware
 from pkg_resources import resource_filename
 import yoyo
 import embrace
@@ -58,6 +59,7 @@ app.add_middleware(
         cookie_name="s", max_age=86400, path="/"
     ),
 )
+app.add_middleware(FlashMiddleware)
 
 app.static = StaticFiles(app)
 app.static.add_package("slc", "../_build", cache_max_age=120)

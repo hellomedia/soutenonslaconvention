@@ -17,11 +17,12 @@ email-validator==1.1.1    # via -r requirements.in
 embrace-sql==1.0          # via -r requirements.in
 embrace==2.2.0            # via embrace-sql
 envparse==0.2.0           # via mailsend
+fresco-flash==1.0.0       # via -r requirements.in
 https://hg.sr.ht/~olly/fresco-i18n/archive/a3672a8dd6dc.tar.gz#egg=fresco-i18n  # via -r requirements.in
 fresco-static==0.2        # via -r requirements.in
 fresco-template==0.3.1    # via -r requirements.in
 https://hg.sr.ht/~olly/fresco-utils/archive/f576bb773a8f.tar.gz#egg=fresco-utils  # via -r requirements.in
-fresco==1.0.1             # via -r requirements.in, fresco-i18n, fresco-static, fresco-template, fresco-utils
+fresco==1.0.1             # via -r requirements.in, fresco-flash, fresco-i18n, fresco-static, fresco-template, fresco-utils
 gevent==20.6.2            # via -r requirements.in
 greenlet==0.4.16          # via gevent
 gunicorn==20.0.4          # via -r requirements.in
@@ -30,7 +31,7 @@ huey==2.2.0               # via -r requirements.in
 idna==2.9                 # via email-validator, requests
 itsdangerous==1.1.0       # via assetbuilder
 mailsend==1.1.1           # via -r requirements.in
-markupsafe==1.1.1         # via fresco-utils, piglet-templates
+markupsafe==1.1.1         # via fresco-flash, fresco-utils, piglet-templates
 oauthlib==3.1.0           # via requests-oauthlib
 obsession==1.0.0          # via -r requirements.in
 parsley==1.3              # via piglet-templates

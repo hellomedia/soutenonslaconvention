@@ -1,4 +1,5 @@
 from fresco_i18n.i18nformat import Formatter
+from fresco_flash import flash
 
 from slc import assets
 from slc.templating import piglet
@@ -12,4 +13,5 @@ def default_context(request):
         "static": lambda path: f"/static/{path}",
         "assets": assets.assetbuilder,
         "format": formatter,
+        "flash_messages": flash.messages(),
     }

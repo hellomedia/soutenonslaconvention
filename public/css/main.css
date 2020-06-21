@@ -274,7 +274,14 @@ a {
 {
     color: rgba(255, 255, 255, 0.9);
 }
-
+.FlashMessages-Item {
+    background: var(--green);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 0.5em;
+    margin: 0.5em 0;
+    animation: fadeIn 1.5s forwards;
+}
+@keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1.0 } }
 .footnotes {
     margin-top: 50px;
     font-size: 14px;
