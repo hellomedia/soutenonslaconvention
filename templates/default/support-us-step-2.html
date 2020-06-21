@@ -76,29 +76,29 @@
                                 <option>Personnalité de la Santé</option>
                             </select>
                         </label>
-                        <div class="u-Flex u-Flex-justifyBetween PhotoChooser">
+                        <div class="u-Flex u-Flex-justifyBetween PhotoChooser" py:with="selected = 'existing' if supporter.image_path or supporter.display_image else 'upload'">
                             <py:choose>
                                 <div py:when="bool(supporter.image_path)">
-                                    <input id="photo-existing" class="RadioChoice" type="radio" name="photo-option" value="existing" checked=""/>
+                                    <input id="photo-existing" class="RadioChoice" type="radio" name="photo-option" value="existing" checked="${1 if selected == 'existing' else None}"/>
                                     <label for="photo-existing" style="width: 100%; height: 100%;" class="u-Flex u-Flex-alignItemsCenter u-Flex-justifyCenter">
                                         <img src="${supporter.uploaded_image_url()}" style="max-width: 4em"/>
                                     </label>
                                 </div>
                                 <div py:when="bool(supporter.display_image)">
-                                    <input id="photo-existing" class="RadioChoice" type="radio" name="photo-option" value="existing" checked=""/>
+                                    <input id="photo-existing" class="RadioChoice" type="radio" name="photo-option" value="existing" checked="${1 if selected == 'existing' else None}"/>
                                     <label for="photo-existing">
                                         <img src="${supporter.display_image_url()}" style="max-width: 4em"/>
                                     </label>
                                 </div>
                             </py:choose>
                             <div class="PhotoChooser-Upload">
-                                <input id="photo-upload" type="radio" class="RadioChoice" name="photo-option" value="upload"/>
+                                <input id="photo-upload" type="radio" class="RadioChoice" name="photo-option" value="upload" checked="${1 if selected == 'upload' else None}"/>
                                 <label for="photo-upload">
                                     Choisir une photo? <br/><input name="image_path" type="file" />
                                 </label>
                             </div>
                             <div>
-                                <input id="photo-none" type="radio" class="RadioChoice" name="photo-option" value="none" checked=""/>
+                                <input id="photo-none" type="radio" class="RadioChoice" name="photo-option" value="none"/>
                                 <label for="photo-none">
                                     Pas de photo
                                 </label>
