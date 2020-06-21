@@ -39,27 +39,6 @@
 .petition-cta > * {
     margin-right: 50px;
 }
-.counter {
-    margin-top: 0px;
-    color: #44a777;
-    color: var(--green);
-    font-weight: normal;
-    line-height: 30px;
-}
-.counter > * {
-    display: block;
-}
-.counter-count {
-    font-size: 50px;
-    font-weight: bold;
-}
-.counter-sign {
-    font-size: 33px;
-    margin-top: 6px;
-}
-.counter-since {
-    font-size: 20px;
-}
 .copyright {
     font-size: 14px;
     font-style: italic;
@@ -117,9 +96,6 @@
     .petition-cta > * {
         display: block;
         margin-right: 0;
-    }
-    .counter {
-        margin-top: 40px;
     }
     .who-are-we-facebook-cta {
         margin-top: 30px;
