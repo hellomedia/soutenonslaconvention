@@ -48,7 +48,7 @@
     <div class="petition-cta">
         <div class="u-Spaced" style="max-width: 30em; margin: auto;">
             <form method="post">
-                <input class="SigninField SigninOption" name="email" type="email" placeholder="Votre adresse email"/>
+                <input class="SigninField SigninOption" name="email" type="email" value="${request.get('email')}" placeholder="Votre adresse email"/>
                 <button class="btn" style="width:100%; text-align: center;" type="submit">Soutenez-nous</button>
             </form>
             <a class="SigninOptionsDivider"><span>OU</span></a>
