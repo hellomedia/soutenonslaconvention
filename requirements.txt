@@ -31,6 +31,7 @@ huey==2.2.0               # via -r requirements.in
 idna==2.9                 # via email-validator, requests
 itsdangerous==1.1.0       # via assetbuilder
 mailsend==1.1.1           # via -r requirements.in
+markdown==3.2.2           # via -r requirements.in
 markupsafe==1.1.1         # via fresco-flash, fresco-utils, piglet-templates
 oauthlib==3.1.0           # via requests-oauthlib
 obsession==1.0.0          # via -r requirements.in
