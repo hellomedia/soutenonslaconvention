@@ -53,7 +53,14 @@ __routes__ = [
         GET="slc.views.oauth_callback",
         name="oauth-callback",
     ),
-    Route("/v/<token:str>", GET="slc.views.verify_email", name="verify-email"),
+    Route(
+        "/support/en-attente-de-validation/<email:str>",
+        GET="slc.views.email_needs_confirmation",
+        name="email-needs-validation",
+    ),
+    Route(
+        "/v/<token:str>", GET="slc.views.confirm_email", name="confirm-email"
+    ),
     Route(
         "/filepond/", POST="slc.views.filepond_upload", name="filepond-upload"
     ),

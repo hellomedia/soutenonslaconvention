@@ -1,4 +1,4 @@
-import uuid
+from functools import partial
 
 from email_validator import validate_email
 from email_validator import EmailNotValidError
@@ -14,7 +14,6 @@ from slc import fileuploads
 from slc import options
 from slc import supporters
 from slc import queries
-from slc.queuing import queue_send_mail
 from slc.oauthlogin import OAUTH_PROVIDERS
 from slc.oauthlogin import fetch_profile
 from slc.oauthlogin import get_oauth2session
@@ -49,25 +48,28 @@ def support_us_email(request):
     with queries.transaction(conn):
         user_id = supporters.add_supporter_from_email(conn, email)
 
-    request.remember_user_id(user_id)
-    token = str(uuid.uuid4())
-    url = urlfor("verify-email", token=token)
-    caching.cache.set(f"verify-email:{token}", (email, request.now))
-    queue_send_mail(
-        options.MAIL_FROM,
-        "Please confirm your email address",
-        recipients=[email],
-        body=url,
+    supporters.send_confirmation_email(
+        supporter_id=user_id,
+        email=email,
+        get_confirmation_url=lambda token: urlfor("confirm-email", token=token),
     )
+    return Response.redirect(email_needs_confirmation, email=email)
+
+
+def email_needs_confirmation(request, email):
+    return piglet.render(
+        "default/email-needs-confirmation.html", {"email": email}
+    )
+
+
+def confirm_email(request, token):
+    conn = request.getconn()
+    with queries.transaction(conn):
+        supporter_id = supporters.confirm_email(conn, token)
+        if supporter_id is None:
+            return piglet.render("default/invalid-confirmation-token.html", {})
+    request.remember_user_id(supporter_id)
     return Response.redirect(support_step, _query={"step": 2})
-
-
-def verify_email(request, token):
-    try:
-        user_id, email, when = caching.cache.get(f"verify-email:{token}")
-    except TypeError:
-        return piglet.render("default/token-expired.html")
-    return Response("ok")
 
 
 def oauth_login(request, provider, already_logged_in_redirect="index"):

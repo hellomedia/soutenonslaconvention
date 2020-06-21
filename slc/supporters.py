@@ -2,16 +2,21 @@ import logging
 from dataclasses import dataclass
 from embrace.exceptions import NoResultFound
 from typing import Any
-from typing import Optional
+from typing import Callable
 from typing import Dict
+from typing import Optional
 
+from htmltextconvert import html_to_text
+from fresco_utils.security import generate_random_string
 from fresco import context
 import requests
 
 from slc import fileuploads
 from slc import options
 from slc import queries
+from slc import caching
 from slc import queuing
+from slc.templating import piglet
 
 logger = logging.getLogger(__name__)
 
@@ -140,3 +145,33 @@ def download_social_image(conn, supporter_id):
         for chunk in r.iter_content(chunk_size=1024):
             f.write(chunk)
     update_profile(conn, supporter_id, image_path=get_filename())
+
+
+def send_confirmation_email(
+    email: str,
+    supporter_id: int,
+    get_confirmation_url: Callable[[str], str],
+    expire: int = 86400,
+):
+    token = generate_random_string(16)
+    url = get_confirmation_url(token)
+    caching.cache.set(f"confirm-email:{token}", (supporter_id, email))
+    html = piglet.as_string(
+        "email/confirm-email.html", {"url": url, "email": email}
+    )
+    queuing.queue_send_mail(
+        options.MAIL_FROM,
+        "Please confirm your email address",
+        recipients=[email],
+        html=html,
+        body=html_to_text(html),
+    )
+
+
+def confirm_email(conn, token) -> int:
+    try:
+        supporter_id, email = caching.cache.get(f"confirm-email:{token}")
+    except TypeError:
+        return None
+    queries.confirm_email(conn, id=supporter_id, email=email)
+    return supporter_id
