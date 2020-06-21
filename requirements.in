@@ -10,6 +10,7 @@ fresco-template
 diskcache
 toml
 yoyo-migrations
+fresco-flash
 pytz
 https://hg.sr.ht/~olly/fresco-i18n/archive/a3672a8dd6dc.tar.gz#egg=fresco-i18n
 https://hg.sr.ht/~olly/fresco-utils/archive/f576bb773a8f.tar.gz#egg=fresco-utils

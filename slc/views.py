@@ -7,6 +7,7 @@ from fresco import context
 from fresco import object_or_404
 from fresco import urlfor
 from fresco.exceptions import Forbidden
+from fresco_flash import flash
 
 from slc import caching
 from slc import fileuploads
@@ -41,7 +42,8 @@ def support_us_email(request):
     try:
         validate_email(email)
     except EmailNotValidError:
-        raise
+        flash.info("veuillez vérifier votre adresse e-mail")
+        return support_us(request)
 
     conn = request.getconn()
     with queries.transaction(conn):
