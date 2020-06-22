@@ -61,6 +61,7 @@ img {
 }
 .banner .container {
     margin-bottom: 0;
+    position: relative;
 }
 .title {
     color: #fff;
@@ -105,6 +106,38 @@ img {
 .hashtag2 {
     transition: 0.3s;
 }
+.counter {
+    position: absolute;
+    bottom: -56px;
+    right: 16px;
+    color: #fff;
+    background-color: #44a777;
+    font-weight: normal;
+    line-height: 30px;
+    padding: 20px;
+    border: 1px solid white;
+    transition: 0.3s;
+}
+.counter > * {
+    display: block;
+}
+.counter-count {
+    font-size: 50px;
+    font-weight: bold;
+}
+.counter-sign {
+    font-size: 40px;
+    margin-top: 6px;
+}
+.counter-since {
+    font-size: 20px;
+}
+@media (max-width: 850px) {
+    .counter {
+        right: 0;
+        transform: scale(0.8);
+    }
+}
 @media (max-width: 750px) {
     .title-line1 {
         font-size: 46px;
@@ -117,6 +150,12 @@ img {
     .hashtags {
         font-size: 26px;
         line-height: 30px;
+    }
+}
+@media (max-width: 650px) {
+    .counter {
+        right: -10px;
+        transform: rotate(4deg) scale(0.7);
     }
 }
 @media (max-width: 600px) {
@@ -132,6 +171,10 @@ img {
         font-size: 22px;
         line-height: 25px;
     }
+    .counter {
+        right: -10px;
+        transform: rotate(4deg) scale(0.5);
+    }
 }
 @media (max-width: 500px) {
     .title-line1 {
@@ -146,6 +189,10 @@ img {
     .hashtags {
         font-size: 22px;
         padding-left: 0;
+    }
+    .counter {
+        right: -20px;
+        transform: rotate(4deg) scale(0.5);
     }
 }
 @media (max-width: 450px) {
