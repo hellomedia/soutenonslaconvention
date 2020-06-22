@@ -17,3 +17,4 @@ _build
 /yoyo.local.ini
 /slc/__pycache__/
 .gunicorn.pid
+/media
