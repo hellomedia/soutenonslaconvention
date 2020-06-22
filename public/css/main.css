@@ -1,5 +1,8 @@
 :root {
     --green: #44a777;
+    --green-shade1: #35825d;
+    --green-shade2: #122b1f;
+    --green-shade3: #25373e;
     --button-bg: var(--green);
     --button-fg: #fff;
 }
@@ -108,7 +111,7 @@ img {
 }
 .counter {
     position: absolute;
-    bottom: -56px;
+    bottom: -66px;
     right: 16px;
     color: #fff;
     background-color: #44a777;
@@ -117,6 +120,7 @@ img {
     padding: 20px;
     border: 1px solid white;
     transition: 0.3s;
+    text-align: center;
 }
 .counter > * {
     display: block;
@@ -132,6 +136,15 @@ img {
 .counter-since {
     font-size: 20px;
 }
+.counter-cta {
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    margin-top: 0.2em;
+    padding-top: 0.5em;
+}
+.counter-cta > * {
+    width: 100%;
+}
+
 @media (max-width: 850px) {
     .counter {
         right: 0;
@@ -260,8 +273,13 @@ a {
     font-size: 1rem;
 }
 .btn-xs {
-    padding: 6px 16px;
+    padding: 4px 12px;
     font-size: 0.9rem;
+}
+.btn-reverseVideo {
+    color: var(--green-shade3);
+    background: var(--button-fg);
+    font-weight: bold;
 }
 .btn-group {
     margin-top: 40px;
