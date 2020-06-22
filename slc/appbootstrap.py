@@ -28,17 +28,17 @@ def apply_migrations():
         backend.apply_migrations(backend.to_apply(migrations))
 
 
+slc.queries = embrace.module(
+    resource_filename(__name__, "queries"),
+    auto_reload=app.options.EMBRACE_AUTO_RELOAD,
+)
+
 from slc import routes  # noqa
 from slc import contextprocessors  # noqa
 from slc import assets  # noqa
 
 app.include("/", routes)
 app.route_wsgi("/assets", assets.assetbuilder)
-
-slc.queries = embrace.module(
-    resource_filename(__name__, "queries"),
-    auto_reload=app.options.EMBRACE_AUTO_RELOAD,
-)
 
 apply_migrations()
 

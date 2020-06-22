@@ -31,6 +31,7 @@ https://hg.sr.ht/~olly/htmltextconvert/archive/ba124d1f23fd.tar.gz#egg=htmltextc
 huey==2.2.0               # via -r requirements.in
 idna==2.9                 # via email-validator, requests
 itsdangerous==1.1.0       # via assetbuilder
+lazy-object-proxy==1.5.0  # via -r requirements.in
 mailsend==1.1.1           # via -r requirements.in
 markdown==3.2.2           # via -r requirements.in
 markupsafe==1.1.1         # via fresco-flash, fresco-utils, piglet-templates
