@@ -1,5 +1,3 @@
-from functools import partial
-
 from email_validator import validate_email
 from email_validator import EmailNotValidError
 from fresco import Response
@@ -9,7 +7,6 @@ from fresco import urlfor
 from fresco.exceptions import Forbidden
 from fresco_flash import flash
 
-from slc import caching
 from slc import fileuploads
 from slc import options
 from slc import supporters
