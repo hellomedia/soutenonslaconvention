@@ -39,6 +39,7 @@ parsley==1.3              # via piglet-templates
 pathlib==1.0.1            # via assetbuilder
 piglet-templates==1.0.0   # via -r requirements.in
 portalocker==1.7.0        # via assetbuilder
+psutil==5.7.0             # via -r requirements.in
 psycopg2==2.8.5           # via -r requirements.in
 pytz==2020.1              # via -r requirements.in, babel
 requests-oauthlib==1.3.0  # via -r requirements.in
