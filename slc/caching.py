@@ -25,6 +25,7 @@ def _get_or_create(
     minutes: int = 0,
     hours: int = 0,
     days: int = 0,
+    use_stale_on_error: bool = False,
     _time=time.time,
     _random=random.random,
     retry_limit=8,
@@ -45,8 +46,22 @@ def _get_or_create(
                     seconds + minutes * 60 + hours * 120 + days * 86400
                 )
                 now = _time()
-                value = creator()
-                cost = _time() - now
+                try:
+                    value = creator()
+                except Exception:
+                    if use_stale_on_error:
+                        logger.exception(
+                            f"Could not regenerate cache value for {key}"
+                        )
+                        cached = cache.get(key, default=None)
+                        if cached:
+                            _, cost, value = cached
+                        else:
+                            raise
+                    else:
+                        raise
+                else:
+                    cost = _time() - now
                 cache.set(key, (_time() + soft_expire, cost, value))
                 logger.info(f"Releasing lock after {cost:.2f}s")
                 return value, True
