@@ -26,6 +26,7 @@ fresco==1.0.1             # via -r requirements.in, fresco-flash, fresco-i18n, f
 gevent==20.6.2            # via -r requirements.in
 greenlet==0.4.16          # via gevent
 gunicorn==20.0.4          # via -r requirements.in
+html5lib==1.0.1           # via -r requirements.in
 https://hg.sr.ht/~olly/htmltextconvert/archive/ba124d1f23fd.tar.gz#egg=htmltextconvert  # via -r requirements.in
 huey==2.2.0               # via -r requirements.in
 idna==2.9                 # via email-validator, requests
@@ -43,15 +44,16 @@ psutil==5.7.0             # via -r requirements.in
 psycopg2==2.8.5           # via -r requirements.in
 pytz==2020.1              # via -r requirements.in, babel
 requests-oauthlib==1.3.0  # via -r requirements.in
-requests==2.24.0          # via requests-oauthlib
+requests==2.24.0          # via -r requirements.in, requests-oauthlib
 returns==0.14.0           # via -r requirements.in
 scour==0.37               # via -r requirements.in
-six==1.15.0               # via astunparse, scour
+six==1.15.0               # via astunparse, html5lib, scour
 sqlparse==0.3.1           # via embrace, yoyo-migrations
 tabulate==0.8.7           # via yoyo-migrations
 toml==0.10.1              # via -r requirements.in
 typing-extensions==3.7.4.2  # via returns
 urllib3==1.25.9           # via requests
+webencodings==0.5.1       # via html5lib
 wheel==0.34.2             # via astunparse
 wrapt==1.12.1             # via embrace
 yoyo-migrations==7.1.2    # via -r requirements.in
