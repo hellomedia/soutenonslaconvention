@@ -175,3 +175,7 @@ def confirm_email(conn, token) -> int:
         return None
     queries.confirm_email(conn, id=supporter_id, email=email)
     return supporter_id
+
+
+def supporter_count(conn) -> int:
+    return queries.supporter_count(conn)
