@@ -1,7 +1,7 @@
 #!/bin/sh
 
-set -ex
-HOST=treacle.olly.io
+set -e
+HOST=treacle.skot.be
 PORT=2204
 APP_PATH=/www/soutenonslaconvention.fr
 
@@ -9,8 +9,10 @@ gup -u all
 hg push "ssh://$HOST:$PORT/$APP_PATH" -B pylive || true
 ssh -p "$PORT" "$HOST" "
     sh -c \"
-        cd \\\"$APP_PATH\\\" 
-        && hg update 
-        && touch requirements.txt
-        && ./gup/gup runtime\")"
+        cd \\\"$APP_PATH\\\" \
+        && hg update \
+        && touch requirements.txt \
+        && ./gup/gup runtime\""
 rsync -avz -P -e "ssh -p \"$PORT\"" _build "$HOST:$APP_PATH/"
+
+ssh -p "$PORT" "$HOST" "sh -c 'doas sv restart /var/service/slc*'"
