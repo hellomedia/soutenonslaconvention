@@ -17,6 +17,15 @@
 <link py:for="url in assets.urls('default-css', environ=request.environ)" href="$url" rel="stylesheet" />
 <py:block name="stylesheets"/>
 <!--! Global site tag (gtag.js) - Google Analytics -->
+<py:if test="options.GOOGLE_ANALYTICS_ID">
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-2063915-19"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-2063915-19');
+    </script>
+</py:if>
 <py:if test="options.SENTRY_KEY">
     <script
         src="https://browser.sentry-cdn.com/5.18.0/bundle.min.js"
@@ -28,11 +37,4 @@
     Sentry.init({dsn: 'https://${options.SENTRY_KEY}@${options.SENTRY_ORG}.ingest.sentry.io/${options.SENTRY_PRJ}' });
     </script>
 </py:if>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-2063915-19"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-2063915-19');
-</script>
 <script>function ready(f){if(document.readyState!='loading')f();else document.addEventListener('DOMContentLoaded',f);}</script>
