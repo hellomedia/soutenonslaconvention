@@ -32,9 +32,6 @@
         integrity="sha384-9M0M/t9hmfACAyfoyFXXyzRbljCren5OjRJhHwZHJzuzFt02ZB67XZO27O1tml6L"
         crossorigin="anonymous"
     ></script>
-    <script>
-    import * as Sentry from '@sentry/browser';
-    Sentry.init({dsn: 'https://${options.SENTRY_KEY}@${options.SENTRY_ORG}.ingest.sentry.io/${options.SENTRY_PRJ}' });
-    </script>
+    <script>Sentry.init({dsn: 'https://${options.SENTRY_KEY}@${options.SENTRY_ORG}.ingest.sentry.io/${options.SENTRY_PRJ}' });</script>
 </py:if>
 <script>function ready(f){if(document.readyState!='loading')f();else document.addEventListener('DOMContentLoaded',f);}</script>
