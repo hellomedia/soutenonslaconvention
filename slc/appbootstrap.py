@@ -10,6 +10,7 @@ import embrace.pool
 import obsession
 import psycopg2
 import psycopg2.extras
+import sentry_sdk
 
 import slc
 from slc import app
@@ -17,6 +18,11 @@ from slc import loadoptions
 
 loadoptions.configure_app(app)
 options = app.options
+
+if options.SENTRY_KEY:
+    sentry_sdk.init(
+        f"https://{options.SENTRY_KEY}@{options.SENTRY_ORG}.ingest.sentry.io/{options.SENTRY_PRJ}"
+    )
 
 
 def apply_migrations():

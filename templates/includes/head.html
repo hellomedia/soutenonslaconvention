@@ -17,6 +17,17 @@
 <link py:for="url in assets.urls('default-css', environ=request.environ)" href="$url" rel="stylesheet" />
 <py:block name="stylesheets"/>
 <!--! Global site tag (gtag.js) - Google Analytics -->
+<py:if test="options.SENTRY_KEY">
+    <script
+        src="https://browser.sentry-cdn.com/5.18.0/bundle.min.js"
+        integrity="sha384-9M0M/t9hmfACAyfoyFXXyzRbljCren5OjRJhHwZHJzuzFt02ZB67XZO27O1tml6L"
+        crossorigin="anonymous"
+    ></script>
+    <script>
+    import * as Sentry from '@sentry/browser';
+    Sentry.init({dsn: 'https://${options.SENTRY_KEY}@${options.SENTRY_ORG}.ingest.sentry.io/${options.SENTRY_PRJ}' });
+    </script>
+</py:if>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-2063915-19"></script>
 <script>
   window.dataLayer = window.dataLayer || [];

@@ -7,6 +7,7 @@ from markupsafe import Markup
 from lazy_object_proxy import Proxy
 
 from slc import assets
+from slc import options
 from slc import supporters
 from slc import petition
 from slc.templating import piglet
@@ -24,6 +25,7 @@ def render_markdown(s):
 @piglet.contextprocessor
 def default_context(request):
     return {
+        "options": options,
         "static": lambda path: f"/static/{path}",
         "assets": assets.assetbuilder,
         "format": formatter,

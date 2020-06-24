@@ -27,3 +27,4 @@ markdown
 psutil
 html5lib
 lazy_object_proxy
+sentry-sdk
