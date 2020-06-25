@@ -21,9 +21,11 @@
                     <span class="counter-count">${format(int(supporter_count))}</span>
                     <span class="counter-sign">soutiens</span>
                 </div>
-                <a class="counter-cta" target="_blank" href="${urlfor('support-us')}">
-                    JE SOUTIENS
-                </a>
+                <py:block name="counter-cta">
+                    <a class="counter-cta" target="_blank" href="${urlfor('support-us')}">
+                        JE SOUTIENS
+                    </a>
+                </py:block>
             </div>
         </div>
     </div>
