@@ -109,18 +109,36 @@ img {
 .hashtag2 {
     transition: 0.3s;
 }
-.counter {
+.counter-wrapper {
+    transition: 0.3s;
+    transform-origin: right;
+}
+.counter, .counter-cta {
     position: absolute;
-    bottom: -66px;
-    right: 16px;
-    color: #fff;
-    background-color: #44a777;
+    right: 5px;
+    display: block;
+    width: 190px;
+    text-align: center;
+}
+.counter {
+    bottom: 0;
+    color: #44a777;
+    background-color: #fff;
     font-weight: normal;
     line-height: 30px;
-    padding: 20px;
-    border: 1px solid white;
+    border: 0;
     transition: 0.3s;
-    text-align: center;
+    padding: 20px 0;
+}
+.counter-cta {
+    position: absolute;
+    border: 0;
+    padding: 20px 0;
+    background-color: #44a777;
+    color: #fff;
+    font-size: 23px;
+    font-weight: bold;
+    text-decoration: none;
 }
 .counter > * {
     display: block;
@@ -136,19 +154,13 @@ img {
 .counter-since {
     font-size: 20px;
 }
-.counter-cta {
-    border-top: 1px solid rgba(255, 255, 255, 0.8);
-    margin-top: 0.2em;
-    padding-top: 0.5em;
-}
-.counter-cta > * {
-    width: 100%;
-}
 
 @media (max-width: 850px) {
-    .counter {
-        right: 0;
-        transform: scale(0.8);
+    .counter-wrapper {
+        transform: rotate(4deg) scale(0.8);
+    }
+    .counter, .counter-cta {
+        right: 5px;
     }
 }
 @media (max-width: 750px) {
@@ -166,9 +178,11 @@ img {
     }
 }
 @media (max-width: 650px) {
-    .counter {
-        right: -10px;
+    .counter-wrapper {
         transform: rotate(4deg) scale(0.7);
+    }
+    .counter, .counter-cta {
+        right: -10px;
     }
 }
 @media (max-width: 600px) {
@@ -184,9 +198,11 @@ img {
         font-size: 22px;
         line-height: 25px;
     }
-    .counter {
-        right: -10px;
+    .counter-wrapper {
         transform: rotate(4deg) scale(0.5);
+    }
+    .counter, .counter-cta {
+        right: -10px;
     }
 }
 @media (max-width: 500px) {
@@ -203,9 +219,11 @@ img {
         font-size: 22px;
         padding-left: 0;
     }
-    .counter {
-        right: -20px;
+    .counter-wrapper {
         transform: rotate(4deg) scale(0.5);
+    }
+    .counter, .counter-cta {
+        right: -10px;
     }
 }
 @media (max-width: 450px) {
@@ -275,11 +293,6 @@ a {
 .btn-xs {
     padding: 4px 12px;
     font-size: 0.9rem;
-}
-.btn-reverseVideo {
-    color: var(--green-shade3);
-    background: var(--button-fg);
-    font-weight: bold;
 }
 .btn-group {
     margin-top: 40px;

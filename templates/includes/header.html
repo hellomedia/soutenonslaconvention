@@ -17,14 +17,16 @@
                 <div class="hashtag1">#soutenonsLaConvention</div>
                 <div class="hashtag2">#avecLes150</div>
             </h2>
-            <a target="_blank" href="${urlfor('support-us')}">
+            <div class="counter-wrapper">
                 <div class="counter">
                     <span class="counter-count">${format(int(supporter_count))}</span>
                     <span class="counter-sign">soutiens</span>
-                    <span class="counter-since">depuis le 13 avril</span>
-                    <span class="counter-cta"><span class="btn btn-xs btn-reverseVideo">ajouter votre soutien</span></span>
                 </div>
-            </a>
+                <a class="counter-cta" target="_blank" href="${urlfor('support-us')}">
+                    JE SOUTIENS
+                </a>
+
+            </div>
         </div>
     </div>
     </py:block>
