@@ -27,6 +27,10 @@ img {
     margin-bottom: 20px;
     padding: 30px 0;
 }
+.wrapper--homepage-before-footer {
+    padding-bottom: 80px;
+    margin-bottom: -50px;
+}
 .container {
     margin: 1em auto 1em;
     max-width: 800px;
@@ -139,6 +143,9 @@ img {
     font-size: 23px;
     font-weight: bold;
     text-decoration: none;
+}
+.counter-cta:hover {
+    background-color: #65ca99;
 }
 .counter > * {
     display: block;
@@ -278,6 +285,9 @@ a {
     font-size: 18px;
     text-decoration: none;
     text-align: center;
+}
+.btn:hover {
+    background-color: #65ca99;
 }
 .btn:hover, .btn:active, .btn:visited {
     text-decoration: none;
