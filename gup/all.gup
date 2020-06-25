@@ -2,45 +2,6 @@
 
 gup -u \
     requirements.txt \
-    runtime \
-    ./_build/css/main.css \
-    ./_build/css/forms.css \
-    ./_build/css/index.css \
-    ./_build/css/soutiens.css \
-    ./_build/css/util.css \
-    ./_build/img/airsanteclimat.png \
-    ./_build/img/alter-pub.jpg \
-    ./_build/img/alter-pub.png \
-    ./_build/img/alternatiba.jpg \
-    ./_build/img/artac.jpg \
-    ./_build/img/aseara.png \
-    ./_build/img/asef.png \
-    ./_build/img/climactes.png \
-    ./_build/img/collectif-environnement-sante.jpg \
-    ./_build/img/fne.png \
-    ./_build/img/fva.png \
-    ./_build/img/home.png \
-    ./_build/img/icon-facebook-white.png \
-    ./_build/img/icon-facebook.png \
-    ./_build/img/icon-instagram-white.png \
-    ./_build/img/icon-instagram.png \
-    ./_build/img/icon-twitter-white.png \
-    ./_build/img/icon-twitter.png \
-    ./_build/img/karuna-shechen.png \
-    ./_build/img/liegepourleclimat.png \
-    ./_build/img/logo-large.png \
-    ./_build/img/logo-small.png \
-    ./_build/img/membres-convention.jpg \
-    ./_build/img/pepsel.png \
-    ./_build/img/reseau-env-sante.jpg \
-    ./_build/img/sera.png \
-    ./_build/img/sfse.png \
-    ./_build/img/soutenons-la-convention.png \
-    ./_build/img/soutenons-la-convention-300.png \
-    ./_build/img/soutenons-la-convention.svg \
-    ./_build/img/strasbourg.png \
-    ./_build/img/wecf.png \
-    ./_build/img/youth-for-climate-france.png \
-    ./_build/img/zea.png \
-    ./_build/img/btn_google_light_normal_ios.svg \
-    ./_build/pdf/appel-soigants.pdf \
+    runtime
+
+gup -u $(for i in $(find public -type f \! -path "*/.gup/*"); do echo "$i" | sed -e 's/^public/_build/'; done)
