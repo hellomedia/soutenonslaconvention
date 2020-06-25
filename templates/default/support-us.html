@@ -9,6 +9,9 @@
         --sigin-border-color: var(--green);
         --sigin-divider-color: var(--green);
     }
+    ::placeholder {
+      color: #bbb;
+    }
     .SigninField {
         border: 1px solid var(--sigin-border-color);
     }
@@ -48,21 +51,30 @@
     <div class="petition-cta">
         <div class="u-Spaced" style="max-width: 30em; margin: auto;">
             <form method="post">
-                <input class="SigninField SigninOption" name="email" type="email" value="${request.get('email')}" placeholder="Votre adresse email"/>
-                <button class="btn" style="width:100%; text-align: center;" type="submit">Soutenez-nous</button>
+                <input class="SigninField SigninOption" name="email"
+                    type="email" value="${request.get('email')}" placeholder="adresse email"/>
+                <button class="btn" style="width:100%; text-align: center;" type="submit">
+                    J'apporte mon soutien
+                </button>
             </form>
             <a class="SigninOptionsDivider"><span>OU</span></a>
             <div class="u-Spaced">
                 <a class="SigninOption btn" href="${urlfor('oauth-login', provider='google')}">
                     <div class="u-Flex">
-                        <img src="${static('img/btn_google_light_normal_ios.svg')}" style="width: 2.8em" alt=""/>
-                        Signaler votre support avec votre compte Google
+                        <img src="${static('img/btn_google_light_normal_ios.svg')}" style="width: 4em" alt=""/>
+                        <div>J'apporte mon soutien<br />
+                            en me connectant<br />
+                            avec Google
+                        </div>
                     </div>
                 </a>
                 <a class="SigninOption btn" href="${urlfor('oauth-login', provider='facebook')}">
                     <div class="u-Flex">
-                        <img src="${static('img/icon-facebook-white.png')}" alt=""/>
-                        Signaler votre support avec votre compte Facebook
+                        <img src="${static('img/icon-fb-white-square.png')}" style="width: 4em" alt=""/>
+                        <div>J'apporte mon soutien<br />
+                            en me connectant<br />
+                            avec Facebook
+                        </div>
                     </div>
                 </a>
             </div>
