@@ -161,7 +161,7 @@ def send_confirmation_email(
     )
     queuing.queue_send_mail(
         options.MAIL_FROM,
-        "Please confirm your email address",
+        "Validation de votre soutien à la Convention Citoyenne",
         recipients=[email],
         html=html,
         body=html_to_text(html),

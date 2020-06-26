@@ -349,10 +349,17 @@ a {
     height: 100%;
 }
 .BlockBg {
+    background-color: #44a777;
     background: var(--green);
     color: white;
     padding: 1em;
     --button-bg: rgba(0, 0, 0, 0.3);
+}
+.BlockBg-warning {
+    background-color: #eda200;
+}
+.BlockBg-notice {
+    background-color: #2173a6;
 }
 .BlockBg a,
 .BlockBg a:link,
