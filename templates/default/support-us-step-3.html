@@ -1,23 +1,29 @@
 <py:extends href="support-us-step-2.html">
 <py:block name="heading">Une dernière chose…</py:block>
+
 <py:block name="form">
 
     <p>
-        Et finissons par faire un peu de bruit sur les réseaux sociaux!
+        Et finissons par faire un peu de bruit sur les réseaux <span class="u-NoWrap">sociaux !</span>
     </p>
+
     <input type="hidden" name="step" value="$step"/>
-    <ul>
-        <li>
-            <p><a target="_blank" href="https://twitter.com/intent/tweet?text=…&amp;url=https%3A%2F%2Fsoutienslaconvention.fr%2F%3Futm_source%3Dtwitter%26utm_medium%3Dweb%26utm_campaign%3Dpost-support-tweet">Tweeter</a></p>
-        </li>
-        <li>
-            <p><a target="_blank" href="https://www.facebook.com/dialog/share?app_id=145634995501895&amp;display=popup&amp;href=https%3A%2F%2Fsoutienslaconvention.fr%2F%3Futm_source%3Dtwitter%26utm_medium%3Dweb%26utm_campaign%3Dpost-support-fb-share&amp;redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer">Partager sur Facebook</a></p>
-        </li>
-    </ul>
-    <hr/>
-    <div class="u-Flex u-Flex-justifyBetween">
-        <button class="btn btn-secondary" name="skip" type="submit">Passer cette étape</button>
-        <button class="btn" type="submit">Continuer</button>
+
+    <a class="btn btn-share btn-twitter" target="_blank"
+        href="https://twitter.com/intent/tweet?text=…&amp;url=https%3A%2F%2Fsoutenonslaconvention.fr">
+        <img src="${static('img/icon-twitter.svg')}" alt=""/>
+        Partager sur Twitter
+    </a>
+
+    <a class="btn btn-share btn-fb" target="_blank"
+        href="https://www.facebook.com/dialog/share?app_id=145634995501895&amp;display=popup&amp;href=https%3A%2F%2Fsoutienslaconvention.fr%2F%3Futm_source%3Dtwitter%26utm_medium%3Dweb%26utm_campaign%3Dpost-support-fb-share&amp;redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer">
+        <img src="${static('img/icon-facebook.svg')}" alt=""/>
+        Partager sur Facebook
+    </a>
+
+    <div class="BlockBg-Footer u-Flex u-Flex-justifyFlexEnd">
+        <button class="btn" type="submit">Terminer</button>
     </div>
+
 </py:block>
 </py:extends>
