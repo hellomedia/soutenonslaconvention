@@ -355,10 +355,10 @@ a {
     padding: 1em;
     --button-bg: rgba(0, 0, 0, 0.3);
 }
-.BlockBg--warning {
+.BlockBg-warning {
     background-color: #eda200;
 }
-.BlockBg--notice {
+.BlockBg-notice {
     background-color: #2173a6;
 }
 .BlockBg a,
