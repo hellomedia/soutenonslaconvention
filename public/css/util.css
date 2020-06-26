@@ -84,7 +84,7 @@ body > .u-Constrained {
     --constrained-width: 960px;
 }
 .u-Constrained-s {
-    --constrained-width: 28em;
+    --constrained-width: 30em;
 }
 .u-Constrained>* {
     grid-column: 2;

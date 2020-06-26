@@ -352,7 +352,7 @@ a {
     background-color: #44a777;
     background: var(--green);
     color: white;
-    padding: 1em;
+    padding: 2em;
     --button-bg: rgba(0, 0, 0, 0.3);
 }
 .BlockBg-warning {
