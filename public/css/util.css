@@ -1,14 +1,13 @@
 :root {
     --u-spaced-margin: 1em;
-    --u-Flex-gap-row: 15px;
-    --u-Flex-gap-col: 15px;
+    --u-Flex-gap-row: 0;
+    --u-Flex-gap-col: 0;
     --constrained-width: 40em;
 }
 .u-Flex {
     display: flex;
 	margin-top: calc(-1 * var(--u-Flex-gap-row));
 	margin-left: calc(-1 * var(--u-Flex-gap-col));
-    align-items: center;
 }
 .u-Flex>* {
 	margin-top: var(--u-Flex-gap-row);
