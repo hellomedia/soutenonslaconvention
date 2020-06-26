@@ -1,7 +1,8 @@
 input,
-textarea {
+textarea,
+select {
     font-family: inherit;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
 }
 select,
 input[type=text],
@@ -11,11 +12,30 @@ textarea {
     display: block;
     font-family: inherit;
     color: inherit;
-    padding: 0.5rem;
+    padding: 0.8rem;
     display: block;
     background: white;
-    color: #000;
+    color: #222;
+    border-radius: 3px;
+    border: 0;
+    margin-top: 3px;
+    outline-color: #eee;
 }
 label {
     display: block;
+}
+select {
+    padding-right: 30px;
+}
+
+.form-section-title {
+    margin: 20px 0 5px 0;
+}
+.form-section-explanation {
+    font-size: 0.9em;
+    font-style: italic;
+    margin: 5px 0 20px;
+}
+::placeholder {
+  color: #aaa;
 }

@@ -390,7 +390,7 @@ a {
     background-color: #fff;
 }
 .BlockBg .btn-secondary {
-    background-color: #fff;
+    background-color: #eee;
     color: #444;
     color: var(--text-color);
 }

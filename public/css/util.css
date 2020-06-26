@@ -89,6 +89,9 @@ body > .u-Constrained {
 .u-Constrained-l {
     --constrained-width: 960px;
 }
+.u-Constrained-m {
+    --constrained-width: 34em;
+}
 .u-Constrained-s {
     --constrained-width: 30em;
 }
