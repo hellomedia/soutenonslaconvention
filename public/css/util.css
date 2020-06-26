@@ -4,6 +4,9 @@
     --u-Flex-gap-col: 0;
     --constrained-width: 40em;
 }
+.u-NoWrap {
+    white-space: nowrap;
+}
 .u-Flex {
     display: flex;
 	margin-top: calc(-1 * var(--u-Flex-gap-row));
@@ -27,6 +30,9 @@
 }
 .u-Flex-justifyCenter {
     justify-content: center;
+}
+.u-Flex-justifyFlexEnd {
+    justify-content: flex-end;
 }
 .u-Flex-alignItemsStretch {
     align-items: stretch;
@@ -84,7 +90,7 @@ body > .u-Constrained {
     --constrained-width: 960px;
 }
 .u-Constrained-s {
-    --constrained-width: 28em;
+    --constrained-width: 30em;
 }
 .u-Constrained>* {
     grid-column: 2;

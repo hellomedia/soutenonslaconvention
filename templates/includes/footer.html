@@ -2,6 +2,63 @@
     <div class="wrapper">
     <div class="container">
 
+        <style type="text/css">
+        .AnimatedSuggestionBox {
+            overflow: hidden;
+            position: relative;
+        }
+        .SlideLeft {
+            animation: 0.3s ease 1 slideLeft forwards;
+        }
+        .SuggestionSubmitted {
+            position: absolute;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+        @keyframes slideLeft {
+            to {
+                transform: translate(100%);
+            }
+        }
+        </style>
+
+        <script>
+        document.addEventListener(
+            "suggestionSubmitted",
+            function () {
+                document.querySelectorAll(".SuggestionSubmitted,.SuggestionForm").forEach(
+                    function (n) {
+                        n.classList.add('SlideLeft');
+                    }
+                );
+            }
+        );
+        </script>
+
+        <py:block name="suggestion-box">
+            <p>
+                Avez-vous une suggestion à faire sur la façon dont vous pourriez
+                aider à faire connaître ce projet?
+            </p>
+            <div class="js-suggestion-target AnimatedSuggestionBox">
+                <div class="SuggestionSubmitted">Merci pour votre suggestion!</div>
+                <div class="SuggestionForm">
+                    <textarea name="suggestion"></textarea>
+                    <div class="u-AlignRight">
+                        <button class="btn btn-s" hx-post="${urlfor('submit-suggestion')}" hx-target=".js-suggestion-target">
+                            Envoyer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </py:block>
+
+
         <h3>Soutenons La Convention</h3>
         <p>#soutenonsLaConvention</p>
         <p>
