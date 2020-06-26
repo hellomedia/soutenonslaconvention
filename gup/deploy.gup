@@ -13,6 +13,8 @@ ssh -p "$PORT" "$HOST" "
         && hg update \
         && touch requirements.txt \
         && ./gup/gup runtime\""
-rsync -avz -P -e "ssh -p \"$PORT\"" _build "$HOST:$APP_PATH/"
+set +e
+rsync -avz -P -e "ssh -p \"$PORT\"" --exclude ".gup" _build "$HOST:$APP_PATH/"
+set -e
 
 ssh -p "$PORT" "$HOST" "sh -c 'doas sv restart /var/service/slc*'"
