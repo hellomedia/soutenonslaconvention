@@ -5,7 +5,7 @@ GUNICORN_ARGS="-t 1200 -k gevent -w1 -b $LISTEN --log-level=INFO --log-config=lo
 GUNICORN=${GUNICORN:-./venv/bin/gunicorn}
 DEPS='ls -1 .env* settings.py; find slc \! -path "*/.gup" -name "*.py" -o -name "*.mo"; find venv/bin -type f'
 PIDFILE=".gunicorn.pid"
-SLC_SETTINGS=${SKC_SETTINGS:-"$(dirname $(realpath $0))/settings.py"}
+
 trap "trap - TERM && kill -- -$$" INT TERM EXIT
 
 ./venv/bin/huey_consumer -w1 -k process slc.queuing.huey &
