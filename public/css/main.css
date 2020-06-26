@@ -381,9 +381,13 @@ a {
     color: rgba(255, 255, 255, 0.9);
 }
 .BlockBg .btn {
-    background-color: #fff;
+    background-color: #eee;
     color: #44a777;
     color: var(--green);
+}
+.BlockBg .btn:hover,
+.BlockBg .btn:active {
+    background-color: #fff;
 }
 .BlockBg .btn-secondary {
     background-color: #fff;
@@ -417,4 +421,8 @@ a {
     margin-top: 50px;
     font-size: 14px;
     text-align: right;
+}
+
+button:focus {
+    outline: 0;
 }
