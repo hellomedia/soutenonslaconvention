@@ -1,8 +1,38 @@
 <py:extends href="../support.html" py:whitespace="strip">
+
 <py:block name="content">
+
+    <style media="screen">
+        .heart {
+            width: 100px;
+            margin-right: 30px;
+        }
+    </style>
+
     <div class="wrapper">
         <div class="container">
-            <h1>That's all folks!</h1>
+            <h1>
+                Merci !
+            </h1>
+            <p>
+                <img class="heart" src="${static('img/heart.svg')}" />
+                <img class="heart" src="${static('img/heart.svg')}" />
+                <img class="heart" src="${static('img/heart.svg')}" />
+            </p>
+            <p>
+                Quelle sera votre prochaine démarche ?
+            </p>
+            <ul>
+                <li>Participer à un Climapéro</li>
+                <li>Voter pour le Climat</li>
+                <li>Mieux comprendre les assemblées citoyennes</li>
+                <li>Soutenir en tant qu'association</li>
+                <li>Suivre les 150 citoyens</li>
+                <li>Nous suivre sur twitter</li>
+                <li>Rejoindre notre groupe sur facebook</li>
+                <li>Soutenir le documentaire "Les 150" de Yann Arthus Bertrand</li>
+            </ul>
+
         </div>
     </div>
 </py:block>
