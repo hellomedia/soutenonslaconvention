@@ -4,8 +4,7 @@
 #
 #    gup requirements.txt
 #
-
-assetbuilder==1.0.1       # via -r requirements.in
+assetbuilder==1.0.2       # via -r requirements.in
 astunparse==1.6.3         # via piglet-templates
 attrs==19.3.0             # via piglet-templates
 babel==2.8.0              # via fresco-i18n
@@ -15,7 +14,7 @@ diskcache==4.1.0          # via -r requirements.in
 dnspython==1.16.0         # via email-validator
 email-validator==1.1.1    # via -r requirements.in
 embrace-sql==1.0          # via -r requirements.in
-embrace==2.2.0            # via embrace-sql
+embrace==2.3.1            # via embrace-sql
 envparse==0.2.0           # via mailsend
 fresco-flash==1.0.0       # via -r requirements.in
 https://hg.sr.ht/~olly/fresco-i18n/archive/a3672a8dd6dc.tar.gz#egg=fresco-i18n  # via -r requirements.in
