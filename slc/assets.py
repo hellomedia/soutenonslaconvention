@@ -16,7 +16,7 @@ assetbuilder = AssetBuilder(
     depdirs=[resource_filename(__name__, "../public")],
     autobuild=app.options.ASSETS_AUTO_BUILD,
 )
-assetbuilder.set_default_build_command("gup -u {path}")
+assetbuilder.set_default_build_command("make")
 
 assetbuilder.add_paths("forms-css", ["css/forms.css"], CSSDEPS)
 assetbuilder.add_paths(
