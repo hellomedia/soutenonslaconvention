@@ -54,27 +54,40 @@
     </script>
     <div class="wrapper">
         <div class="container">
-            <div class="u-Constrained u-Constrained-s">
+            <div class="u-Constrained u-Constrained-m">
                 <h1 py:block="heading">Merci !</h1>
                 <form method="POST">
                     <input type="hidden" name="step" value="$step"/>
                     <div py:block="form" class="BlockBg js-form-target u-Spaced">
-                        <p>
-                            Saviez-vous que le fait de montrer qui nous
-                            soutient et pourquoi aidera d'autres personnes à
-                            nous rejoindre ?
+                        <h3 class="form-section-title">Qui êtes vous ?</h3>
+                        <p class="form-section-explanation">
+                            Statistiques pour mieux comprendre qui soutient
                         </p>
                         <label>
-                            Nom (ou pseudo) à montrer sur la liste de supporters
-                            <input name="display_name" type="text" value="${supporter.display_name or supporter.full_name}" placeholder="Prénom + nom (ou pseudo)"/>
+                            <input name="age" type="text" value="" placeholder="Âge"/>
                         </label>
-                        <label>Je suis…
+                        <label>
                             <select>
-                                <option>…</option>
-                                <option>Citoyen·ne</option>
-                                <option>Scientifique</option>
-                                <option>Personnalité de la Santé</option>
+                                <option>Je suis…</option>
+                                <option>Agriculteur</option>
+                                <option>Artisan - Commerçant - Chef d'entreprise</option>
+                                <option>Cadre supérieur - Profession libérale</option>
+                                <option>Profession intermédiaire</option>
+                                <option>Employé</option>
+                                <option>Ouvrier</option>
+                                <option>Retraité</option>
+                                <option>Inactif</option>
+                                <option>Etudiant</option>
                             </select>
+                        </label>
+                        <h3 class="form-section-title">Supportons fièrement la convention</h3>
+                        <p class="form-section-explanation">
+                            Montrer qui soutient - et pourquoi - aidera d'autres à
+                            nous rejoindre
+                        </p>
+                        <label>
+                            Nom (ou pseudo) visible dans la liste de supporters
+                            <input name="display_name" type="text" value="${supporter.display_name or supporter.full_name}" placeholder="Prénom + nom (ou pseudo)"/>
                         </label>
                         <div class="u-Flex u-Flex-justifyBetween PhotoChooser" py:with="selected = 'existing' if supporter.image_path or supporter.display_image else 'upload'">
                             <py:choose>
@@ -105,13 +118,12 @@
                             </div>
                         </div>
 
-                        <textarea name="reason" placeholder="Pourquoi soutenez-vous (facultatif)?"></textarea>
+                        <textarea name="reason" placeholder="Pourquoi soutenez-vous la Convention ? (facultatif)"></textarea>
                         <p style="line-height: 1.3; font-size: 0.8rem">
-                            Un soutien diversifié pour le CCC en ordre aidera à faire une réelle pression pour le changement. Mais tout le monde a des points de vue différents : votre raison pourrait être celle qui résonne.
+                            Votre raison pourrait être celle qui résonne !
                         </p>
 
-                        <hr/>
-                        <div class="u-Flex u-Flex-justifyBetween">
+                        <div class="BlockBg-Footer  u-Flex u-Flex-justifyBetween">
                             <button class="btn btn-secondary" name="skip" type="submit">Passer cette étape</button>
                             <button class="btn" type="submit">Continuer</button>
                         </div>
