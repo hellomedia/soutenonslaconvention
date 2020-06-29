@@ -1,4 +1,5 @@
 import functools
+import json
 from textwrap import dedent
 
 from fresco_i18n.i18nformat import Formatter
@@ -31,6 +32,7 @@ def default_context(request):
         "format": formatter,
         "markdown": render_markdown,
         "flash_messages": flash.messages(),
+        "json": json.dumps,
         "supporter_count": Proxy(
             lambda: (
                 supporters.supporter_count(request.getconn())

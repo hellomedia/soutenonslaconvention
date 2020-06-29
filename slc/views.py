@@ -1,3 +1,5 @@
+import json
+
 from email_validator import validate_email
 from email_validator import EmailNotValidError
 from fresco import Response
@@ -117,7 +119,9 @@ def support_step(request):
         return Response.redirect(support_us)
 
     occupation_options = supporters.occupation_options(conn)
-    year_of_birth_range_options = supporters.year_of_birth_range_options()
+    year_of_birth_range_options = supporters.year_of_birth_range_options(
+        supporter
+    )
     template = f"default/support-us-step-{step}.html"
     return piglet.render(
         template,
@@ -148,6 +152,14 @@ def support_step_submit(request):
             "existing": None,
             "none": None,
         }[photo_option]
+        try:
+            data["year_of_birth"] = json.loads(data.get("year_of_birth"))
+        except ValueError:
+            data["year_of_birth"] = None
+        try:
+            data["occupation_id"] = int(data.get("occupation_id"))
+        except (TypeError, ValueError):
+            data["occupation_id"] = None
         with queries.transaction(conn):
             supporters.update_profile(
                 conn,

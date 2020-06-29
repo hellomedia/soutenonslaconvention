@@ -66,19 +66,19 @@
                         <label>
                             <select name="year_of_birth">
                                 <option>Année de naissance…</option>
-                                <py:for each="start, end in year_of_birth_range_options">
-                                    <option value="start or 0">
+                                <py:for each="(start, end), selected in year_of_birth_range_options">
+                                    <option value="${json([start, end])}" selected="${1 if selected else None}">
                                         <py:choose>
                                             <py:when test="start is None">avant $end</py:when>
-                                            <py:when test="end is None">après $start</py:when>
-                                            <py:otherwise>$start – $end</py:otherwise>
+                                            <py:when test="end is None">$start ou après</py:when>
+                                            <py:otherwise>$start – ${end - 1}</py:otherwise>
                                         </py:choose>
                                     </option>
                                 </py:for>
                             </select>
                         </label>
                         <label>
-                            <select name="occupation">
+                            <select name="occupation_id">
                                 <option>Je suis…</option>
                                 <option
                                     py:for="value, label in occupation_options"

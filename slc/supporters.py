@@ -5,6 +5,7 @@ from embrace.exceptions import NoResultFound
 from typing import Any
 from typing import Callable
 from typing import Dict
+from typing import Iterable
 from typing import List
 from typing import Optional
 from typing import Tuple
@@ -12,7 +13,7 @@ from typing import Tuple
 from htmltextconvert import html_to_text
 from fresco_utils.security import generate_random_string
 from fresco import context
-from psycopg2.extras import Range as PsycopgRangeType
+from psycopg2.extras import NumericRange
 import requests
 
 from slc import fileuploads
@@ -36,7 +37,7 @@ class Supporter:
     image_path: Optional[str]
     picture_url: Optional[str]
     display_image: Optional[str]
-    year_of_birth: Optional[PsycopgRangeType]
+    year_of_birth: Optional[NumericRange]
     occupation_id: Optional[int]
 
     def display_image_url(self):
@@ -112,7 +113,14 @@ def update_profile(
     suggestion=None,
     image_path=None,
     display_image=None,
+    year_of_birth=None,
+    occupation_id=None,
 ):
+    if year_of_birth is None:
+        year_of_birth_val = None
+    else:
+        year_of_birth_val = NumericRange(year_of_birth[0], year_of_birth[1])
+
     return queries.update_supporter_profile(
         conn,
         id=id,
@@ -121,6 +129,8 @@ def update_profile(
         suggestion=suggestion,
         image_path=image_path,
         display_image=display_image,
+        occupation_id=occupation_id,
+        year_of_birth=year_of_birth_val,
     )
 
 
@@ -187,18 +197,40 @@ def supporter_count(conn) -> int:
     return queries.supporter_count(conn)
 
 
-def year_of_birth_range_options() -> List[Tuple[Optional[int], Optional[int]]]:
+def year_of_birth_range_options(
+    supporter: Supporter,
+) -> Iterable[Tuple[Optional[int], Optional[int]]]:
     """
     Return a list of (start year, end year) pairs for birth year ranges.
     None indicates an open-ended range.
     """
-    year = date.today().year
-    years = [year - age for age in [18, 30, 50, 65]]
-    return (
-        [(years[0], None)]
-        + [(y2, y1) for y1, y2 in zip(years, years[1:])]
-        + [(None, years[-1])]
-    )
+
+    def standard_options():
+        year = date.today().year
+        boundaries = [
+            year - 65,
+            year - 50,
+            year - 35,
+            year - 25,
+            year - 18,
+            year - 16,
+        ]
+        yield None, boundaries[0]
+        yield from ((y1, y2) for y1, y2 in zip(boundaries, boundaries[1:]))
+        yield boundaries[-1], None
+
+    existing = None
+    if supporter and supporter.year_of_birth:
+        existing = supporter.year_of_birth.lower, supporter.year_of_birth.upper
+
+    options = list(standard_options())
+    print(options, existing)
+    if existing in options:
+        yield from ((option, option == existing) for option in options)
+    else:
+        if existing:
+            yield existing, True
+        yield from ((option, False) for option in options)
 
 
 def occupation_options(conn) -> List[Tuple[int, str]]:
