@@ -382,8 +382,8 @@ a {
 }
 .BlockBg .btn {
     background-color: #eee;
-    color: #44a777;
-    color: var(--green);
+    color: #444;
+    color: var(--text-color);
 }
 .BlockBg .btn:hover,
 .BlockBg .btn:active {

@@ -9,25 +9,52 @@
         display: none;
     }
     .RadioChoice + * {
-        opacity: 0.6;
+        opacity: 0.9;
         transition: all 0.3s;
-        padding: 4px;
+        padding: 10px;
         width: 100%;
         height: 100%;
+        text-align: center;
     }
     .RadioChoice:checked + * {
         opacity: 1;
-        background-color: rgba(255, 255, 255, 0.2);
+        outline: 2px solid #fff;
     }
     .PhotoChooser {
         display: flex;
         justify-content: space-between;
+        margin-right: -10px;
+    }
+    .PhotoChooser > * {
+        margin-right: 10px;
+    }
+    .PhotoChooser > *:hover {
+        opacity: 1;
+        outline: 2px solid #fff;
+        cursor: zoom-in;
+    }
+    .PhotoChooser label:hover {
+        cursor: pointer;
     }
     .PhotoChooser * {
         flex: 1 1 28%;
     }
     .PhotoChooser-Upload  {
         flex: 1 1 44%;
+    }
+    .filepond--label-action {
+        display: block;
+    }
+    .filepond--panel-root {
+        border-radius: 3px !important;
+    }
+    .no-picture-please {
+        opacity: 0.5;
+        max-width: 100px;
+    }
+    .label-top {
+        display: block;
+        margin-bottom: 10px;
     }
     </style>
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet"/>
@@ -59,9 +86,9 @@
                 <form method="POST">
                     <input type="hidden" name="step" value="$step"/>
                     <div py:block="form" class="BlockBg js-form-target u-Spaced">
-                        <h3 class="form-section-title">Qui êtes vous ?</h3>
+                        <h3 class="form-section-title">Infos statistiques</h3>
                         <p class="form-section-explanation">
-                            Statistiques pour mieux comprendre qui soutient
+                            Ces champs seront uniquement utilisés à des fins statistiques.
                         </p>
                         <label>
                             <select name="year_of_birth">
@@ -87,46 +114,50 @@
                                 >$label</option>
                             </select>
                         </label>
-                        <h3 class="form-section-title">Supportons fièrement la convention</h3>
+                        <h3 class="form-section-title">Infos publiques</h3>
                         <p class="form-section-explanation">
                             Montrer qui soutient - et pourquoi - aidera d'autres à
-                            nous rejoindre
+                            vous rejoindre.
                         </p>
                         <label>
-                            Nom (ou pseudo) visible dans la liste de supporters
+                            Nom (ou pseudo)
                             <input name="display_name" type="text" value="${supporter.display_name or supporter.full_name}" placeholder="Prénom + nom (ou pseudo)"/>
                         </label>
-                        <div class="u-Flex u-Flex-justifyBetween PhotoChooser" py:with="selected = 'existing' if supporter.image_path or supporter.display_image else 'upload'">
-                            <py:choose>
-                                <div py:when="bool(supporter.image_path)">
-                                    <input id="photo-existing" class="RadioChoice" type="radio" name="photo-option" value="existing" checked="${1 if selected == 'existing' else None}"/>
-                                    <label for="photo-existing" style="width: 100%; height: 100%;" class="u-Flex u-Flex-alignItemsCenter u-Flex-justifyCenter">
-                                        <img src="${supporter.uploaded_image_url()}" style="max-width: 4em"/>
-                                    </label>
-                                </div>
-                                <div py:when="bool(supporter.display_image)">
-                                    <input id="photo-existing" class="RadioChoice" type="radio" name="photo-option" value="existing" checked="${1 if selected == 'existing' else None}"/>
-                                    <label for="photo-existing">
-                                        <img src="${supporter.display_image_url()}" style="max-width: 4em"/>
-                                    </label>
-                                </div>
-                            </py:choose>
-                            <div class="PhotoChooser-Upload">
-                                <input id="photo-upload" type="radio" class="RadioChoice" name="photo-option" value="upload" checked="${1 if selected == 'upload' else None}"/>
-                                <label for="photo-upload">
-                                    Choisir une photo? <br/><input name="image_path" type="file" />
+                        <div class="u-Flex u-Flex-justifyBetween PhotoChooser" py:with="selected = 'existing' if supporter.display_image else 'none'">
+                            <div py:if="bool(supporter.display_image)">
+                                <!--! user has previously uploaded a photo or selected to show their social media photo -->
+                                <input id="photo-existing" class="RadioChoice" type="radio" name="photo-option" value="existing" checked="${1 if selected == 'existing' else None}"/>
+                                <label for="photo-existing" class="photo-existing">
+                                    <span class="label-top">Votre photo</span>
+                                    <img src="${supporter.display_image_url()}" style="max-width: 4em"/>
                                 </label>
                             </div>
                             <div>
-                                <input id="photo-none" type="radio" class="RadioChoice" name="photo-option" value="none"/>
+                                <input id="photo-none" type="radio" class="RadioChoice" name="photo-option" value="none" checked="${1 if selected == 'none' else None}"/>
                                 <label for="photo-none">
-                                    Pas de photo
+                                    <span class="label-top">Pas de photo</span>
+                                    <img class="no-picture-please" src="${static('img/no-picture-please.svg')}" />
+                                </label>
+                            </div>
+                            <div py:if="bool(supporter.image_path)">
+                                <!-- photo previously uploaded (but deselected) or social media photo -->
+                                <input id="photo-existing" class="RadioChoice" type="radio" name="photo-option" value="existing" checked="${1 if selected == 'existing' else None}"/>
+                                <label for="photo-existing" style="width: 100%; height: 100%;" class="photo-existing">
+                                    <span class="label-top">Votre photo</span>
+                                    <img src="${supporter.uploaded_image_url()}" style="max-width: 4em"/>
+                                </label>
+                            </div>
+                            <div class="PhotoChooser-Upload">
+                                <input id="photo-upload" type="radio" class="RadioChoice" name="photo-option" value="upload" checked="${1 if selected == 'upload' else None}"/>
+                                <label for="photo-upload">
+                                    <span class="label-top">Choisir une photo</span>
+                                    <input name="image_path" type="file" />
                                 </label>
                             </div>
                         </div>
 
                         <textarea name="reason" placeholder="Pourquoi soutenez-vous la Convention ? (facultatif)"></textarea>
-                        <p style="line-height: 1.3; font-size: 0.8rem">
+                        <p class="form-section-explanation">
                             Votre raison pourrait être celle qui résonne !
                         </p>
 
