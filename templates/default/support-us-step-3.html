@@ -17,11 +17,35 @@
         Partager sur Twitter
     </a>
 
-    <a class="btn btn-share btn-fb" target="_blank"
-        href="https://www.facebook.com/dialog/share?app_id=3346451028718611&amp;display=popup&amp;href=https%3A%2F%2Fsoutenonslaconvention.fr">
+    <button id="btn-fb-share" class="btn btn-share btn-fb" style="width: 100%">
         <img src="${static('img/icon-facebook.svg')}" alt=""/>
         Partager sur Facebook
-    </a>
+    </button>
+
+    <script>
+    window.fbAsyncInit = function() {
+        FB.init({
+          appId            : '3346451028718611',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v7.0'
+        });
+    };
+    </script>
+    <script async="true" defer="true" src="https://connect.facebook.net/fr_FR/sdk.js">
+    </script>
+    <script>
+        document.getElementById('btn-fb-share').onclick = function(e) {
+            var fb_share_url = "https://soutenonslaconvention.fr";
+            FB.ui({
+                display: 'popup',
+                method: 'share',
+                href: fb_share_url,
+                hashtag: '#soutenonsLaConvention'
+              }, function(response){});
+            return false;
+        }
+    </script>
 
     <div class="BlockBg-Footer u-Flex u-Flex-justifyFlexEnd">
         <button class="btn" type="submit">Terminer</button>
