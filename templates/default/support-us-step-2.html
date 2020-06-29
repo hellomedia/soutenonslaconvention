@@ -64,20 +64,27 @@
                             Statistiques pour mieux comprendre qui soutient
                         </p>
                         <label>
-                            <input name="age" type="text" value="" placeholder="Âge"/>
+                            <select name="year_of_birth">
+                                <option>Année de naissance…</option>
+                                <py:for each="start, end in year_of_birth_range_options">
+                                    <option value="start or 0">
+                                        <py:choose>
+                                            <py:when test="start is None">avant $end</py:when>
+                                            <py:when test="end is None">après $start</py:when>
+                                            <py:otherwise>$start – $end</py:otherwise>
+                                        </py:choose>
+                                    </option>
+                                </py:for>
+                            </select>
                         </label>
                         <label>
-                            <select>
+                            <select name="occupation">
                                 <option>Je suis…</option>
-                                <option>Agriculteur</option>
-                                <option>Artisan - Commerçant - Chef d'entreprise</option>
-                                <option>Cadre supérieur - Profession libérale</option>
-                                <option>Profession intermédiaire</option>
-                                <option>Employé</option>
-                                <option>Ouvrier</option>
-                                <option>Retraité</option>
-                                <option>Inactif</option>
-                                <option>Etudiant</option>
+                                <option
+                                    py:for="value, label in occupation_options"
+                                    value="$value"
+                                    selected="${1 if value == supporter.occupation_id else None}"
+                                >$label</option>
                             </select>
                         </label>
                         <h3 class="form-section-title">Supportons fièrement la convention</h3>

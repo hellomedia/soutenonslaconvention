@@ -109,14 +109,25 @@ def support_step(request):
     except (TypeError, ValueError):
         return Response.redirect(support_us)
 
+    conn = request.getconn()
     supporter = supporters.get_supporter_by_id(
         request.getconn(), request.get_user_id()
     )
     if supporter is None:
         return Response.redirect(support_us)
 
+    occupation_options = supporters.occupation_options(conn)
+    year_of_birth_range_options = supporters.year_of_birth_range_options()
     template = f"default/support-us-step-{step}.html"
-    return piglet.render(template, {"step": step, "supporter": supporter})
+    return piglet.render(
+        template,
+        {
+            "step": step,
+            "supporter": supporter,
+            "occupation_options": occupation_options,
+            "year_of_birth_range_options": year_of_birth_range_options,
+        },
+    )
 
 
 def support_step_submit(request):

@@ -1,14 +1,18 @@
 import logging
 from dataclasses import dataclass
+from datetime import date
 from embrace.exceptions import NoResultFound
 from typing import Any
 from typing import Callable
 from typing import Dict
+from typing import List
 from typing import Optional
+from typing import Tuple
 
 from htmltextconvert import html_to_text
 from fresco_utils.security import generate_random_string
 from fresco import context
+from psycopg2.extras import Range as PsycopgRangeType
 import requests
 
 from slc import fileuploads
@@ -32,6 +36,8 @@ class Supporter:
     image_path: Optional[str]
     picture_url: Optional[str]
     display_image: Optional[str]
+    year_of_birth: Optional[PsycopgRangeType]
+    occupation_id: Optional[int]
 
     def display_image_url(self):
 
@@ -179,3 +185,21 @@ def confirm_email(conn, token) -> int:
 
 def supporter_count(conn) -> int:
     return queries.supporter_count(conn)
+
+
+def year_of_birth_range_options() -> List[Tuple[Optional[int], Optional[int]]]:
+    """
+    Return a list of (start year, end year) pairs for birth year ranges.
+    None indicates an open-ended range.
+    """
+    year = date.today().year
+    years = [year - age for age in [18, 30, 50, 65]]
+    return (
+        [(years[0], None)]
+        + [(y2, y1) for y1, y2 in zip(years, years[1:])]
+        + [(None, years[-1])]
+    )
+
+
+def occupation_options(conn) -> List[Tuple[int, str]]:
+    return list(queries.occupations(conn))
