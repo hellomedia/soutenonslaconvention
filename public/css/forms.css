@@ -40,3 +40,9 @@ select {
 ::placeholder {
   color: #888;
 }
+hr {
+    margin: 40px 0 30px 0 !important;
+    border: 0;
+    border-top: 1px solid #fff;
+    opacity: 0.5;
+}
