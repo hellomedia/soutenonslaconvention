@@ -1,20 +1,18 @@
 #!/bin/sh
 
-set -e
+set -ex
 HOST=treacle.skot.be
 PORT=2204
 APP_PATH=/www/soutenonslaconvention.fr
 
 gup -u all
-hg push "ssh://$HOST:$PORT/$APP_PATH" -B pylive || true
 ssh -p "$PORT" "$HOST" "
     sh -c \"
         cd \\\"$APP_PATH\\\" \
-        && hg update \
-        && touch requirements.txt \
-        && ./gup/gup runtime\""
-set +e
-rsync -avz -P -e "ssh -p \"$PORT\"" --exclude ".gup" _build "$HOST:$APP_PATH/"
-set -e
-
+        && hg pull || true \
+        && hg update default/pylive \
+        && ./gup/gup runtime \
+        && hg revert requirements.txt \
+    \""
+rsync -avz -P -e "ssh -p \"$PORT\"" --delete --exclude ".gup" _build "$HOST:$APP_PATH/"
 ssh -p "$PORT" "$HOST" "sh -c 'doas sv restart /var/service/slc*'"
