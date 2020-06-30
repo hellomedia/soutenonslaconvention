@@ -11,7 +11,7 @@ ssh -p "$PORT" "$HOST" "
         cd \\\"$APP_PATH\\\" \
         && hg pull || true \
         && hg update default/pylive \
-        && ./gup/gup runtime \
+        && ./gup/gup venv/bin/gunicorn \
         && hg revert requirements.txt \
     \""
 rsync -avz -P -e "ssh -p \"$PORT\"" --delete --exclude ".gup" _build "$HOST:$APP_PATH/"
