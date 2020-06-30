@@ -11,13 +11,13 @@
 
     <input type="hidden" name="step" value="$step"/>
 
-    <a class="btn btn-share btn-twitter" target="_blank"
+    <a class="btn btn-reverse btn-share btn-twitter" target="_blank"
         href="https://twitter.com/intent/tweet?text=…&amp;url=https%3A%2F%2Fsoutenonslaconvention.fr">
         <img src="${static('img/icon-twitter.svg')}" alt=""/>
         Partager sur Twitter
     </a>
 
-    <button id="btn-fb-share" class="btn btn-share btn-fb" style="width: 100%">
+    <button id="btn-fb-share" class="btn btn-reverse btn-share btn-fb" style="width: 100%">
         <img src="${static('img/icon-facebook.svg')}" alt=""/>
         Partager sur Facebook
     </button>
@@ -48,7 +48,7 @@
     </script>
 
     <div class="BlockBg-Footer u-Flex u-Flex-justifyFlexEnd">
-        <button class="btn" type="submit">Terminer</button>
+        <button class="btn btn-reverse" type="submit">Terminer</button>
     </div>
 
 </py:block>
