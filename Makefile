@@ -1,2 +1,4 @@
 all:
-	./gup/gup
+	./gup/gup update all
+%:
+	./gup/gup $@
