@@ -10,7 +10,7 @@ ssh -p "$PORT" "$HOST" "
     sh -c \"
         cd \\\"$APP_PATH\\\" \
         && hg pull || true \
-        && hg update default/pylive \
+        && hg update default/master \
         && ./gup/gup venv/bin/gunicorn \
         && hg revert requirements.txt \
     \""
