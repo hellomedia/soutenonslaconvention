@@ -1,6 +1,0 @@
-#!/bin/sh
-
-gup -u \
-    venv/bin/gunicorn \
-    .env.secret.local \
-

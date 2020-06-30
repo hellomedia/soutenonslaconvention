@@ -9,7 +9,7 @@ PIDFILE=".gunicorn.pid"
 trap "trap - TERM && kill -- -$$" INT TERM EXIT
 
 ./venv/bin/huey_consumer -w1 -k process slc.queuing.huey &
-entr gup << "EOF" &
+entr gup requirements.txt << "EOF" &
 requirements.in
 EOF
 

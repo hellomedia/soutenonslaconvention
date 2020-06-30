@@ -10,7 +10,7 @@ case $2 in
         exit $?
         ;;
 esac
-gup -u requirements.txt venv/bin/python
+gup -u venv/bin/python
 
 for dep in requirements-dev.txt setup.py setup.cfg; do
     if [ -f "$dep" ]; then

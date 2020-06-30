@@ -1,3 +1,7 @@
+#
+# After modifying this file run "make requirements.txt" to have your changes
+# take effect.
+#
 obsession
 scour
 gunicorn
