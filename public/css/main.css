@@ -323,6 +323,15 @@ a {
     width: 2em;
     margin-right: 1em;
 }
+.btn-reverse {
+    background-color: #eee;
+    color: #444;
+    color: var(--text-color);
+}
+.btn-reverse:hover,
+.btn-reverse:active {
+    background-color: #fff;
+}
 @media (max-width: 800px) {
     .btn-group {
         display: flex;
@@ -379,15 +388,6 @@ a {
 .BlockBg a:active
 {
     color: rgba(255, 255, 255, 0.9);
-}
-.BlockBg .btn {
-    background-color: #eee;
-    color: #444;
-    color: var(--text-color);
-}
-.BlockBg .btn:hover,
-.BlockBg .btn:active {
-    background-color: #fff;
 }
 .BlockBg .btn-secondary {
     background-color: #eee;

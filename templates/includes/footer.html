@@ -16,6 +16,7 @@
             width: 100%;
             height: 100%;
             display: flex;
+            background: rgba(0, 0, 0, 0.12);
             justify-content: center;
             align-items: center;
             font-weight: bold;
@@ -47,14 +48,14 @@
             </p>
             <div class="js-suggestion-target AnimatedSuggestionBox">
                 <div class="SuggestionSubmitted">Merci pour votre suggestion!</div>
-                <div class="SuggestionForm">
+                <form class="SuggestionForm">
                     <textarea name="suggestion"></textarea>
                     <div class="u-AlignRight">
-                        <button class="btn btn-s" hx-post="${urlfor('submit-suggestion')}" hx-target=".js-suggestion-target">
+                        <button class="btn btn-s btn-reverse" hx-post="${urlfor('submit-suggestion')}" hx-target=".js-suggestion-target">
                             Envoyer
                         </button>
                     </div>
-                </div>
+                </form>
             </div>
         </py:block>
 
