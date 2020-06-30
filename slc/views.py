@@ -11,6 +11,7 @@ from fresco_flash import flash
 
 from slc import fileuploads
 from slc import options
+from slc import suggestions
 from slc import supporters
 from slc import queries
 from slc.oauthlogin import OAUTH_PROVIDERS
@@ -173,10 +174,12 @@ def support_step_submit(request):
 def submit_suggestion(request):
     conn = request.getconn()
     supporter_id = request.get_user_id()
+    if supporter_id:
+        supporter = supporters.get_supporter_by_id(conn, supporter_id)
+    else:
+        supporter = None
     suggestion = request.get("suggestion")
-    if suggestion and supporter_id:
-        with queries.transaction(conn):
-            supporters.register_suggestion(conn, supporter_id, suggestion)
+    suggestions.send_suggestion(conn, supporter, suggestion)
 
     return Response(headers=[("X-HX-Trigger", "suggestionSubmitted")])
 

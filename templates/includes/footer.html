@@ -47,14 +47,14 @@
             </p>
             <div class="js-suggestion-target AnimatedSuggestionBox">
                 <div class="SuggestionSubmitted">Merci pour votre suggestion!</div>
-                <div class="SuggestionForm">
+                <form class="SuggestionForm">
                     <textarea name="suggestion"></textarea>
                     <div class="u-AlignRight">
                         <button class="btn btn-s btn-reverse" hx-post="${urlfor('submit-suggestion')}" hx-target=".js-suggestion-target">
                             Envoyer
                         </button>
                     </div>
-                </div>
+                </form>
             </div>
         </py:block>
 

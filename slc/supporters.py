@@ -134,22 +134,6 @@ def update_profile(
     )
 
 
-def register_suggestion(conn, supporter_id, suggestion):
-    if not suggestion.strip():
-        return
-    update_profile(conn, id=supporter_id, suggestion=suggestion)
-    supporter = get_supporter_by_id(conn, supporter_id)
-
-    if suggestion:
-        queuing.queue_send_mail(
-            options.MAIL_FROM,
-            f"Soutenons la Convention: une suggestions de {supporter.full_name}",
-            recipients=[options.CONTACT_EMAIL],
-            reply_to=supporter.email,
-            body=suggestion,
-        )
-
-
 def download_social_image(conn, supporter_id):
     supporter = get_supporter_by_id(conn, supporter_id)
     r = requests.get(supporter.picture_url, stream=True)
