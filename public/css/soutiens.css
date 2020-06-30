@@ -3,11 +3,11 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
-    margin-right: -30px;
+    margin-right: -50px;
 }
 .soutiens-grid > div {
-    margin-right: 30px;
-    margin-bottom: 20px;
+    margin-right: 50px;
+    margin-bottom: 50px;
 }
 .soutiens-grid img {
     max-height: 150px;
