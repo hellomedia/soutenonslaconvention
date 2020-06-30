@@ -22,7 +22,7 @@ def fetch_petition_page() -> requests.Response:
 @safe
 def parse_count(r: requests.Response) -> int:
     doc = html5lib.parse(r.text)
-    text = doc.find(".//*[@class='mo-counter hide-sm']/{*}strong").text
+    text = doc.find(".//*[@class='mo-counter hide-sm']/").text
     return int(re.sub(r"[^\d]", "", text))
 
 
