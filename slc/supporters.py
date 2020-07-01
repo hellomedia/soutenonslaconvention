@@ -97,7 +97,7 @@ def add_supporter_from_email(conn, email: str) -> int:
     )
 
 
-def get_supporter_by_id(conn, id: int) -> Supporter:
+def get_supporter_by_id(conn, id: int) -> Optional[Supporter]:
     try:
         data = queries.get_supporter_info(conn, id=id)
     except NoResultFound:
