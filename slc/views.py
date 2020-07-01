@@ -155,7 +155,7 @@ def support_step_submit(request):
         }[photo_option]
         try:
             data["year_of_birth"] = json.loads(data.get("year_of_birth"))
-        except ValueError:
+        except (TypeError, ValueError):
             data["year_of_birth"] = None
         try:
             data["occupation_id"] = int(data.get("occupation_id"))
