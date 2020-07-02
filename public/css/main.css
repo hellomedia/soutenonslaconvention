@@ -70,7 +70,6 @@ img {
     background-color: #44a777;
     background-color: var(--green);
     margin-bottom: 0;
-    max-height: 315px;
 }
 .banner .container {
     margin-bottom: 0;
