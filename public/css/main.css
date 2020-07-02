@@ -150,7 +150,7 @@ img {
     text-decoration: none;
 }
 .counter-cta:hover {
-    background-color: #65ca99;
+    background-color: #328f62;
 }
 .counter > * {
     display: block;
@@ -292,7 +292,7 @@ a {
     text-align: center;
 }
 .btn:hover {
-    background-color: #65ca99;
+    background-color: #328f62;
 }
 .btn:hover, .btn:active, .btn:visited {
     text-decoration: none;

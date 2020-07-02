@@ -45,6 +45,19 @@
     position: relative;
     top: -8px;
 }
+.btn-group-homepage-share {
+    display: flex;
+    flex-wrap: wrap;
+}
+.btn-group-homepage-share .btn-share {
+    background-color: #eee;
+    color: #444;
+    color: var(--text-color);
+}
+.btn-group-homepage-share .btn-share:hover,
+.btn-group-homepage-share .btn-share:active {
+    background-color: #ddd;
+}
 .who-are-we-facebook-cta {
     margin-top: 60px;
 }
@@ -52,7 +65,6 @@
 .homepage-container-first p:first-child {
     margin-top: 27px;
 }
-
 .soutiens-banner {
     display: flex;
     justify-content: space-between;
