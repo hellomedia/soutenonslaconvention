@@ -32,6 +32,11 @@ img {
     padding-bottom: 80px;
     margin-bottom: -50px;
 }
+.green-bg {
+    background-color: #44a777;
+    background-color: var(--green);
+    color: #fff;
+}
 .container {
     margin: 1em auto 1em;
     max-width: 800px;
@@ -333,6 +338,9 @@ a {
     background-color: #fff;
 }
 @media (max-width: 800px) {
+    .btn {
+        width: 100%;
+    }
     .btn-group {
         display: flex;
         flex-wrap: wrap;
