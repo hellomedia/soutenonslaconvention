@@ -18,7 +18,7 @@ body {
     padding: 0;
     color: #444;
     color: var(--text-color);
-    font-family: sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 19px;
     line-height: 1.5;
 }
@@ -52,7 +52,7 @@ img {
 .menu {
     display: flex;
     align-items: baseline;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 400;
 }
 .menu a {
@@ -90,7 +90,7 @@ img {
     transition: 0.3s;
 }
 .title-line2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 300;
     letter-spacing: -2px;
     white-space: nowrap;
@@ -102,7 +102,7 @@ img {
 }
 .hashtags {
     color: #fff;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 300;
     letter-spacing: 1px;
     font-size: 30px;
@@ -277,7 +277,7 @@ a {
     font-weight: 400;
 }
 .btn {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     display: inline-block;
     padding: 14px 50px;
     border-radius: 3px;
