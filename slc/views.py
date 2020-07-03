@@ -50,7 +50,7 @@ def petition_count(request):
     )
     return Response(
         request.format(count)
-    ).add_headers(cache_control="must-revalidate, max-age=30", vary="cookie")
+    ).add_headers(cache_control="must-revalidate, max-age=10", vary="cookie")
 
 def support_us_email(request):
 
