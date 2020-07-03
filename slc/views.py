@@ -14,17 +14,19 @@ from slc import options
 from slc import suggestions
 from slc import supporters
 from slc import queries
+from slc import petition
 from slc.oauthlogin import OAUTH_PROVIDERS
 from slc.oauthlogin import fetch_profile
 from slc.oauthlogin import get_oauth2session
 from slc.templating import piglet
 
 
+
 def homepage(request):
     return piglet.render(
         "default/index.html",
         {"days_left": (options.CONVENTION_DATE - request.now.date()).days - 1},
-    ).add_headers(cache_control="must-revalidate, max-age=30", vary="cookie")
+    ).add_headers(cache_control="must-revalidate, max-age=29", vary="cookie")
 
 
 def templated_page(request, template):
@@ -34,6 +36,15 @@ def templated_page(request, template):
 def support_us(request):
     return piglet.render("default/support-us.html", {})
 
+
+def petition_count(request):
+    count = (
+        supporters.supporter_count(request.getconn())
+        + petition.get_cached_count()
+    )
+    return Response(
+        request.format(count)
+    ).add_headers(cache_control="must-revalidate, max-age=30", vary="cookie")
 
 def support_us_email(request):
 
