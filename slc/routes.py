@@ -26,8 +26,7 @@ __routes__ = [
     ),
     Route(
         "/soutiens",
-        GET=templated_page,
-        template="default/soutiens.html",
+        GET="slc.views.soutiens",
         name="soutiens",
     ),
     Route(

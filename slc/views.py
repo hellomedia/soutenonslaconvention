@@ -33,6 +33,12 @@ def templated_page(request, template):
     return piglet.render(template, {})
 
 
+def soutiens(request):
+    return piglet.render(
+        "default/soutiens.html", {}
+    ).add_headers(cache_control="must-revalidate, max-age=600", vary="cookie")
+
+
 def support_us(request):
     return piglet.render("default/support-us.html", {})
 
