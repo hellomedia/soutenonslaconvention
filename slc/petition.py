@@ -40,5 +40,5 @@ def get_cached_count() -> int:
         return value
 
     return get_or_create(
-        "petition-count", get_value, hours=1, use_stale_on_error=True
+        "petition-count", get_value, minutes=5, use_stale_on_error=True
     )
