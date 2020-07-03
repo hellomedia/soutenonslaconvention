@@ -7,6 +7,12 @@
             max-width: 100px;
             margin-right: 1vw;
         }
+        .next {
+
+        }
+        .next li {
+            margin: 10px 0;
+        }
     </style>
 
     <div class="wrapper">
@@ -22,15 +28,42 @@
             <p>
                 Quelle sera votre prochaine démarche ?
             </p>
-            <ul>
-                <li>Participer à un Climapéro</li>
-                <li>Voter pour le Climat</li>
-                <li>Mieux comprendre les assemblées citoyennes</li>
-                <li>Soutenir en tant qu'association</li>
-                <li>Suivre les 150 citoyens</li>
-                <li>Nous suivre sur twitter</li>
-                <li>Rejoindre notre groupe sur facebook</li>
-                <li>Soutenir le documentaire "Les 150" de Yann Arthus Bertrand</li>
+            <ul class="next">
+                <li>
+                    <a href="${urlfor('soutiens')}" target="_blank">
+                        Soutenir en tant qu'association ou entreprise
+                    </a>
+                </li>
+                <li>
+                    <a href="https://fr.ulule.com/les150/" target="_blank">
+                        Soutenir le documentaire "Les 150" de Yann Arthus-Bertrand
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/SoutenonsLaCCC" target="_blank">
+                        Nous suivre sur twitter
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/les150ccc" target="_blank">
+                        Rejoindre les 150 sur facebook
+                    </a>
+                </li>
+                <!--li>
+                    <a href="https://www.facebook.com/les150ccc" target="_blank">
+                        Participer à un Climapéro
+                    </a>
+                </li-->
+                <!--li>
+                    <a href="https://www.voterpourleclimat.fr/" target="_blank">Voter pour le Climat</a>
+                </li>
+                <li>
+                    <a href="" target="_blank">Voir la vidéo "On le fait"</a>
+                </li>
+                <li>
+                    <a href="" target="_blank">Suivre les 150 citoyens</a>
+                </li-->
+                <!--li>Mieux comprendre les assemblées citoyennes</li-->
             </ul>
 
         </div>
