@@ -59,8 +59,9 @@ def support_us_email(request):
     with queries.transaction(conn):
         user_id, is_new = supporters.add_supporter_from_email(conn, email)
 
-    if not is_new:
-        return Response.redirect(existing_support)
+        if not is_new:
+            supporters.restore_account_confirmed(conn, user_id)
+            return Response.redirect(existing_support)
 
     supporters.send_confirmation_email(
         supporter_id=user_id,

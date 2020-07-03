@@ -105,6 +105,10 @@ def get_supporter_by_id(conn, id: int) -> Supporter:
     return Supporter(**data._asdict())
 
 
+def restore_account_confirmed(conn, id: int):
+    queries.restore_account_confirmed(conn, id=id)
+
+
 def update_profile(
     conn,
     id: int,
