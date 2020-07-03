@@ -31,14 +31,15 @@ def fetch_count() -> IOResultE:
 
 
 def get_cached_count() -> int:
-    from slc.caching import get_or_create
+    #from slc.caching import get_or_create
 
-    def get_value():
-        value = unsafe_perform_io(fetch_count())
-        if isinstance(value, Exception):
-            raise value
-        return value
+    #def get_value():
+    #    value = unsafe_perform_io(fetch_count())
+    #    if isinstance(value, Exception):
+    #        raise value
+    #    return value
 
-    return get_or_create(
-        "petition-count", get_value, minutes=5, use_stale_on_error=True
-    )
+    #return get_or_create(
+    #    "petition-count", get_value, minutes=5, use_stale_on_error=True
+    #)
+    return 31300
