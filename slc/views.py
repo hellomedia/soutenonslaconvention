@@ -40,7 +40,7 @@ def support_us(request):
 def petition_count(request):
     count = (
         supporters.supporter_count(request.getconn())
-        + petition.get_cached_count()
+        + 31300
     )
     return Response(
         request.format(count)
