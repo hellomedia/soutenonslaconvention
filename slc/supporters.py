@@ -54,7 +54,7 @@ class Supporter:
 
 def add_supporter_from_social_profile(
     conn, provider: str, profile: Dict[str, Any]
-) -> int:
+) -> Tuple[int, bool]:
     logger.info(f"Got {provider} profile: {profile}")
     picture_data = profile.get("picture")
     if isinstance(picture_data, str):
@@ -81,7 +81,7 @@ def add_supporter_from_social_profile(
     )
 
 
-def add_supporter_from_email(conn, email: str) -> int:
+def add_supporter_from_email(conn, email: str) -> Tuple[int, bool]:
 
     return queries.upsert_supporter(
         conn,
@@ -103,6 +103,10 @@ def get_supporter_by_id(conn, id: int) -> Supporter:
     except NoResultFound:
         return None
     return Supporter(**data._asdict())
+
+
+def restore_account_confirmed(conn, id: int):
+    queries.restore_account_confirmed(conn, id=id)
 
 
 def update_profile(

@@ -20,6 +20,11 @@ __routes__ = [
         template="default/privacy.html",
     ),
     Route(
+        "/soutien-existant",
+        GET="slc.views.existing_support",
+        name="existing-support",
+    ),
+    Route(
         "/petition-count",
         GET="slc.views.petition_count",
         name="petition-count",
