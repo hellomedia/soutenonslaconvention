@@ -11,6 +11,7 @@ import obsession
 import psycopg2
 import psycopg2.extras
 import sentry_sdk
+import wsgissi
 
 import slc
 from slc import app
@@ -66,6 +67,9 @@ app.add_middleware(
     ),
 )
 app.add_middleware(FlashMiddleware)
+
+if options.USE_WSGISSI:
+    app.add_middleware(wsgissi.wsgissi)
 
 app.static = StaticFiles(app)
 app.static.add_package("slc", "../_build", cache_max_age=120)

@@ -45,6 +45,19 @@
     position: relative;
     top: -8px;
 }
+.btn-group-homepage-share {
+    display: flex;
+    flex-wrap: wrap;
+}
+.btn-group-homepage-share .btn-share {
+    background-color: #eee;
+    color: #444;
+    color: var(--text-color);
+}
+.btn-group-homepage-share .btn-share:hover,
+.btn-group-homepage-share .btn-share:active {
+    background-color: #ddd;
+}
 .who-are-we-facebook-cta {
     margin-top: 60px;
 }
@@ -52,7 +65,38 @@
 .homepage-container-first p:first-child {
     margin-top: 27px;
 }
-
+.soutiens-banner {
+    display: flex;
+    justify-content: space-between;
+}
+.soutiens-highlight {
+    flex: 1 1 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: -20px;
+}
+.soutiens-highlight img {
+    max-height: 100%;
+    max-width: 150px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.soutiens-others {
+    flex: 1 1 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -10px;
+    margin-bottom: -10px;
+}
+.soutiens-others img {
+    flex: 0 0 auto;
+    max-height: 80px;
+    width: auto;
+    margin-right: 10px;
+    margin-top: 10px;
+}
 @media (max-width: 900px) {
     .homepage-container-first p:first-child {
         margin-top: 1em;

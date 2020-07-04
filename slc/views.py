@@ -14,26 +14,43 @@ from slc import options
 from slc import suggestions
 from slc import supporters
 from slc import queries
+from slc import petition
 from slc.oauthlogin import OAUTH_PROVIDERS
 from slc.oauthlogin import fetch_profile
 from slc.oauthlogin import get_oauth2session
 from slc.templating import piglet
 
 
+
 def homepage(request):
     return piglet.render(
         "default/index.html",
         {"days_left": (options.CONVENTION_DATE - request.now.date()).days - 1},
-    ).add_headers(cache_control="must-revalidate, max-age=30", vary="cookie")
+    ).add_headers(cache_control="must-revalidate, max-age=3", vary="cookie")
 
 
 def templated_page(request, template):
     return piglet.render(template, {})
 
 
+def soutiens(request):
+    return piglet.render(
+        "default/soutiens.html", {}
+    ).add_headers(cache_control="must-revalidate, max-age=3", vary="cookie")
+
+
 def support_us(request):
     return piglet.render("default/support-us.html", {})
 
+
+def petition_count(request):
+    count = (
+        supporters.supporter_count(request.getconn())
+        + 31300
+    )
+    return Response(
+        request.format(count)
+    ).add_headers(cache_control="must-revalidate, max-age=3", vary="cookie")
 
 def support_us_email(request):
 
@@ -46,13 +63,18 @@ def support_us_email(request):
 
     conn = request.getconn()
     with queries.transaction(conn):
-        user_id = supporters.add_supporter_from_email(conn, email)
+        user_id, is_new = supporters.add_supporter_from_email(conn, email)
+
+        if not is_new:
+            supporters.restore_account_confirmed(conn, user_id)
+            return Response.redirect(existing_support)
 
     supporters.send_confirmation_email(
         supporter_id=user_id,
         email=email,
         get_confirmation_url=lambda token: urlfor("confirm-email", token=token),
     )
+
     return Response.redirect(email_needs_confirmation, email=email)
 
 
@@ -60,6 +82,10 @@ def email_needs_confirmation(request, email):
     return piglet.render(
         "default/email-needs-confirmation.html", {"email": email}
     )
+
+
+def existing_support(request):
+    return piglet.render("default/existing-support.html", {})
 
 
 def confirm_email(request, token):
@@ -96,11 +122,15 @@ def oauth_callback(request, provider):
 
     conn = request.getconn()
     with queries.transaction(conn):
-        user_id = supporters.add_supporter_from_social_profile(
+        user_id, is_new = supporters.add_supporter_from_social_profile(
             conn, provider, profile
         )
         supporters.download_social_image(conn, user_id)
     request.remember_user_id(user_id)
+
+    if not is_new:
+        return Response.redirect(existing_support)
+
     return Response.redirect(support_step, _query={"step": 2})
 
 
@@ -128,6 +158,7 @@ def support_step(request):
         template,
         {
             "step": step,
+            "is_new": request.get("is_new"),
             "supporter": supporter,
             "occupation_options": occupation_options,
             "year_of_birth_range_options": year_of_birth_range_options,

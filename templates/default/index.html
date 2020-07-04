@@ -18,14 +18,15 @@
     </p>
     <p>
         Fin juin s'est achevé le 1er acte d'un processus
-        qui répond aux enjeux du moment et représente une bouffée d'air frais
-        démocratique :
+        qui représente une bouffée d'air frais
+        démocratique et qui répond aux enjeux du moment :
         la Convention Citoyenne pour le Climat.
     </p>
     <p>
-        Au terme d’un long travail, les 150 citoyens de la Convention ont abouti à
-        des propositions qu’il serait utopique d’attendre des structures
-        politiques classiques.
+        Au terme de 9 mois de travail, 150 citoyens, représentatifs
+        de la diversité française, ont abouti à
+        des propositions qu'ils ont voulues à la fois fortes et acceptables,
+        dans un esprit de justice sociale.
     </p>
     <p>
         Des propositions pour réorienter notre société
@@ -35,6 +36,8 @@
         et où nous manquons cruellement de temps.
     </p>
     <p>
+        Nous lançons un appel transpartisan à tous les citoyens - engagés ou pas,
+        associations, entreprises et politiques :
         Soutenons-les !
     </p>
     <div class="btn-group">
@@ -42,113 +45,94 @@
             JE SOUTIENS
         </a>
     </div>
-</div>
-</div>
-
-
-<div class="wrapper grey-bg">
-<div class="container">
-
-
-    <h2>C'est quoi la Convention Citoyenne ?</h2>
-
-    <!--p>
-
-        <img src="${static('img/membres-convention.jpg')}"
-            alt="les 150 membres de la Convention Citoyenne pour le Climat"/>
-        <span class="copyright">©Katrin Baumann</span>
-    </p-->
-    <p>
-        La <a target="_blank" href="https://www.conventioncitoyennepourleclimat.fr/">Convention
-            Citoyenne pour le Climat</a> est composée de citoyens comme vous et moi,
-        tirés au sort, représentatifs de la diversité française, qui, pendant 9
-        mois, se sont informés, ont auditionné des experts, débattu et on fait mûrir
-        leurs réflexions. C’est notre intelligence collective mise au service de
-        l’intérêt général.
-    </p>
-    <p>
-        Leur mandat, défini par le président :
-    </p>
-    <p>
-        <i>Trouver des mesures pour réduire les
-        émission de gaz à effet de serre d’au moins 40% d’ici 2030, dans un
-        esprit de justice sociale</i>.
-    </p>
-
-</div>
-</div>
-
-<div class="wrapper">
-<div class="container">
-
-    <h2> Sont-ils légitimes ?</h2>
-    <p>
-        Dans une démocratie représentative, les élections
-        ne sont pas une fin en soi, c'est un moyen de choisir nos représentants.
-        Il en existe d'autres, comme le tirage au sort.
-    </p>
-    <p>
-        Les citoyens de la Convention sont, par définition, représentatifs de la
-        société française. C'est un échantillon représentatif de la société en
-        terme d'âge, de sexe, de classe socio-professionnelle et de répartition
-        géographique. A cet égard, on peut même dire qu'ils sont plus
-        représentatifs que les élus.
-    </p>
-
-</div>
-</div>
-
-<div class="wrapper grey-bg">
-<div class="container">
-
-    <h2>N'est-ce pas le travail des élus ?</h2>
-    <p>
-        Le système politique actuel, en France comme ailleurs, souffre de
-        plusieurs maux : oppositions partisannes, lobbies,
-        court-termisme. La plupart sont liés aux échéances électorales,
-        et les hommes et femmes politiques sont victimes de cette situation.
-    </p>
-    <p>
-        Une assemblée citoyenne court-circuite ces travers : pas de logique de
-        partis, pas de court-termisme électoral ni de crainte de froisser telle
-        ou telle partie de l’électorat.
-    </p>
-    <p>
-        Les membres d'une assemblée citoyenne sont libres de se concentrer
-        pleinement sur leur mandat.
-    </p>
-    <p>
-        Quand les sujets à traiter sont trop brûlants,
-        une assemblée citoyenne peut donc venir en aide
-        aux structures politiques classiques.
-    </p>
-    <p>
-        C'est un outil démocratique à découvrir car il favorise
-        une démocratie plus apaisée et plus efficace.
-    </p>
-
-    <div class="youtube-video-wrapper">
-        <iframe width="560" height="315"
-            src="https://www.youtube.com/embed/UHq1LH_hfQ8"
-            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
-        </iframe>
+    <div class="btn-group btn-group-homepage-share">
+            <a class="btn btn-share" target="_blank"
+                href="https://twitter.com/intent/tweet?text=++%23soutenonsLaConvention+%23ConventionCitoyenne&amp;url=https%3A%2F%2Fsoutenonslaconvention.fr">
+                <img src="${static('img/icon-twitter.svg')}" alt=""/>
+                Partager sur Twitter
+            </a>
+            <button id="btn-fb-share" class="btn btn-share">
+                <img src="${static('img/icon-facebook.svg')}" alt=""/>
+                Partager sur Facebook
+            </button>
     </div>
-
-    <!--h3>Présentation de la Convention par Cyril Dion</h3>
-    <div class="youtube-video-wrapper">
-        <iframe width="560" height="315"
-            src="https://www.youtube.com/embed/SIyoEGizt8M?start=3026"
-            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
-        </iframe>
-    </div-->
-
-
-
+    <script>
+    window.fbAsyncInit = function() {
+        FB.init({
+          appId            : '3346451028718611',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v7.0'
+        });
+    };
+    </script>
+    <script async="true" defer="true" src="https://connect.facebook.net/fr_FR/sdk.js">
+    </script>
+    <script>
+        document.getElementById('btn-fb-share').onclick = function(e) {
+            var fb_share_url = "https://soutenonslaconvention.fr";
+            FB.ui({
+                display: 'popup',
+                method: 'share',
+                href: fb_share_url,
+                hashtag: '#soutenonsLaConvention'
+              }, function(response){});
+            return false;
+        }
+    </script>
 </div>
 </div>
 
+<div class="wrapper green-bg">
+<div class="container">
+
+    <h2 style="margin: -30px 0">Ils soutiennent la Convention</h2>
+
+</div>
+</div>
 
 <div class="wrapper">
+<div class="container" style="max-width: 90%">
+
+    <div class="soutiens-banner">
+        <div class="soutiens-highlight">
+            <img src="${static('img/good-planet.jpg')}" alt="Fondation Good Planet"/>
+            <img src="${static('img/medecins-du-monde.jpg')}" alt="Médecins du Monde"/>
+            <img src="${static('img/youth-for-climate-france.png')}" alt="Youth For Climate France"/>
+        </div>
+        <div class="soutiens-others">
+            <img src="${static('img/alter-pub.jpg')}" alt="Alter Pub"/>
+            <img src="${static('img/airsanteclimat.png')}" alt="Air Santé Climat"/>
+            <img src="${static('img/asef.png')}" alt="Association Santé Environnement France"/>
+            <img src="${static('img/climactes.png')}" class="bigger" alt="Climactes"/>
+            <img src="${static('img/collectif-environnement-sante.jpg')}" class="bigger" alt="Collectif Environnement Santé 74"/>
+            <img src="${static('img/fne.png')}" alt="France Nature Environnement"/>
+            <img src="${static('img/karuna-shechen.png')}" alt="Karuna Shechen"/>
+            <img src="${static('img/fva.png')}" alt="Fondation Vaincre Alzheimer"/>
+            <img src="${static('img/reseau-env-sante.jpg')}" alt="Réseau environnement santé"/>
+            <img src="${static('img/pepsel.png')}" class="bigger" alt="PEPSEL"/>
+            <img src="${static('img/aseara.png')}" alt="Association Santé Environnement Auvergne Rhônes-Alpes"/>
+            <img src="${static('img/sfse.png')}" alt="Société Francophone de Santé et Environnement"/>
+            <img src="${static('img/liegepourleclimat.png')}" alt="Liège pour le Climat"/>
+            <img src="${static('img/strasbourg.png')}" alt="Strasbourg Respire"/>
+            <img src="${static('img/wecf.png')}" alt="Liège pour le Climat"/>
+            <img src="${static('img/zea.png')}" alt="ZEA Libérons l'Océan"/>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="wrapper green-bg">
+<div class="container">
+
+    <p style="margin: -30px 0">
+        <a href="${urlfor('soutiens')}" class="btn btn-reverse">Voir / Rejoindre les soutiens transpartisans</a>
+    </p>
+
+</div>
+</div>
+
+<div class="wrapper grey-bg">
 <div class="container">
 
     <h2>
@@ -179,12 +163,142 @@
 </div>
 </div>
 
+<div class="wrapper">
+<div class="container">
+
+    <h2>C'est quoi la Convention Citoyenne ?</h2>
+
+    <!--p>
+
+        <img src="${static('img/membres-convention.jpg')}"
+            alt="les 150 membres de la Convention Citoyenne pour le Climat"/>
+        <span class="copyright">©Katrin Baumann</span>
+    </p-->
+    <p>
+        La <a target="_blank" href="https://www.conventioncitoyennepourleclimat.fr/">Convention
+            Citoyenne pour le Climat</a> est composée de citoyens comme vous et moi,
+        tirés au sort, représentatifs de la diversité française, qui, pendant 9
+        mois, se sont informés, ont auditionné des experts, débattu et on fait mûrir
+        leurs réflexions. C’est notre intelligence collective mise au service de
+        l’intérêt général.
+    </p>
+    <p>
+        Leur mandat, défini par le président :
+    </p>
+    <p>
+        <i>Trouver des mesures pour réduire les
+        émission de gaz à effet de serre d’au moins 40% d’ici 2030, dans un
+        esprit de justice sociale</i>.
+    </p>
+
+</div>
+</div>
+
+<div class="wrapper grey-bg">
+<div class="container">
+
+    <h2> Sont-ils légitimes ?</h2>
+    <p>
+        Dans une démocratie représentative, les élections
+        ne sont pas une fin en soi, c'est un moyen de choisir nos représentants.
+        Il en existe d'autres, comme le tirage au sort.
+    </p>
+    <p>
+        Les citoyens de la Convention sont, par définition, représentatifs de la
+        société française. C'est un échantillon représentatif de la société en
+        terme d'âge, de sexe, de classe socio-professionnelle et de répartition
+        géographique. A cet égard, on peut même dire qu'ils sont plus
+        représentatifs que les élus.
+    </p>
+
+</div>
+</div>
+
+<div class="wrapper">
+<div class="container">
+
+    <h2>N'est-ce pas le travail des élus ?</h2>
+    <p>
+        Le système politique actuel, en France comme ailleurs, souffre de
+        plusieurs maux : oppositions partisannes, lobbies,
+        court-termisme. La plupart sont liés aux échéances électorales,
+        et les hommes et femmes politiques sont victimes de cette situation.
+    </p>
+    <p>
+        Une assemblée citoyenne court-circuite ces travers
+        et, quand les sujets à traiter sont trop brûlants,
+        peut venir en aide aux structures politiques classiques.
+    </p>
+    <p>
+        C'est un outil démocratique à découvrir car il favorise
+        une démocratie plus apaisée et plus efficace.
+    </p>
+
+    <div class="youtube-video-wrapper">
+        <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/UHq1LH_hfQ8"
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+        </iframe>
+    </div>
+
+    <!--h3>Présentation de la Convention par Cyril Dion</h3>
+    <div class="youtube-video-wrapper">
+        <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/SIyoEGizt8M?start=3026"
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="">
+        </iframe>
+    </div-->
+
+</div>
+</div>
+
+<!--div class="wrapper">
+<div class="container">
+
+    <h2>Les Enjeux</h2>
+
+    <h4>L'enjeu démocratique</h4>
+    <p>
+        Pendant 9 mois, 150 citoyens représentatifs de la diversité
+        française ont travaillé ensemble.
+    </p>
+    <p>
+        Ils ont prouvé que des citoyens peuvent s'emparer de sujets complexes
+        et aboutir à des propositions solides et ambitieuses.
+    </p>
+    <p>
+        Ils ont aussi montré qu'il est possible en France d'avoir
+        un débat apaisé et constructif sur des sujets difficiles.
+    </p>
+
+    <h4>L'enjeu écologique</h4>
+    <p>
+        La plupart d'entre nous pensons être conscients de l'urgence climatique.
+        C'était aussi le cas des 150 citoyens tirés au sort.
+    </p>
+    <p>
+        Pourtant, ils nous disent avoir pris une baffe au début de leurs travaux.
+    </p>
+
+</div>
+</div-->
+
 
 <div class="wrapper grey-bg">
 <div class="container">
 
     <h2>Quelles sont leurs propositions ?</h2>
 
+    <p>
+        Nous trouverons tous des mesures qui nous conviennent et d’autres moins.
+        Ce n’est plus la question.
+    </p>
+    <p>
+        Sans renoncer à nos sensibilités respectives, il est temps de s’allier derrière
+        des propositions qui ont une forte légitimité démocratique
+        et qui, en tant que propositions formant un ensemble cohérent,
+        sont ce qu’il y a de plus abouti sur la table du gouvernement.
+    </p>
     <div class="btn-group">
         <a class="btn" target="_blank" href="https://propositions.conventioncitoyennepourleclimat.fr/">
             Voir les propositions
@@ -202,8 +316,8 @@
     <h2>Qui sommes-nous ?</h2>
     <p>
         <i>Soutenons La Convention</i> est une initiative
-        initiée par 2 citoyens conscients de l'intérêt des assemblées
-        citoyennes et de l'urgence écologique.
+        initiée par 2 citoyens sensibilisés à l'intérêt des assemblées
+        citoyennes et à l'urgence écologique.
     </p>
     <div class="btn-group">
         <a class="btn" href="${urlfor('about')}">

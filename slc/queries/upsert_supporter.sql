@@ -1,4 +1,4 @@
--- :result :scalar
+-- :result :one
 --
 INSERT INTO supporters (
     email,
@@ -18,7 +18,7 @@ INSERT INTO supporters (
     :first_name,
     :last_name,
     :account_confirmed)
-ON CONFLICT (email) DO UPDATE SET 
+ON CONFLICT (email) DO UPDATE SET
     email=:email,
     social_provider=:provider,
     social_id=:social_id,
@@ -27,4 +27,4 @@ ON CONFLICT (email) DO UPDATE SET
     first_name=:first_name,
     last_name=:last_name,
     account_confirmed=:account_confirmed
-RETURNING id;
+RETURNING id, created_at=now();

@@ -18,7 +18,7 @@ body {
     padding: 0;
     color: #444;
     color: var(--text-color);
-    font-family: sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 19px;
     line-height: 1.5;
 }
@@ -31,6 +31,11 @@ img {
 .wrapper--homepage-before-footer {
     padding-bottom: 80px;
     margin-bottom: -50px;
+}
+.green-bg {
+    background-color: #44a777;
+    background-color: var(--green);
+    color: #fff;
 }
 .container {
     margin: 1em auto 1em;
@@ -47,7 +52,7 @@ img {
 .menu {
     display: flex;
     align-items: baseline;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 400;
 }
 .menu a {
@@ -65,7 +70,6 @@ img {
     background-color: #44a777;
     background-color: var(--green);
     margin-bottom: 0;
-    max-height: 315px;
 }
 .banner .container {
     margin-bottom: 0;
@@ -86,7 +90,7 @@ img {
     transition: 0.3s;
 }
 .title-line2 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 300;
     letter-spacing: -2px;
     white-space: nowrap;
@@ -98,13 +102,13 @@ img {
 }
 .hashtags {
     color: #fff;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 300;
     letter-spacing: 1px;
     font-size: 30px;
     margin: 0;
     line-height: 35px;
-    padding-bottom: 50px;
+    padding-bottom: 60px;
     padding-left: 30px;
     transition: 0.3s;
 }
@@ -146,7 +150,7 @@ img {
     text-decoration: none;
 }
 .counter-cta:hover {
-    background-color: #65ca99;
+    background-color: #328f62;
 }
 .counter > * {
     display: block;
@@ -157,7 +161,7 @@ img {
 }
 .counter-sign {
     font-size: 40px;
-    margin-top: 6px;
+    margin-top: 10px;
 }
 .counter-since {
     font-size: 20px;
@@ -273,7 +277,7 @@ a {
     font-weight: 400;
 }
 .btn {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     display: inline-block;
     padding: 14px 50px;
     border-radius: 3px;
@@ -288,7 +292,7 @@ a {
     text-align: center;
 }
 .btn:hover {
-    background-color: #65ca99;
+    background-color: #328f62;
 }
 .btn:hover, .btn:active, .btn:visited {
     text-decoration: none;
@@ -333,6 +337,9 @@ a {
     background-color: #fff;
 }
 @media (max-width: 800px) {
+    .btn {
+        width: 100%;
+    }
     .btn-group {
         display: flex;
         flex-wrap: wrap;

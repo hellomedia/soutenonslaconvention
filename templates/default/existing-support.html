@@ -1,0 +1,67 @@
+<py:extends href="../support.html" py:whitespace="strip">
+
+<py:block name="content">
+
+    <style media="screen">
+        .heart {
+            max-width: 100px;
+            margin-right: 1vw;
+        }
+        .next {
+
+        }
+        .next li {
+            margin: 10px 0;
+        }
+    </style>
+
+    <div class="wrapper">
+        <div class="container">
+            <h1>
+                Votre soutien est déjà comptabilisé<span class="no-wrap">&nbsp;!</span>
+            </h1>
+            <p style="display: flex; justify-content: flex-start;">
+                <img class="heart" src="${static('img/heart.svg')}" />
+                <img class="heart" src="${static('img/heart.svg')}" />
+                <img class="heart" src="${static('img/heart.svg')}" />
+            </p>
+            <div class="btn-group btn-group-homepage-share">
+                    <a class="btn btn-share" target="_blank"
+                        href="https://twitter.com/intent/tweet?text=++%23soutenonsLaConvention+%23ConventionCitoyenne&amp;url=https%3A%2F%2Fsoutenonslaconvention.fr">
+                        <img src="${static('img/icon-twitter.svg')}" alt=""/>
+                        Partager sur Twitter
+                    </a>
+                    <button id="btn-fb-share" class="btn btn-share">
+                        <img src="${static('img/icon-facebook.svg')}" alt=""/>
+                        Partager sur Facebook
+                    </button>
+            </div>
+            <script>
+            window.fbAsyncInit = function() {
+                FB.init({
+                  appId            : '3346451028718611',
+                  autoLogAppEvents : true,
+                  xfbml            : true,
+                  version          : 'v7.0'
+                });
+            };
+            </script>
+            <script async="true" defer="true" src="https://connect.facebook.net/fr_FR/sdk.js">
+            </script>
+            <script>
+                document.getElementById('btn-fb-share').onclick = function(e) {
+                    var fb_share_url = "https://soutenonslaconvention.fr";
+                    FB.ui({
+                        display: 'popup',
+                        method: 'share',
+                        href: fb_share_url,
+                        hashtag: '#soutenonsLaConvention'
+                      }, function(response){});
+                    return false;
+                }
+            </script>
+
+        </div>
+    </div>
+</py:block>
+</py:extends>
