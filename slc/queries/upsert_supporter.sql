@@ -26,5 +26,5 @@ ON CONFLICT (email) DO UPDATE SET
     full_name=:full_name,
     first_name=:first_name,
     last_name=:last_name,
-    account_confirmed=:account_confirmed
+    account_confirmed=supporters.account_confirmed or :account_confirmed
 RETURNING id, created_at=now();
