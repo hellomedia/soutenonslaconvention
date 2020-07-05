@@ -297,6 +297,14 @@ a {
 .btn:hover, .btn:active, .btn:visited {
     text-decoration: none;
 }
+.btn-i-support {
+    font-family: 'Shadows Into Light', Arial, sans-serif;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+.btn.btn-i-support {
+    font-size: 20px;
+}
 .btn-secondary {
     --button-bg: #eeeeee;
     --button-fg: #666;
