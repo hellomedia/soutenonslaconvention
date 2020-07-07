@@ -6,18 +6,26 @@
     margin-right: -50px;
 }
 .soutiens-grid > div {
-    margin-right: 50px;
-    margin-bottom: 50px;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
 .soutiens-grid img {
-    max-height: 150px;
+    max-height: 125px;
 }
 .soutiens-grid .bigger {
-    max-height: 180px;
+    max-height: 150px;
 }
 .soutien-item-title {
     margin-left: 15px;
     font-style: italic;
     font-size: 16px;
     color: #666;
+}
+@media (max-width: 600px) {
+    .soutiens-grid img {
+        max-height: 100px;
+    }
+    .soutiens-grid .bigger {
+        max-height: 120px;
+    }
 }
