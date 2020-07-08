@@ -20,7 +20,6 @@ from slc.oauthlogin import get_oauth2session
 from slc.templating import piglet
 
 
-
 def homepage(request):
     return piglet.render(
         "default/index.html",
@@ -33,9 +32,9 @@ def templated_page(request, template):
 
 
 def soutiens(request):
-    return piglet.render(
-        "default/soutiens.html", {}
-    ).add_headers(cache_control="must-revalidate, max-age=3", vary="cookie")
+    return piglet.render("default/soutiens.html", {}).add_headers(
+        cache_control="must-revalidate, max-age=3", vary="cookie"
+    )
 
 
 def support_us(request):
@@ -43,13 +42,11 @@ def support_us(request):
 
 
 def petition_count(request):
-    count = (
-        supporters.supporter_count(request.getconn())
-        + 31300
+    count = supporters.supporter_count(request.getconn()) + 31300
+    return Response(request.format(count)).add_headers(
+        cache_control="must-revalidate, max-age=3", vary="cookie"
     )
-    return Response(
-        request.format(count)
-    ).add_headers(cache_control="must-revalidate, max-age=3", vary="cookie")
+
 
 def support_us_email(request):
 
