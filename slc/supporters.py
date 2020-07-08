@@ -39,6 +39,7 @@ class Supporter:
     display_image: Optional[str]
     year_of_birth: Optional[NumericRange]
     occupation_id: Optional[int]
+    signed_mesopinions_petition: bool = False
 
     def display_image_url(self):
 
@@ -115,6 +116,7 @@ def update_profile(
     display_image=None,
     year_of_birth=None,
     occupation_id=None,
+    signed_mesopinions_petition=False,
 ):
     if year_of_birth is None:
         year_of_birth_val = None
@@ -131,6 +133,7 @@ def update_profile(
         display_image=display_image,
         occupation_id=occupation_id,
         year_of_birth=year_of_birth_val,
+        signed_mesopinions_petition=signed_mesopinions_petition,
     )
 
 
