@@ -14,7 +14,6 @@ from slc import options
 from slc import suggestions
 from slc import supporters
 from slc import queries
-from slc import petition
 from slc.oauthlogin import OAUTH_PROVIDERS
 from slc.oauthlogin import fetch_profile
 from slc.oauthlogin import get_oauth2session
