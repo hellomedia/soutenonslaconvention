@@ -1,0 +1,12 @@
+.Pagination {
+    display: flex;
+    justify-content: center;
+}
+.Pagination a {
+    display: block;
+}
+.Pagination a + a {
+    margin-left: 0.5em;
+    padding-left: 0.5em;
+    border-left: 1px solid #ddd;
+}

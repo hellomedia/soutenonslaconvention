@@ -1,6 +1,7 @@
 import logging
 from dataclasses import dataclass
 from datetime import date
+from datetime import datetime
 from embrace.exceptions import NoResultFound
 from typing import Any
 from typing import Callable
@@ -29,9 +30,12 @@ logger = logging.getLogger(__name__)
 @dataclass
 class Supporter:
     id: int
+    created_at: datetime
+    social_id: Optional[str]
     display_name: Optional[str]
     full_name: Optional[str]
     email: Optional[str]
+    account_confirmed: bool
     reason: Optional[str]
     suggestion: Optional[str]
     image_path: Optional[str]
@@ -39,6 +43,7 @@ class Supporter:
     display_image: Optional[str]
     year_of_birth: Optional[NumericRange]
     occupation_id: Optional[int]
+    signed_mesopinions_petition: bool = False
 
     def display_image_url(self):
 
@@ -112,9 +117,10 @@ def update_profile(
     reason=None,
     suggestion=None,
     image_path=None,
-    display_image=None,
+    photo_option=None,
     year_of_birth=None,
     occupation_id=None,
+    signed_mesopinions_petition=False,
 ):
     if year_of_birth is None:
         year_of_birth_val = None
@@ -128,9 +134,10 @@ def update_profile(
         reason=reason,
         suggestion=suggestion,
         image_path=image_path,
-        display_image=display_image,
+        photo_option=photo_option,
         occupation_id=occupation_id,
         year_of_birth=year_of_birth_val,
+        signed_mesopinions_petition=signed_mesopinions_petition,
     )
 
 
@@ -144,7 +151,9 @@ def download_social_image(conn, supporter_id):
     ):
         for chunk in r.iter_content(chunk_size=1024):
             f.write(chunk)
-    update_profile(conn, supporter_id, image_path=get_filename())
+    update_profile(
+        conn, supporter_id, image_path=get_filename(), photo_option="existing"
+    )
 
 
 def send_confirmation_email(
@@ -219,3 +228,16 @@ def year_of_birth_range_options(
 
 def occupation_options(conn) -> List[Tuple[int, str]]:
     return list(queries.occupations(conn))
+
+
+def get_supporter_list(
+    conn, limit=500, offset=0
+) -> Tuple[List[Supporter], bool]:
+    result = [
+        Supporter(**row._asdict())
+        for row in queries.supporter_list(conn, limit=limit + 1, offset=offset)
+    ]
+    has_more_results = len(result) == limit + 1
+    if has_more_results:
+        result.pop()
+    return result, has_more_results

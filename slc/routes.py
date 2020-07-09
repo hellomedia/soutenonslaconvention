@@ -29,11 +29,7 @@ __routes__ = [
         GET="slc.views.petition_count",
         name="petition-count",
     ),
-    Route(
-        "/soutiens",
-        GET="slc.views.soutiens",
-        name="soutiens",
-    ),
+    Route("/soutiens", GET="slc.views.soutiens", name="soutiens",),
     Route(
         "/test", GET=templated_page, template="default/test.html", name="test",
     ),
@@ -73,4 +69,5 @@ __routes__ = [
     Route(
         "/filepond/", POST="slc.views.filepond_upload", name="filepond-upload"
     ),
+    Route("/admin/", GET="slc.views.supporter_list", name="admin-home"),
 ]

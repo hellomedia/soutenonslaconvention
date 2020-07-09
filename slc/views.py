@@ -1,5 +1,3 @@
-import json
-
 from email_validator import validate_email
 from email_validator import EmailNotValidError
 from fresco import Response
@@ -9,17 +7,17 @@ from fresco import urlfor
 from fresco.exceptions import Forbidden
 from fresco_flash import flash
 
+from slc import auth
 from slc import fileuploads
 from slc import options
 from slc import suggestions
 from slc import supporters
 from slc import queries
-from slc import petition
 from slc.oauthlogin import OAUTH_PROVIDERS
 from slc.oauthlogin import fetch_profile
 from slc.oauthlogin import get_oauth2session
+from slc.supporterform import SupporterForm
 from slc.templating import piglet
-
 
 
 def homepage(request):
@@ -34,9 +32,9 @@ def templated_page(request, template):
 
 
 def soutiens(request):
-    return piglet.render(
-        "default/soutiens.html", {}
-    ).add_headers(cache_control="must-revalidate, max-age=3", vary="cookie")
+    return piglet.render("default/soutiens.html", {}).add_headers(
+        cache_control="must-revalidate, max-age=3", vary="cookie"
+    )
 
 
 def support_us(request):
@@ -44,13 +42,11 @@ def support_us(request):
 
 
 def petition_count(request):
-    count = (
-        supporters.supporter_count(request.getconn())
-        + 31300
+    count = supporters.supporter_count(request.getconn()) + 31300
+    return Response(request.format(count)).add_headers(
+        cache_control="must-revalidate, max-age=3", vary="cookie"
     )
-    return Response(
-        request.format(count)
-    ).add_headers(cache_control="must-revalidate, max-age=3", vary="cookie")
+
 
 def support_us_email(request):
 
@@ -134,17 +130,12 @@ def oauth_callback(request, provider):
 
 
 def support_step(request):
-    if not request.is_authenticated():
-        return Response.redirect(support_us)
-    try:
-        step = int(request.get("step"))
-    except (TypeError, ValueError):
+    step = request.getint("step", None)
+    if step is None or not request.is_authenticated():
         return Response.redirect(support_us)
 
     conn = request.getconn()
-    supporter = supporters.get_supporter_by_id(
-        request.getconn(), request.get_user_id()
-    )
+    supporter = supporters.get_supporter_by_id(conn, request.get_user_id())
     if supporter is None:
         return Response.redirect(support_us)
 
@@ -166,37 +157,22 @@ def support_step(request):
 
 
 def support_step_submit(request):
-    if not request.is_authenticated():
-        return Response.redirect(support_us)
-    try:
-        step = int(request.get("step"))
-    except (TypeError, ValueError):
+    step = request.getint("step", None)
+    if step is None or not request.is_authenticated():
         return Response.redirect(support_us)
 
     conn = request.getconn()
     if "skip" not in request:
-        data = dict(request.form)
-        data.pop("step")
-        photo_option = data.pop("photo-option", "existing")
-        display_image = {
-            "upload": data.get("image_path"),
-            "existing": None,
-            "none": None,
-        }[photo_option]
-        try:
-            data["year_of_birth"] = json.loads(data.get("year_of_birth"))
-        except (TypeError, ValueError):
-            data["year_of_birth"] = None
-        try:
-            data["occupation_id"] = int(data.get("occupation_id"))
-        except (TypeError, ValueError):
-            data["occupation_id"] = None
+        form = SupporterForm()
+        form.bind_input(request.form)
+        if form.errors:
+            raise AssertionError(
+                f"Form validation failed unexpectedly: {form.errors!r}"
+            )
+
         with queries.transaction(conn):
             supporters.update_profile(
-                conn,
-                id=request.get_user_id(),
-                display_image=display_image,
-                **data,
+                conn, id=request.get_user_id(), **form.data
             )
     return Response.redirect(support_step, _query={"step": step + 1})
 
@@ -225,3 +201,22 @@ def filepond_upload(request, media_dir="media/"):
     metadata, upload = form.getlist(key)
     filename = fileuploads.upload(media_dir, upload)
     return Response([filename], content_type="text/plain")
+
+
+@auth.require_admin
+def supporter_list(request):
+    limit = request.getint("limit", 500)
+    offset = request.getint("offset", 0)
+    ss, has_more_results = supporters.get_supporter_list(
+        request.getconn(), limit, offset
+    )
+    return piglet.render(
+        "admin/supporters-list.html",
+        {
+            "count": supporters.supporter_count(request.getconn()),
+            "supporters": ss,
+            "limit": limit,
+            "offset": offset,
+            "has_more_results": has_more_results,
+        },
+    )

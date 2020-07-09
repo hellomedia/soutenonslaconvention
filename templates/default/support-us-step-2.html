@@ -110,13 +110,17 @@
                         </label>
                         <label>
                             <select name="occupation_id">
-                                <option>Je suis…</option>
+                                <option value="">Je suis…</option>
                                 <option
                                     py:for="value, label in occupation_options"
                                     value="$value"
                                     selected="${1 if value == supporter.occupation_id else None}"
                                 >$label</option>
                             </select>
+                        </label>
+                        <label class="u-Flex u-Flex-colGap u-Flex-alignItemsStart">
+                            <span style="line-height: 1.5em"><input type="checkbox" value="1" name="signed_mesopinions_petition" checked="${1 if supporter.signed_mesopinions_petition else None}"/></span>
+                            <span>J'ai déjà signé la pétition de soutien à la contribution de sortie de crise</span>
                         </label>
                         <hr />
                         <h3 class="form-section-title">Infos publiques</h3>
@@ -129,31 +133,23 @@
                             <input name="display_name" type="text" value="${supporter.display_name or supporter.full_name}" placeholder="Prénom + nom (ou pseudo)"/>
                         </label>
                         <div class="u-Flex u-Flex-justifyBetween PhotoChooser" py:with="selected = 'existing' if supporter.display_image else 'none'">
-                            <div py:if="bool(supporter.display_image)">
-                                <!--! user has previously uploaded a photo or selected to show their social media photo -->
-                                <input id="photo-existing" class="RadioChoice" type="radio" name="photo-option" value="existing" checked="${1 if selected == 'existing' else None}"/>
-                                <label for="photo-existing" class="photo-existing">
-                                    <span class="label-top">Votre photo</span>
-                                    <img src="${supporter.display_image_url()}" style="max-width: 4em"/>
-                                </label>
-                            </div>
-                            <div>
-                                <input id="photo-none" type="radio" class="RadioChoice" name="photo-option" value="none" checked="${1 if selected == 'none' else None}"/>
-                                <label for="photo-none">
-                                    <span class="label-top">Pas de photo</span>
-                                    <img class="no-picture-please" src="${static('img/no-picture-please.svg')}" />
-                                </label>
-                            </div>
                             <div py:if="bool(supporter.image_path)">
-                                <!-- photo previously uploaded (but deselected) or social media photo -->
-                                <input id="photo-existing" class="RadioChoice" type="radio" name="photo-option" value="existing" checked="${1 if selected == 'existing' else None}"/>
+                                <!-- photo previously uploaded or social media photo -->
+                                <input id="photo-existing" class="RadioChoice" type="radio" name="photo_option" value="&quot;existing&quot;" checked="${1 if selected == 'existing' else None}"/>
                                 <label for="photo-existing" style="width: 100%; height: 100%;" class="photo-existing">
                                     <span class="label-top">Votre photo</span>
                                     <img src="${supporter.uploaded_image_url()}" style="max-width: 4em"/>
                                 </label>
                             </div>
+                            <div>
+                                <input id="photo-none" type="radio" class="RadioChoice" name="photo_option" value="&quot;none&quot;" checked="${1 if selected == 'none' else None}"/>
+                                <label for="photo-none">
+                                    <span class="label-top">Pas de photo</span>
+                                    <img class="no-picture-please" src="${static('img/no-picture-please.svg')}" />
+                                </label>
+                            </div>
                             <div class="PhotoChooser-Upload">
-                                <input id="photo-upload" type="radio" class="RadioChoice" name="photo-option" value="upload" checked="${1 if selected == 'upload' else None}"/>
+                                <input id="photo-upload" type="radio" class="RadioChoice" name="photo_option" value="&quot;upload&quot;" checked="${1 if selected == 'upload' else None}"/>
                                 <label for="photo-upload">
                                     <span class="label-top">Choisir une photo</span>
                                     <input name="image_path" type="file" />
@@ -166,7 +162,7 @@
                             Votre raison pourrait être celle qui résonne !
                         </p>
 
-                        <div class="BlockBg-Footer  u-Flex u-Flex-justifyBetween">
+                        <div class="BlockBg-Footer u-Flex u-Flex-justifyBetween">
                             <button class="btn btn-secondary btn-reverse" name="skip" type="submit">Passer cette étape</button>
                             <button class="btn btn-reverse" type="submit">Continuer</button>
                         </div>
