@@ -1,5 +1,3 @@
-import json
-
 from email_validator import validate_email
 from email_validator import EmailNotValidError
 from fresco import Response
@@ -17,6 +15,7 @@ from slc import queries
 from slc.oauthlogin import OAUTH_PROVIDERS
 from slc.oauthlogin import fetch_profile
 from slc.oauthlogin import get_oauth2session
+from slc.supporterform import SupporterForm
 from slc.templating import piglet
 
 
@@ -130,17 +129,12 @@ def oauth_callback(request, provider):
 
 
 def support_step(request):
-    if not request.is_authenticated():
-        return Response.redirect(support_us)
-    try:
-        step = int(request.get("step"))
-    except (TypeError, ValueError):
+    step = request.getint("step", None)
+    if step is None or not request.is_authenticated():
         return Response.redirect(support_us)
 
     conn = request.getconn()
-    supporter = supporters.get_supporter_by_id(
-        request.getconn(), request.get_user_id()
-    )
+    supporter = supporters.get_supporter_by_id(conn, request.get_user_id())
     if supporter is None:
         return Response.redirect(support_us)
 
@@ -162,37 +156,22 @@ def support_step(request):
 
 
 def support_step_submit(request):
-    if not request.is_authenticated():
-        return Response.redirect(support_us)
-    try:
-        step = int(request.get("step"))
-    except (TypeError, ValueError):
+    step = request.getint("step", None)
+    if step is None or not request.is_authenticated():
         return Response.redirect(support_us)
 
     conn = request.getconn()
     if "skip" not in request:
-        data = dict(request.form)
-        data.pop("step")
-        photo_option = data.pop("photo-option", "existing")
-        display_image = {
-            "upload": data.get("image_path"),
-            "existing": None,
-            "none": None,
-        }[photo_option]
-        try:
-            data["year_of_birth"] = json.loads(data.get("year_of_birth"))
-        except (TypeError, ValueError):
-            data["year_of_birth"] = None
-        try:
-            data["occupation_id"] = int(data.get("occupation_id"))
-        except (TypeError, ValueError):
-            data["occupation_id"] = None
+        form = SupporterForm()
+        form.bind_input(request.form)
+        if form.errors:
+            raise AssertionError(
+                f"Form validation failed unexpectedly: {form.errors!r}"
+            )
+
         with queries.transaction(conn):
             supporters.update_profile(
-                conn,
-                id=request.get_user_id(),
-                display_image=display_image,
-                **data,
+                conn, id=request.get_user_id(), **form.data_for_update()
             )
     return Response.redirect(support_step, _query={"step": step + 1})
 
