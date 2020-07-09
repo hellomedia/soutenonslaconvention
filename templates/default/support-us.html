@@ -50,14 +50,6 @@
     </style>
     <div class="petition-cta">
         <div class="u-Spaced" style="max-width: 30em; margin: auto;">
-            <form method="post">
-                <input class="SigninField SigninOption" name="email"
-                    type="email" value="${request.get('email')}" placeholder="adresse email"/>
-                <button class="btn" style="width:100%; text-align: center;" type="submit">
-                    J'apporte mon soutien
-                </button>
-            </form>
-            <a class="SigninOptionsDivider"><span>OU</span></a>
             <div class="u-Spaced">
                 <a class="SigninOption btn" href="${urlfor('oauth-login', provider='google')}">
                     <div class="u-Flex u-Flex-colGap u-Flex-alignItemsCenter">
@@ -78,6 +70,14 @@
                     </div>
                 </a>
             </div>
+            <a class="SigninOptionsDivider"><span>OU</span></a>
+            <form method="post">
+                <input class="SigninField SigninOption" name="email"
+                type="email" value="${request.get('email')}" placeholder="adresse email"/>
+                <button class="btn" style="width:100%; text-align: center;" type="submit">
+                    J'apporte mon soutien
+                </button>
+            </form>
         </div>
     </div>
 
