@@ -1,0 +1,28 @@
+:root {
+    --tableCellPadding: .5em;
+    --tableRule: rgba(0, 0, 0, 0.12);
+    --tableHover: rgba(0, 0, 0, 0.08);
+}
+.Table {
+	border-collapse: collapse;
+	width: 100%;
+}
+.Table>*>tr>* {
+	vertical-align: top;
+	text-align: left;
+    padding: var(--tableCellPadding);
+}
+.Table>tbody>tr>th {
+    text-align: right;
+}
+.Table-ruled>tbody>tr>* {
+    border-top: 1px solid var(--tableRule);
+}
+.Table-hover>*>tr:hover>*,
+.Table-hover>*>tr:focus-within>* {
+    background-color: var(--tableHover);
+}
+
+.Table-tightSpacing {
+    --tableCellPadding: 2px;
+}

@@ -69,4 +69,5 @@ __routes__ = [
     Route(
         "/filepond/", POST="slc.views.filepond_upload", name="filepond-upload"
     ),
+    Route("/admin/", GET="slc.views.supporter_list", name="admin-home"),
 ]

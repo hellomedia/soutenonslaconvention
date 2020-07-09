@@ -29,3 +29,6 @@ assetbuilder.add_paths(
     ],
     CSSDEPS,
 )
+assetbuilder.add_paths(
+    "admin-css", ["css/pagination.css", "css/tables.css"], CSSDEPS,
+)

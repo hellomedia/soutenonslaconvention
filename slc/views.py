@@ -7,6 +7,7 @@ from fresco import urlfor
 from fresco.exceptions import Forbidden
 from fresco_flash import flash
 
+from slc import auth
 from slc import fileuploads
 from slc import options
 from slc import suggestions
@@ -200,3 +201,22 @@ def filepond_upload(request, media_dir="media/"):
     metadata, upload = form.getlist(key)
     filename = fileuploads.upload(media_dir, upload)
     return Response([filename], content_type="text/plain")
+
+
+@auth.require_admin
+def supporter_list(request):
+    limit = request.getint("limit", 500)
+    offset = request.getint("offset", 0)
+    ss, has_more_results = supporters.get_supporter_list(
+        request.getconn(), limit, offset
+    )
+    return piglet.render(
+        "admin/supporters-list.html",
+        {
+            "count": supporters.supporter_count(request.getconn()),
+            "supporters": ss,
+            "limit": limit,
+            "offset": offset,
+            "has_more_results": has_more_results,
+        },
+    )

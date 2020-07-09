@@ -1,6 +1,7 @@
 import logging
 from dataclasses import dataclass
 from datetime import date
+from datetime import datetime
 from embrace.exceptions import NoResultFound
 from typing import Any
 from typing import Callable
@@ -29,9 +30,12 @@ logger = logging.getLogger(__name__)
 @dataclass
 class Supporter:
     id: int
+    created_at: datetime
+    social_id: Optional[str]
     display_name: Optional[str]
     full_name: Optional[str]
     email: Optional[str]
+    account_confirmed: bool
     reason: Optional[str]
     suggestion: Optional[str]
     image_path: Optional[str]
@@ -224,3 +228,16 @@ def year_of_birth_range_options(
 
 def occupation_options(conn) -> List[Tuple[int, str]]:
     return list(queries.occupations(conn))
+
+
+def get_supporter_list(
+    conn, limit=500, offset=0
+) -> Tuple[List[Supporter], bool]:
+    result = [
+        Supporter(**row._asdict())
+        for row in queries.supporter_list(conn, limit=limit + 1, offset=offset)
+    ]
+    has_more_results = len(result) == limit + 1
+    if has_more_results:
+        result.pop()
+    return result, has_more_results
