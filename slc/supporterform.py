@@ -12,6 +12,7 @@ class SupporterForm(morf.HTMLForm):
     year_of_birth = fields.Str(default=None)
     photo_option = fields.Choice(choices=["upload", "existing", "none"])
     image_path = fields.Str(default=None)
+    signed_mesopinions_petition = fields.Bool(default=False)
 
     @morf.cleans(year_of_birth)
     def clean_year_of_birth(self, yob):
