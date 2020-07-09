@@ -171,7 +171,7 @@ def support_step_submit(request):
 
         with queries.transaction(conn):
             supporters.update_profile(
-                conn, id=request.get_user_id(), **form.data_for_update()
+                conn, id=request.get_user_id(), **form.data
             )
     return Response.redirect(support_step, _query={"step": step + 1})
 

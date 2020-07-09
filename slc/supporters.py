@@ -113,7 +113,7 @@ def update_profile(
     reason=None,
     suggestion=None,
     image_path=None,
-    display_image=None,
+    photo_option=None,
     year_of_birth=None,
     occupation_id=None,
     signed_mesopinions_petition=False,
@@ -130,7 +130,7 @@ def update_profile(
         reason=reason,
         suggestion=suggestion,
         image_path=image_path,
-        display_image=display_image,
+        photo_option=photo_option,
         occupation_id=occupation_id,
         year_of_birth=year_of_birth_val,
         signed_mesopinions_petition=signed_mesopinions_petition,
@@ -147,7 +147,9 @@ def download_social_image(conn, supporter_id):
     ):
         for chunk in r.iter_content(chunk_size=1024):
             f.write(chunk)
-    update_profile(conn, supporter_id, image_path=get_filename())
+    update_profile(
+        conn, supporter_id, image_path=get_filename(), photo_option="existing"
+    )
 
 
 def send_confirmation_email(
