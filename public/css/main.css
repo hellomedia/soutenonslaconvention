@@ -272,6 +272,11 @@ footer a {
     color: rgba(255, 255, 255, 0.9);
 }
 
+.quote {
+    font-style: italic;
+    border-left: 6px solid #ccc;
+    padding-left: 20px;
+}
 a {
     color: grey;
     font-weight: 400;
