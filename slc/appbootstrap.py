@@ -69,7 +69,7 @@ app.add_middleware(
 app.add_middleware(FlashMiddleware)
 
 if options.USE_WSGISSI:
-    app.add_middleware(wsgissi.wsgissi)
+    app.add_middleware(wsgissi.wsgissi, app)
 
 app.static = StaticFiles(app)
 app.static.add_package("slc", "../_build", cache_max_age=120)
