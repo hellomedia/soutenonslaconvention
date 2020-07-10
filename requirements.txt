@@ -4,6 +4,10 @@
 #
 #    gup requirements.txt
 #
+#   If that does not work, run
+#   ./gup/gup venv/bin/gunicorn
+#
+#
 
 assetbuilder==1.0.2       # via -r requirements.in
 astunparse==1.6.3         # via piglet-templates
