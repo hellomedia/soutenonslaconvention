@@ -43,12 +43,16 @@
 
         <py:block name="suggestion-box">
             <p>
-                Une suggestion pour faire grandir ce projet ?
+                Une suggestion pour faire grandir cette initiative ?
             </p>
             <div class="js-suggestion-target AnimatedSuggestionBox">
-                <div class="SuggestionSubmitted">Merci pour votre suggestion!</div>
+                <div class="SuggestionSubmitted">
+                    <img class="heart" style="height: 50px;margin-right:15px" src="${static('img/heart.svg')}" />
+                    Merci pour votre suggestion !
+                </div>
                 <form class="SuggestionForm">
                     <textarea name="suggestion" style="margin-bottom: 10px;"></textarea>
+
                     <div class="u-AlignRight">
                         <button class="btn btn-s btn-reverse" hx-post="${urlfor('submit-suggestion')}" hx-target=".js-suggestion-target">
                             Envoyer
@@ -59,7 +63,7 @@
         </py:block>
 
 
-        <h3>Soutenons La Convention</h3>
+        <h3 style="margin-top: 40px">Soutenons La Convention</h3>
         <p>#soutenonsLaConvention</p>
         <p>
             <a target="_blank" href="https://www.facebook.com/Soutenons-la-Convention-102637561438247">
