@@ -1,55 +1,64 @@
-<py:extends href="support-us-step-2.html">
-
-<py:block name="heading">Une dernière chose…</py:block>
-
-<py:block name="form">
-
-    <p>
-        Et finissons par faire un peu de bruit sur les réseaux
-        <span class="u-NoWrap">sociaux !</span>
-    </p>
-
-    <input type="hidden" name="step" value="$step"/>
-
-    <a class="btn btn-reverse btn-share btn-twitter" target="_blank"
-        href="https://twitter.com/intent/tweet?text=++%23soutenonsLaConvention+%23ConventionCitoyenne&amp;url=https%3A%2F%2Fsoutenonslaconvention.fr">
-        <img src="${static('img/icon-twitter.svg')}" alt=""/>
-        Partager sur Twitter
-    </a>
-
-    <button id="btn-fb-share" class="btn btn-reverse btn-share btn-fb" style="width: 100%">
-        <img src="${static('img/icon-facebook.svg')}" alt=""/>
-        Partager sur Facebook
-    </button>
-
-    <script>
-    window.fbAsyncInit = function() {
-        FB.init({
-          appId            : '3346451028718611',
-          autoLogAppEvents : true,
-          xfbml            : true,
-          version          : 'v7.0'
-        });
-    };
-    </script>
-    <script async="true" defer="true" src="https://connect.facebook.net/fr_FR/sdk.js">
-    </script>
-    <script>
-        document.getElementById('btn-fb-share').onclick = function(e) {
-            var fb_share_url = "https://soutenonslaconvention.fr";
-            FB.ui({
-                display: 'popup',
-                method: 'share',
-                href: fb_share_url,
-                hashtag: '#ConventionCitoyenne'
-              }, function(response){});
-            return false;
+<py:extends href="../support.html" py:whitespace="strip">
+<py:block name="banner"/>
+<py:block name="content">
+    <style type="text/css">
+    .label-top {
+        display: block;
+        margin-bottom: 10px;
+    }
+    @media (max-width: 800px) {
+        .btn-secondary {
+            display: none;
         }
-    </script>
-
-    <div class="BlockBg-Footer u-Flex u-Flex-justifyFlexEnd">
-        <button class="btn btn-reverse" type="submit">Terminer</button>
+    }
+    </style>
+    <div class="wrapper">
+        <div class="container">
+            <div class="u-Constrained u-Constrained-m">
+                <h1 py:block="heading"></h1>
+                <form method="POST">
+                    <input type="hidden" name="step" value="$step"/>
+                    <div py:block="form" class="BlockBg js-form-target u-Spaced">
+                        <h3 class="form-section-title">Infos statistiques</h3>
+                        <p class="form-section-explanation">
+                            Ces champs seront uniquement utilisés à des fins statistiques.
+                        </p>
+                        <label>
+                            <select name="year_of_birth">
+                                <option>Année de naissance…</option>
+                                <py:for each="(start, end), selected in year_of_birth_range_options">
+                                    <option value="${json([start, end])}" selected="${1 if selected else None}">
+                                        <py:choose>
+                                            <py:when test="start is None">avant $end</py:when>
+                                            <py:when test="end is None">$start ou après</py:when>
+                                            <py:otherwise>$start – ${end - 1}</py:otherwise>
+                                        </py:choose>
+                                    </option>
+                                </py:for>
+                            </select>
+                        </label>
+                        <label>
+                            <select name="occupation_id">
+                                <option value="">Je suis…</option>
+                                <option
+                                    py:for="value, label in occupation_options"
+                                    value="$value"
+                                    selected="${1 if value == supporter.occupation_id else None}"
+                                >$label</option>
+                            </select>
+                        </label>
+                        <label class="u-Flex u-Flex-colGap u-Flex-alignItemsStart">
+                            <span style="line-height: 1.5em"><input type="checkbox" value="1" name="signed_mesopinions_petition" checked="${1 if supporter.signed_mesopinions_petition else None}"/></span>
+                            <span><b>J'ai déjà signé</b> la pétition de soutien à la contribution de sortie de crise</span>
+                        </label>
+                        <div class="BlockBg-Footer u-Flex u-Flex-justifyBetween">
+                            <button class="btn btn-secondary btn-reverse" name="skip" type="submit">Passer cette étape</button>
+                            <button class="btn btn-reverse" type="submit">Continuer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-
 </py:block>
 </py:extends>

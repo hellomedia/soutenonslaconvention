@@ -90,49 +90,25 @@
                 <form method="POST">
                     <input type="hidden" name="step" value="$step"/>
                     <div py:block="form" class="BlockBg js-form-target u-Spaced">
-                        <h3 class="form-section-title">Infos statistiques</h3>
-                        <p class="form-section-explanation">
-                            Ces champs seront uniquement utilisés à des fins statistiques.
-                        </p>
-                        <label>
-                            <select name="year_of_birth">
-                                <option>Année de naissance…</option>
-                                <py:for each="(start, end), selected in year_of_birth_range_options">
-                                    <option value="${json([start, end])}" selected="${1 if selected else None}">
-                                        <py:choose>
-                                            <py:when test="start is None">avant $end</py:when>
-                                            <py:when test="end is None">$start ou après</py:when>
-                                            <py:otherwise>$start – ${end - 1}</py:otherwise>
-                                        </py:choose>
-                                    </option>
-                                </py:for>
-                            </select>
-                        </label>
-                        <label>
-                            <select name="occupation_id">
-                                <option value="">Je suis…</option>
-                                <option
-                                    py:for="value, label in occupation_options"
-                                    value="$value"
-                                    selected="${1 if value == supporter.occupation_id else None}"
-                                >$label</option>
-                            </select>
-                        </label>
-                        <label class="u-Flex u-Flex-colGap u-Flex-alignItemsStart">
-                            <span style="line-height: 1.5em"><input type="checkbox" value="1" name="signed_mesopinions_petition" checked="${1 if supporter.signed_mesopinions_petition else None}"/></span>
-                            <span><b>J'ai déjà signé</b> la pétition de soutien à la contribution de sortie de crise</span>
-                        </label>
-                        <hr />
                         <h3 class="form-section-title">Infos publiques</h3>
                         <p class="form-section-explanation">
                             Montrer qui soutient - et pourquoi - aidera d'autres à
                             vous rejoindre.
                         </p>
                         <label>
-                            Nom (ou pseudo)
+                            Nom ou pseudo
                             <input name="display_name" type="text" value="${supporter.display_name or supporter.full_name}" />
                         </label>
-                        <div class="u-Flex u-Flex-justifyBetween PhotoChooser" py:with="selected = 'existing' if supporter.display_image else 'none'">
+
+                        <label>
+                            Pourquoi soutenez-vous la Convention ? (facultatif)
+                            <textarea name="reason">
+                                ${supporter.reason}
+                            </textarea>
+                        </label>
+
+                        <div class="u-Flex u-Flex-justifyBetween PhotoChooser" style="margin-top: 30px"
+                            py:with="selected = 'existing' if supporter.display_image else 'none'">
                             <div py:if="bool(supporter.image_path)">
                                 <!-- photo previously uploaded or social media photo -->
                                 <input id="photo-existing" class="RadioChoice" type="radio" name="photo_option" value="&quot;existing&quot;" checked="${1 if selected == 'existing' else None}"/>
@@ -157,7 +133,6 @@
                             </div>
                         </div>
 
-                        <textarea name="reason" placeholder="Pourquoi soutenez-vous la Convention ? (facultatif)"></textarea>
 
                         <div class="BlockBg-Footer u-Flex u-Flex-justifyBetween">
                             <button class="btn btn-secondary btn-reverse" name="skip" type="submit">Passer cette étape</button>
