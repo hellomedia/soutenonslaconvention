@@ -10,7 +10,9 @@ class SupporterForm(morf.HTMLForm):
     reason = fields.Str(default=None)
     occupation_id = fields.Int(default=None)
     year_of_birth = fields.Str(default=None)
-    photo_option = fields.Choice(choices=["upload", "existing", "none"], default=None)
+    photo_option = fields.Choice(
+        choices=["upload", "existing", "none"], default=None
+    )
     image_path = fields.Str(default=None)
     signed_mesopinions_petition = fields.Bool(default=False)
 
