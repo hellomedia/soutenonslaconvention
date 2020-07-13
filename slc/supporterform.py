@@ -19,6 +19,6 @@ class SupporterForm(morf.HTMLForm):
     @morf.cleans(year_of_birth)
     def clean_year_of_birth(self, yob):
         try:
-            json.loads(yob)
+            return json.loads(yob)
         except (TypeError, ValueError):
             return None
