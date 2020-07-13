@@ -162,7 +162,7 @@ def support_step_submit(request):
         return Response.redirect(support_us)
 
     conn = request.getconn()
-    if "skip" not in request:
+    if step == 2 and "skip" not in request:
         form = SupporterForm()
         form.bind_input(request.form)
         if form.errors:
