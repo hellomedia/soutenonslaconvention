@@ -1,77 +1,55 @@
-<py:extends href="../support.html" py:whitespace="strip">
+<py:extends href="support-us-step-2.html">
 
-<py:block name="content">
+<py:block name="heading">Une dernière chose…</py:block>
 
-    <style media="screen">
-        .heart {
-            max-width: 100px;
-            margin-right: 1vw;
+<py:block name="form">
+
+    <p>
+        Et finissons par faire un peu de bruit sur les réseaux
+        <span class="u-NoWrap">sociaux !</span>
+    </p>
+
+    <input type="hidden" name="step" value="$step"/>
+
+    <a class="btn btn-reverse btn-share btn-twitter" target="_blank"
+        href="https://twitter.com/intent/tweet?text=++%23soutenonsLaConvention+%23ConventionCitoyenne&amp;url=https%3A%2F%2Fsoutenonslaconvention.fr">
+        <img src="${static('img/icon-twitter.svg')}" alt=""/>
+        Partager sur Twitter
+    </a>
+
+    <button id="btn-fb-share" class="btn btn-reverse btn-share btn-fb" style="width: 100%">
+        <img src="${static('img/icon-facebook.svg')}" alt=""/>
+        Partager sur Facebook
+    </button>
+
+    <script>
+    window.fbAsyncInit = function() {
+        FB.init({
+          appId            : '3346451028718611',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v7.0'
+        });
+    };
+    </script>
+    <script async="true" defer="true" src="https://connect.facebook.net/fr_FR/sdk.js">
+    </script>
+    <script>
+        document.getElementById('btn-fb-share').onclick = function(e) {
+            var fb_share_url = "https://soutenonslaconvention.fr";
+            FB.ui({
+                display: 'popup',
+                method: 'share',
+                href: fb_share_url,
+                hashtag: '#ConventionCitoyenne'
+              }, function(response){});
+            return false;
         }
-        .next {
+    </script>
 
-        }
-        .next li {
-            margin: 10px 0;
-        }
-    </style>
-
-    <div class="wrapper">
-        <div class="container">
-            <h1>
-                Merci !
-            </h1>
-            <p style="display: flex; justify-content: flex-start;">
-                <img class="heart" src="${static('img/heart.svg')}" />
-                <img class="heart" src="${static('img/heart.svg')}" />
-                <img class="heart" src="${static('img/heart.svg')}" />
-            </p>
-            <p class="btn-group">
-                <a class="btn" href="${urlfor('index')}">
-                    Retour à la page d'accueil
-                </a>
-            </p>
-            <!--p style="margin-top: 40px;">
-                Quelle sera votre prochaine démarche ?
-            </p>
-            <ul class="next">
-                <li>
-                    <a href="${urlfor('soutiens')}" target="_blank">
-                        Soutenir en tant qu'association ou entreprise
-                    </a>
-                </li>
-                <li>
-                    <a href="https://fr.ulule.com/les150/" target="_blank">
-                        Soutenir le documentaire "Les 150" de Yann Arthus-Bertrand
-                    </a>
-                </li>
-                <li>
-                    <a href="https://twitter.com/SoutenonsLaCCC" target="_blank">
-                        Nous suivre sur twitter
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.facebook.com/les150ccc" target="_blank">
-                        Rejoindre les 150 sur facebook
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.facebook.com/les150ccc" target="_blank">
-                        Participer à un Climapéro
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.voterpourleclimat.fr/" target="_blank">Voter pour le Climat</a>
-                </li>
-                <li>
-                    <a href="" target="_blank">Voir la vidéo "On le fait"</a>
-                </li>
-                <li>
-                    <a href="" target="_blank">Suivre les 150 citoyens</a>
-                </li>
-                <li>Mieux comprendre les assemblées citoyennes</li>
-            </ul-->
-
-        </div>
+    <div class="BlockBg-Footer u-Flex u-Flex-justifyFlexEnd">
+        <button class="btn btn-reverse" type="submit">Terminer</button>
     </div>
+
 </py:block>
 </py:extends>

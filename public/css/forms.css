@@ -35,7 +35,7 @@ select {
     font-size: 0.9em;
     font-style: italic;
     margin: 5px 0 20px;
-    opacity: 0.6;
+    opacity: 0.7;
 }
 ::placeholder {
   color: #888;
