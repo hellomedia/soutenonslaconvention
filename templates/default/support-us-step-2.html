@@ -120,7 +120,7 @@
                         </label>
                         <label class="u-Flex u-Flex-colGap u-Flex-alignItemsStart">
                             <span style="line-height: 1.5em"><input type="checkbox" value="1" name="signed_mesopinions_petition" checked="${1 if supporter.signed_mesopinions_petition else None}"/></span>
-                            <span>J'ai déjà signé la pétition de soutien à la contribution de sortie de crise</span>
+                            <span><b>J'ai déjà signé</b> la pétition de soutien à la contribution de sortie de crise</span>
                         </label>
                         <hr />
                         <h3 class="form-section-title">Infos publiques</h3>
@@ -130,7 +130,7 @@
                         </p>
                         <label>
                             Nom (ou pseudo)
-                            <input name="display_name" type="text" value="${supporter.display_name or supporter.full_name}" placeholder="Prénom + nom (ou pseudo)"/>
+                            <input name="display_name" type="text" value="${supporter.display_name or supporter.full_name}" />
                         </label>
                         <div class="u-Flex u-Flex-justifyBetween PhotoChooser" py:with="selected = 'existing' if supporter.display_image else 'none'">
                             <div py:if="bool(supporter.image_path)">
@@ -158,9 +158,6 @@
                         </div>
 
                         <textarea name="reason" placeholder="Pourquoi soutenez-vous la Convention ? (facultatif)"></textarea>
-                        <p class="form-section-explanation">
-                            Votre raison pourrait être celle qui résonne !
-                        </p>
 
                         <div class="BlockBg-Footer u-Flex u-Flex-justifyBetween">
                             <button class="btn btn-secondary btn-reverse" name="skip" type="submit">Passer cette étape</button>
