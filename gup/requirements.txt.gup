@@ -4,14 +4,14 @@ set -e
 
 TMPDIR=$(pwd)
 TMPFILE=$(mktemp)
-gup -u requirements.in venv/bin/python
+gup -u requirements.in.checksum venv/bin/python
 ./venv/bin/pip install pip-tools
 ./venv/bin/pip-compile requirements.in -o "$TMPFILE"
 if [ -f setup.py ]; then
     echo "-e ." >> "$TMPFILE"
 fi
 sed -e "
-    s#file://$(realpath "$(pwd)")#.#; 
+    s#file://$(realpath "$(pwd)")#.#;
     /^--find-links/d;
     s/pip-compile.*requirements.in.*/gup requirements.txt/;
 " < "$TMPFILE" > "$1"

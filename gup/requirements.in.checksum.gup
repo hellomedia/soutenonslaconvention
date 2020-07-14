@@ -1,0 +1,3 @@
+#!/bin/sh
+gup -u requirements.in
+gup --contents requirements.in

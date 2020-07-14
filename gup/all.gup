@@ -1,6 +1,7 @@
 #!/bin/sh
 
 gup -u \
+    requirements.txt \
     venv/bin/gunicorn \
     .env.secret.local \
     $(for i in $(find public -type f \! -path "*/.gup/*"); do echo "$i" | sed -e 's/^public/_build/'; done)
