@@ -70,4 +70,10 @@ __routes__ = [
         "/filepond/", POST="slc.views.filepond_upload", name="filepond-upload"
     ),
     Route("/admin/", GET="slc.views.supporter_list", name="admin-home"),
+    Route(
+        "/organisations/", GET="slc.views.organisation_form", name="organisation"
+    ),
+    Route(
+        "/organisations/", POST="slc.views.organisation_form_submit", name="organisation-form-submit"
+    ),
 ]

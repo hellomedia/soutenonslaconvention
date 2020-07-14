@@ -12,11 +12,13 @@ from slc import fileuploads
 from slc import options
 from slc import suggestions
 from slc import supporters
+from slc import organisations
 from slc import queries
 from slc.oauthlogin import OAUTH_PROVIDERS
 from slc.oauthlogin import fetch_profile
 from slc.oauthlogin import get_oauth2session
 from slc.supporterform import SupporterForm
+from slc.organisationform import OrganisationForm
 from slc.templating import piglet
 
 
@@ -220,3 +222,24 @@ def supporter_list(request):
             "has_more_results": has_more_results,
         },
     )
+
+def organisation_form(request):
+    form = OrganisationForm(request.getconn())
+    return piglet.render("default/organisations.html", {"form": form})
+
+def organisation_form_submit(request):
+    conn = request.getconn()
+    form = OrganisationForm(conn)
+    form.bind_input(request.form)
+
+    if form.errors:
+        raise AssertionError(
+            f"Form validation failed unexpectedly: {form.errors!r}"
+        )
+
+    with queries.transaction(conn):
+        organisations.create_organisation(
+            conn, **form.data
+        )
+
+    return Response.redirect(organisation_form)

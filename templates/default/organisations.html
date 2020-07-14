@@ -1,0 +1,29 @@
+<py:extends href="../base.html">
+<py:block name="content">
+
+<div class="wrapper">
+<div class="container">
+
+<form class="" action="${urlfor('organisation-form-submit')}" method="post">
+
+    <div py:for="field in form.as_p()">
+
+            ${field.render_label()}
+        <div class="">
+            ${field.render_control()}
+        </div>
+
+
+    </div>
+
+    <div class="BlockBg-Footer u-Flex u-Flex-justifyBetween">
+        <button class="btn" type="submit">Continuer</button>
+    </div>
+
+</form>
+
+</div>
+</div>
+
+</py:block>
+</py:extends>
