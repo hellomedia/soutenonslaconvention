@@ -71,6 +71,11 @@ __routes__ = [
     ),
     Route("/admin/", GET="slc.views.supporter_list", name="admin-home"),
     Route(
+        "/admin/organisations",
+        GET="slc.views.organisation_list",
+        name="admin-organisations"
+    ),
+    Route(
         "/organisations/", GET="slc.views.organisation_form", name="organisation"
     ),
     Route(

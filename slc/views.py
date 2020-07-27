@@ -223,6 +223,24 @@ def supporter_list(request):
         },
     )
 
+@auth.require_admin
+def organisation_list(request):
+    limit = request.getint("limit", 100)
+    offset = request.getint("offset", 0)
+    os, has_more_results = organisations.get_organisation_list(
+        request.getconn(), limit, offset
+    )
+    return piglet.render(
+        "admin/organisations-list.html",
+        {
+            "count": organisations.organisation_count(request.getconn()),
+            "organisations": os,
+            "limit": limit,
+            "offset": offset,
+            "has_more_results": has_more_results,
+        },
+    )
+
 def organisation_form(request):
     form = OrganisationForm(request.getconn())
     return piglet.render("default/organisations.html", {"form": form})

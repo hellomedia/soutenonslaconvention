@@ -14,7 +14,7 @@ CREATE TABLE organisations (
     website TEXT,
     image_path TEXT,
     size organisation_size,
-    state organisation_state,
+    state organisation_state DEFAULT 'PENDING',
     org_type organisation_type,
     sector organisation_sector,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
