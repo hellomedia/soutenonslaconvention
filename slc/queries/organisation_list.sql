@@ -1,7 +1,7 @@
 -- :result :*
 SELECT
-    created_at, id, contact_name, contact_email, contact_phone, name, website,
-    image_path, size, state, sector, org_type
+    created_at, id, contact_name, contact_email, contact_phone, contact_role, name, website,
+    image_path, state, size, sector, org_type, scope, theme
 FROM organisations
 ORDER BY created_at DESC
 LIMIT :limit

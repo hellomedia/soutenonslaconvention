@@ -6,3 +6,5 @@ DROP TYPE organisation_size;
 DROP TYPE organisation_state;
 DROP TYPE organisation_type;
 DROP TYPE organisation_sector;
+DROP TYPE organisation_scope;
+DROP TYPE organisation_theme;

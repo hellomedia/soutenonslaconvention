@@ -17,11 +17,14 @@ class Organisation:
     contact_name: Optional[str]
     contact_email: bool
     contact_phone: Optional[str]
+    contact_role: Optional[str]
     image_path: Optional[str]
     size: Optional[str]
     state: Optional[str]
     org_type: Optional[str]
     sector: Optional[str]
+    scope: Optional[str]
+    theme: Optional[str]
 
 def organisation_count(conn) -> int:
     return queries.organisation_count(conn)

@@ -1,19 +1,42 @@
 <py:extends href="../base.html">
+
+<py:block name="counter" />
 <py:block name="content">
 
+<style type="text/css">
+.organisation-form h2 {
+    margin-bottom: 5px;
+}
+.organisation-form-item {
+    margin-bottom: 10px;
+}
+</style>
 <div class="wrapper">
 <div class="container">
 
-<form class="" action="${urlfor('organisation-form-submit')}" method="post">
+<form class="organisation-form" action="${urlfor('organisation-form-submit')}" method="post">
 
-    <div py:for="field in form.as_p()">
-
+    <h2>Organisation</h2>
+    <div class="organisation-form-item" py:for="field in form.as_p().select(
+        ['org_type', 'name', 'website', 'sector', 'scope'])">
             ${field.render_label()}
-        <div class="">
+        <div>
             ${field.render_control()}
         </div>
+    </div>
 
+    <div class="organisation-form-item" py:for="field in form.as_p().select(
+        ['size', 'theme'])">
+            ${field}
+    </div>
 
+    <h2>Personne de contact</h2>
+    <div class="organisation-form-item" py:for="field in form.as_p().select(
+        ['contact_name', 'contact_role', 'contact_email', 'contact_phone'])">
+            ${field.render_label()}
+        <div>
+            ${field.render_control()}
+        </div>
     </div>
 
     <div class="BlockBg-Footer u-Flex u-Flex-justifyBetween">
