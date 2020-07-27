@@ -100,22 +100,16 @@ img {
     margin-bottom: 20px;
     transition: 0.3s;
 }
-.hashtags {
+.banner-subtitle {
     color: #fff;
     font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 300;
     letter-spacing: 1px;
-    font-size: 30px;
+    font-size: 27px;
     margin: 0;
-    line-height: 35px;
+    line-height: 32px;
     padding-bottom: 60px;
-    padding-left: 30px;
-    transition: 0.3s;
-}
-.hashtag1 {
-    transition: 0.3s;
-}
-.hashtag2 {
+    padding-left: 0px;
     transition: 0.3s;
 }
 .counter-wrapper {
@@ -184,7 +178,7 @@ img {
         font-size: 36px;
         margin-top: -12px;
     }
-    .hashtags {
+    .banner-subtitle {
         font-size: 26px;
         line-height: 30px;
     }
@@ -206,7 +200,7 @@ img {
         font-size: 32px;
         margin-top: -10px;
     }
-    .hashtags {
+    .banner-subtitle {
         font-size: 22px;
         line-height: 25px;
     }
@@ -227,7 +221,7 @@ img {
         margin-top: -7px;
         padding-left: 0;
     }
-    .hashtags {
+    .banner-subtitle {
         font-size: 22px;
         padding-left: 0;
     }
@@ -247,11 +241,10 @@ img {
         font-size: 24px;
         margin-top: -5px;
     }
-    .hashtags {
+    .banner-subtitle {
         font-size: 20px;
     }
 }
-
 
 .grey-bg {
     background-color: #f2f2f2;
