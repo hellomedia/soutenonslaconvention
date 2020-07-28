@@ -14,24 +14,25 @@
 <div class="wrapper">
 <div class="container">
 
-<form class="organisation-form" action="${urlfor('organisation-form-submit')}" method="post">
+<form py:with="form=form.as_p()" class="organisation-form" action="${urlfor('organisation-form-submit')}" method="post">
 
     <h2>Organisation</h2>
-    <div class="organisation-form-item" py:for="field in form.as_p().select(
+
+    <div class="organisation-form-item" py:for="field in form.select(
         ['org_type', 'name', 'website', 'sector', 'scope'])">
-            ${field.render_label()}
+        ${field.render_label()}
         <div>
             ${field.render_control()}
         </div>
     </div>
 
-    <div class="organisation-form-item" py:for="field in form.as_p().select(
+    <div class="organisation-form-item" py:for="field in form.select(
         ['size', 'theme'])">
-            ${field}
+        ${field}
     </div>
 
     <h2>Personne de contact</h2>
-    <div class="organisation-form-item" py:for="field in form.as_p().select(
+    <div class="organisation-form-item" py:for="field in form.select(
         ['contact_name', 'contact_role', 'contact_email', 'contact_phone'])">
             ${field.render_label()}
         <div>

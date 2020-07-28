@@ -19,13 +19,13 @@ class OrganisationForm(morf.HTMLForm):
             ("M", "équipe 10 - 100 personnes"),
             ("L", "équipe > 100 personnes")
         ], default=None, displayname="Taille"
-    ),
-    theme = fields.Choice(
+    )
+    theme = fields.MultipleChoice(
         choices='get_theme_choices',
         widget=widgets.CheckboxGroup(),
         default=None,
         displayname="Thématique"
-    ),
+    )
     scope = fields.Choice(
         choices='get_scope_choices', default=None, displayname="Echelle d'activité"
     )

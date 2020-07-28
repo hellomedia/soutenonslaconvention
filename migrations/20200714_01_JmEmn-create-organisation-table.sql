@@ -15,7 +15,7 @@ CREATE TYPE organisation_scope AS ENUM (
     'Locale', 'Régionale', 'Nationale', 'Internationale'
 );
 CREATE TYPE organisation_theme AS ENUM (
-    'Se déplacer', 'Consommer', 'Se loger', 'Produire / Travailler','Se nourrir'
+    'Se déplacer', 'Consommer', 'Se loger', 'Produire/Travailler', 'Se nourrir'
 );
 
 CREATE TABLE organisations (
@@ -29,7 +29,7 @@ CREATE TABLE organisations (
     image_path TEXT,
     size organisation_size,
     state organisation_state DEFAULT 'PENDING',
-    theme TEXT[],
+    theme organisation_theme[],
     org_type organisation_type,
     sector organisation_sector,
     scope organisation_scope,
