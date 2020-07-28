@@ -3,7 +3,7 @@
 CREATE TYPE organisation_size AS ENUM ('S', 'M', 'L');
 CREATE TYPE organisation_state AS ENUM ('PENDING', 'CONFIRMED', 'CANCELLED');
 CREATE TYPE organisation_type AS ENUM (
-    'Entreprise', 'Association', 'ONG', 'Autre'
+    'Entreprise', 'Association', 'Collectivité territoriale', 'ONG', 'Autre'
 );
 CREATE TYPE organisation_sector AS ENUM (
     'Agriculture et agroalimentaire', 'Industrie', 'Energie',
