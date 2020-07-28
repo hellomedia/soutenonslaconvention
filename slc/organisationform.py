@@ -24,7 +24,7 @@ class OrganisationForm(morf.HTMLForm):
         choices='get_theme_choices',
         widget=widgets.CheckboxGroup(),
         default=None,
-        displayname="Thématique"
+        displayname="Thématiques qui concernent votre organisation"
     )
     scope = fields.Choice(
         choices='get_scope_choices', default=None, displayname="Echelle d'activité"
