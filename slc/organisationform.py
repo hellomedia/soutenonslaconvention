@@ -12,7 +12,7 @@ class OrganisationForm(morf.HTMLForm):
     contact_role = fields.Str(default=None, displayname="Rôle")
     name = fields.Str(default=None, displayname="Dénomination")
     website = fields.Str(default=None, displayname="Site web")
-    image_path = fields.Str(default=None, displayname="Logo")
+    logo = fields.Str(default=None, displayname="Logo")
     size = fields.Choice(
         choices=[
             ("S", "équipe < 10 personnes"),

@@ -1,30 +1,30 @@
 -- :result :one
 --
 INSERT INTO organisations (
-    contact_email,
     contact_name,
-    contact_phone,
     contact_role,
-    image_path,
-    website,
+    contact_email,
+    contact_phone,
     name,
+    website,
+    logo,
     sector,
     org_type,
     size,
     scope,
     theme
 ) VALUES (
-    :contact_email,
     :contact_name,
-    :contact_phone,
     :contact_role,
+    :contact_email,
+    :contact_phone,
     :name,
     :website,
-    :image_path,
+    :logo,
     :sector,
     :org_type,
     :size,
     :scope,
-    :theme
+    :theme::organisation_theme[]
 )
 RETURNING id;

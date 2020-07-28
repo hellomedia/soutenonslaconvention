@@ -26,7 +26,7 @@ CREATE TABLE organisations (
     contact_role TEXT,
     name TEXT,
     website TEXT,
-    image_path TEXT,
+    logo TEXT,
     size organisation_size,
     state organisation_state DEFAULT 'PENDING',
     theme organisation_theme[],

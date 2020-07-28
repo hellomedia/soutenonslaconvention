@@ -15,11 +15,12 @@
                         <th>Statut</th>
                         <th>Logo</th>
                         <th>Nom</th>
-                        <th>Contact</th>
                         <th>Type</th>
                         <th>Secteur</th>
                         <th>Taille</th>
                         <th>Echelle</th>
+                        <th>Thèmes</th>
+                        <th>Contact</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,13 +28,14 @@
                         <td>$organisation.id</td>
                         <td>${request.format(organisation.created_at, "short")}</td>
                         <td>$organisation.state</td>
-                        <td>--logo--</td>
+                        <td><img src="${organisation.logo_url()}" style="max-width: 7em" /></td>
                         <td>$organisation.name</td>
-                        <td>$organisation.contact_name</td>
                         <td>$organisation.org_type</td>
                         <td>$organisation.sector</td>
                         <td>$organisation.size</td>
                         <td>$organisation.scope</td>
+                        <td>--</td>
+                        <td>$organisation.contact_name</td>
                     </tr>
                 </tbody>
             </table>

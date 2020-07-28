@@ -8,33 +8,48 @@ from typing import Tuple
 from slc import queries
 from slc.templating import piglet
 
+from fresco import context
+
 @dataclass
 class Organisation:
     id: int
     created_at: datetime
     name: Optional[str]
+    logo: Optional[str]
     website: Optional[str]
+    state: Optional[str]
     contact_name: Optional[str]
     contact_email: bool
     contact_phone: Optional[str]
     contact_role: Optional[str]
-    image_path: Optional[str]
     size: Optional[str]
-    state: Optional[str]
     org_type: Optional[str]
     sector: Optional[str]
     scope: Optional[str]
-    theme: Optional[str]
+    theme: Optional[List[str]]
+
+    def uploaded_image_url(self):
+        return context.app.urlfor("media", path=self.image_path)
+
+    def logo_url(self):
+        return context.app.urlfor("media", path=self.logo)
+
 
 def organisation_count(conn) -> int:
     return queries.organisation_count(conn)
 
 def create_organisation(conn, **data) -> int:
-
     return queries.create_organisation(
         conn,
         **data
     )
+
+def get_organisation_by_id(conn, id: int) -> Optional[Organisation]:
+    try:
+        data = queries.get_organisation_info(conn, id=id)
+    except NoResultFound:
+        return None
+    return Organisation(**data._asdict())
 
 def get_organisation_list(
     conn, limit=100, offset=0
