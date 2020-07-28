@@ -241,6 +241,17 @@ def organisation_list(request):
         },
     )
 
+@auth.require_admin
+def organisation_view(request, id):
+    o = organisations.get_organisation_by_id(request.getconn(), id)
+    print(repr(o.theme))
+    return piglet.render(
+        "admin/organisation.html",
+        {
+            "organisation": o,
+        },
+    )
+
 def organisation_form(request):
     form = OrganisationForm(request.getconn())
     return piglet.render("default/organisations.html", {"form": form})

@@ -1,0 +1,46 @@
+<py:extends href="../base.html" whitespace="strip">
+<py:block name="stylesheets">
+    <link py:for="url in assets.urls('admin-css', environ=request.environ)" href="$url" rel="stylesheet" />
+</py:block>
+<py:block name="banner" />
+<py:block name="content">
+
+<style>
+dl {
+    display: grid;
+    grid-template-columns: minmax(100px, 200px) auto;
+    grid-gap: 10px;
+}
+</style>
+    <div class="wrapper">
+        <div class="u-Constrained u-Constrained-l">
+            <h1>${organisation.name}</h1>
+            <dl>
+                <dt>Logo</dt>
+                <dd><img src="${organisation.logo_url}" /></dd>
+                <dt>Type</dt>
+                <dd>${organisation.org_type}</dd>
+                <dt>Secteur</dt>
+                <dd>${organisation.sector}</dd>
+                <dt>Taille</dt>
+                <dd>${organisation.size}</dd>
+                <dt>Echelle</dt>
+                <dd>${organisation.scope}</dd>
+                <dt>Thématiques</dt>
+                <dd>${','.join(organisation.theme)}</dd>
+            </dl>
+            <h2>Personne de Contact</h2>
+            <dl>
+                <dt>Nom</dt>
+                <dd>${organisation.contact_name}</dd>
+                <dt>Rôle</dt>
+                <dd>${organisation.contact_role}</dd>
+                <dt>Email</dt>
+                <dd>${organisation.contact_email}</dd>
+                <dt>Phone</dt>
+                <dd>${organisation.contact_phone}</dd>
+            </dl>
+        </div>
+    </div>
+</py:block>
+</py:extends>
