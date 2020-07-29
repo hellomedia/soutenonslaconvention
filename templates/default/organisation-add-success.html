@@ -1,0 +1,37 @@
+<py:extends href="../support.html" py:whitespace="strip">
+
+<py:block name="content">
+
+    <style media="screen">
+        .heart {
+            max-width: 100px;
+            margin-right: 1vw;
+        }
+        .next {
+
+        }
+        .next li {
+            margin: 10px 0;
+        }
+    </style>
+
+    <div class="wrapper">
+        <div class="container">
+            <h1>
+                Merci !
+            </h1>
+            <p>
+                Votre demande a bien été reçue.
+            </p>
+            <p>
+                Nous reviendrons vers vous dès que possible.
+            </p>
+            <p class="btn-group">
+                <a class="btn" href="${urlfor('index')}">
+                    Retour à la page d'accueil
+                </a>
+            </p>
+        </div>
+    </div>
+</py:block>
+</py:extends>

@@ -81,9 +81,12 @@ __routes__ = [
         name="admin-organisation-view"
     ),
     Route(
-        "/organisations/", GET="slc.views.organisation_form", name="organisation"
+        "/organisation/add", GET="slc.views.organisation_add", name="organisation-add"
     ),
     Route(
-        "/organisations/", POST="slc.views.organisation_form_submit", name="organisation-form-submit"
+        "/organisation/submit", POST="slc.views.organisation_add_submit", name="organisation-add-submit"
+    ),
+    Route(
+        "/organisation/success", GET="slc.views.organisation_add_success", name="organisation-add-success"
     ),
 ]
