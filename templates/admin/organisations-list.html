@@ -1,0 +1,46 @@
+<py:extends href="../admin.html" whitespace="strip">
+
+<py:block name="admin-content">
+    <h1>Organisations ($count)</h1>
+    <table class="Table Table-ruled Table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Statut</th>
+                <th>Logo</th>
+                <th>Nom</th>
+                <th>Type</th>
+                <th>Secteur</th>
+                <th>Taille</th>
+                <th>Echelle</th>
+                <th>Thèmes</th>
+                <th>Contact</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr py:for="organisation in organisations">
+                <td><a href="${urlfor('admin-organisation-view', id=organisation.id)}">$organisation.id</a></td>
+                <td>${request.format(organisation.created_at, "short")}</td>
+                <td>$organisation.state</td>
+                <td><img src="${organisation.logo_url()}" style="max-width: 7em" /></td>
+                <td><a href="${urlfor('admin-organisation-view', id=organisation.id)}">$organisation.name</a></td>
+                <td>$organisation.org_type</td>
+                <td>$organisation.sector</td>
+                <td>$organisation.size</td>
+                <td>$organisation.scope</td>
+                <td><span class="tag tag-theme" py:for="item in organisation.theme">$item</span></td>
+                <td><a href="${urlfor('admin-organisation-view', id=organisation.id)}">$organisation.contact_name</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="Pagination">
+        <py:if test="offset &gt; 0">
+            <a href="${request.make_url(limit=limit, offset=max(offset - limit, 0))}">prev</a>
+        </py:if>
+        <py:if test="has_more_results">
+            <a href="${request.make_url(limit=limit, offset=offset+limit)}">next</a>
+        </py:if>
+    </div>
+</py:block>
+</py:extends>

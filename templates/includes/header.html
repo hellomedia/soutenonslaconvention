@@ -12,20 +12,23 @@
                 <div class="title-line1">Soutenons La Convention</div>
                 <div class="title-line2">Citoyenne pour le Climat</div>
             </h1>
-            <h2 class="hashtags">
-                <div class="hashtag1">Initiative transpartisane</div>
+            <h2 class="banner-subtitle">
+                Initiative transpartisane pour citoyens,
+                entreprises, associations, collectivités locales, etc.
             </h2>
-            <div class="counter-wrapper">
-                <div class="counter">
-                    <span class="counter-count"><!--#include virtual="/petition-count" --></span>
-                    <span class="counter-sign">soutiens</span>
+            <py:block name="counter">
+                <div class="counter-wrapper">
+                    <div class="counter">
+                        <span class="counter-count"><!--#include virtual="/petition-count" --></span>
+                        <span class="counter-sign">soutiens</span>
+                    </div>
+                    <py:block name="counter-cta">
+                        <a class="counter-cta btn-i-support" target="_blank" href="${urlfor('support-us')}">
+                            JE SOUTIENS
+                        </a>
+                    </py:block>
                 </div>
-                <py:block name="counter-cta">
-                    <a class="counter-cta btn-i-support" target="_blank" href="${urlfor('support-us')}">
-                        JE SOUTIENS
-                    </a>
-                </py:block>
-            </div>
+            </py:block>
         </div>
     </div>
     </py:block>

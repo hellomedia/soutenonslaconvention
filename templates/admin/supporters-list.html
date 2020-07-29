@@ -1,49 +1,42 @@
-<py:extends href="../base.html" whitespace="strip">
-<py:block name="stylesheets">
-    <link py:for="url in assets.urls('admin-css', environ=request.environ)" href="$url" rel="stylesheet" />
-</py:block>
-<py:block name="banner"/>
-<py:block name="content">
-    <div class="wrapper">
-        <div class="u-Constrained u-Constrained-l">
-            <p class="u-AlignRight">($count supporters)</p>
-            <table class="Table Table-ruled Table-hover">
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>date</th>
-                        <th>confirmed?</th>
-                        <th>email</th>
-                        <th>name</th>
-                        <th>display name</th>
-                        <th>reason</th>
-                        <th>birth year</th>
-                        <th>photo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr py:for="supporter in supporters">
-                        <td>$supporter.id</td>
-                        <td>${request.format(supporter.created_at, "short")}</td>
-                        <td>$supporter.account_confirmed</td>
-                        <td>$supporter.email</td>
-                        <td>$supporter.full_name</td>
-                        <td>$supporter.display_name</td>
-                        <td>$supporter.reason</td>
-                        <td>$supporter.year_of_birth</td>
-                        <td><img py:if="supporter.display_image" src="${supporter.display_image_url()}"/></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="Pagination">
-                <py:if test="offset &gt; 0">
-                    <a href="${request.make_url(limit=limit, offset=max(offset - limit, 0))}">prev</a>
-                </py:if>
-                <py:if test="has_more_results">
-                    <a href="${request.make_url(limit=limit, offset=offset+limit)}">next</a>
-                </py:if>
-            </div>
-        </div>
+<py:extends href="../admin.html" whitespace="strip">
+
+<py:block name="admin-content">
+    <h1>Supports ($count)</h1>
+    <table class="Table Table-ruled Table-hover">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>date</th>
+                <th>confirmed?</th>
+                <th>email</th>
+                <th>name</th>
+                <th>display name</th>
+                <th>reason</th>
+                <th>birth year</th>
+                <th>photo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr py:for="supporter in supporters">
+                <td>$supporter.id</td>
+                <td>${request.format(supporter.created_at, "short")}</td>
+                <td>$supporter.account_confirmed</td>
+                <td>$supporter.email</td>
+                <td>$supporter.full_name</td>
+                <td>$supporter.display_name</td>
+                <td>$supporter.reason</td>
+                <td>$supporter.year_of_birth</td>
+                <td><img py:if="supporter.display_image" src="${supporter.display_image_url()}"/></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="Pagination">
+        <py:if test="offset &gt; 0">
+            <a href="${request.make_url(limit=limit, offset=max(offset - limit, 0))}">prev</a>
+        </py:if>
+        <py:if test="has_more_results">
+            <a href="${request.make_url(limit=limit, offset=offset+limit)}">next</a>
+        </py:if>
     </div>
 </py:block>
 </py:extends>

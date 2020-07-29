@@ -16,11 +16,18 @@ textarea {
     display: block;
     background: white;
     color: #222;
+    border: 1px solid #999;
     border-radius: 3px;
-    border: 0;
     margin-top: 3px;
     outline-color: #eee;
 }
+.FormNoBorders select,
+.FormNoBorders input[type=text],
+.FormNoBorders input[type=email],
+.FormNoBorders textarea {
+    border: 0;
+}
+
 label {
     display: block;
 }

@@ -1,0 +1,23 @@
+<py:extends href="base.html">
+
+<py:block name="stylesheets">
+    <link py:for="url in assets.urls('admin-css', environ=request.environ)" href="$url" rel="stylesheet" />
+</py:block>
+
+<py:block name="header">
+<py:extends href="includes/admin-header.html"/>
+</py:block>
+
+<py:block name="content">
+    <div class="wrapper">
+        <div class="u-Constrained u-Constrained-xl">
+
+            <py:block name="admin-content" />
+
+        </div>
+    </div>
+</py:block>
+
+<py:block name="suggestion-box" />
+
+</py:extends>

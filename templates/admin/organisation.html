@@ -1,0 +1,43 @@
+<py:extends href="../admin.html" whitespace="strip">
+
+<py:block name="admin-content">
+    <style>
+    dl {
+        display: grid;
+        grid-template-columns: minmax(100px, 200px) auto;
+        grid-gap: 10px;
+    }
+    </style>
+    <h1>$organisation.name</h1>
+    <dl>
+        <dt>Statut</dt>
+        <dd>$organisation.state</dd>
+        <dt>Logo</dt>
+        <dd><img src="${organisation.logo_url()}" style="max-width: 15em" /></dd>
+        <dt>Type</dt>
+        <dd><span class="tag tag-type">$organisation.org_type</span></dd>
+        <dt>Secteur</dt>
+        <dd><span class="tag tag-sector">$organisation.sector</span></dd>
+        <dt>Taille</dt>
+        <dd><span class="tag tag-size">$organisation.size</span></dd>
+        <dt>Echelle</dt>
+        <dd><span class="tag tag-scope">$organisation.scope</span></dd>
+        <dt>Thématiques</dt>
+        <dd>
+            <span class="tag tag-theme" py:for="item in organisation.theme">$item</span>
+        </dd>
+    </dl>
+    <h2>Personne de Contact</h2>
+    <dl>
+        <dt>Nom</dt>
+        <dd>$organisation.contact_name</dd>
+        <dt>Rôle</dt>
+        <dd>$organisation.contact_role</dd>
+        <dt>Email</dt>
+        <dd>$organisation.contact_email</dd>
+        <dt>Phone</dt>
+        <dd>$organisation.contact_phone</dd>
+    </dl>
+
+</py:block>
+</py:extends>

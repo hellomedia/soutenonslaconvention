@@ -86,6 +86,9 @@
 body > .u-Constrained {
     grid-gap: 0 1vw;
 }
+.u-Constrained-xl {
+    --constrained-width: 1200px;
+}
 .u-Constrained-l {
     --constrained-width: 960px;
 }

@@ -1,0 +1,97 @@
+<py:extends href="../base.html">
+
+<py:block name="counter" />
+<py:block name="suggestion-box" />
+
+<py:block name="content">
+
+<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet"/>
+<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet"/>
+<script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+<script>
+ready(function () {
+    FilePond.registerPlugin(FilePondPluginImageExifOrientation);
+    FilePond.registerPlugin(FilePondPluginImagePreview);
+    FilePond.setOptions({server: '${urlfor("filepond-upload")}'});
+    var inputElement = document.querySelector('input[type="file"]');
+    var pond = FilePond.create(inputElement);
+    pond.labelIdle = 'glisser-déposer ou <span class="filepond--label-action">choisir une photo</span>';
+});
+</script>
+
+<style type="text/css">
+.organisation-form h2 {
+    margin-bottom: 5px;
+}
+.organisation-form-item {
+    margin-bottom: 10px;
+}
+#field_theme-0 {
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: 30px auto;
+    align-items: baseline;
+}
+input[type="checkbox"] {
+    transform: scale(1.5);
+}
+</style>
+
+<div class="wrapper">
+<div class="container">
+
+<form py:with="form=form.as_p()" class="organisation-form"
+    action="${urlfor('organisation-add-submit')}" method="post">
+
+    <h2>Ajouter votre organisation</h2>
+
+    <div class="organisation-form-item" py:for="field in form.select(
+        ['org_type', 'name'])">
+        ${field.render_label()}
+        <div>
+            ${field.render_control()}
+        </div>
+    </div>
+
+    <div class="organisation-form-item PhotoChooser-Upload">
+        <label for="photo-upload">
+            <span class="label-top">Logo</span>
+            <input name="logo" type="file" />
+        </label>
+    </div>
+
+    <div class="organisation-form-item" py:for="field in form.select(
+        ['website', 'sector', 'scope'])">
+        ${field.render_label()}
+        <div>
+            ${field.render_control()}
+        </div>
+    </div>
+
+    <div class="organisation-form-item" py:for="field in form.select(
+        ['size', 'theme'])">
+        ${field}
+    </div>
+
+    <h2>Personne de contact</h2>
+    <div class="organisation-form-item" py:for="field in form.select(
+        ['contact_name', 'contact_role', 'contact_email', 'contact_phone'])">
+        ${field.render_label()}
+        <div>
+            ${field.render_control()}
+        </div>
+    </div>
+
+    <div class="BlockBg-Footer u-Flex u-Flex-justifyBetween">
+        <button class="btn" type="submit">Continuer</button>
+    </div>
+
+</form>
+
+</div>
+</div>
+
+</py:block>
+</py:extends>

@@ -1,4 +1,5 @@
 :root {
+    /* https://coolors.co/44a777-4b5358-727072-977280-6875ca */
     --green: #44a777;
     --green-shade1: #35825d;
     --green-shade2: #122b1f;
@@ -6,6 +7,10 @@
     --button-bg: var(--green);
     --button-fg: #fff;
     --text-color: #444;
+    --grey: #4B5358;
+    --silver: #727072;
+    --pink: #977280;
+    --blue: #6875CA;
 }
 *, *::before, *::after {
     box-sizing: border-box;
@@ -44,6 +49,17 @@ img {
 }
 .header {
     font-size: 15px;
+}
+.header-admin {
+    background-color: var(--green);
+    padding: 10px 0;
+    font-size: 20px;
+}
+.header-admin .menu a {
+    color: #fff;
+}
+.header-admin .container {
+    max-width: 1200px;
 }
 .header .wrapper {
     padding: 0;
@@ -100,22 +116,17 @@ img {
     margin-bottom: 20px;
     transition: 0.3s;
 }
-.hashtags {
+.banner-subtitle {
+    width: 80%;
     color: #fff;
     font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 300;
     letter-spacing: 1px;
-    font-size: 30px;
+    font-size: 27px;
     margin: 0;
-    line-height: 35px;
-    padding-bottom: 60px;
-    padding-left: 30px;
-    transition: 0.3s;
-}
-.hashtag1 {
-    transition: 0.3s;
-}
-.hashtag2 {
+    line-height: 32px;
+    padding-bottom: 40px;
+    padding-left: 0px;
     transition: 0.3s;
 }
 .counter-wrapper {
@@ -184,7 +195,7 @@ img {
         font-size: 36px;
         margin-top: -12px;
     }
-    .hashtags {
+    .banner-subtitle {
         font-size: 26px;
         line-height: 30px;
     }
@@ -206,7 +217,7 @@ img {
         font-size: 32px;
         margin-top: -10px;
     }
-    .hashtags {
+    .banner-subtitle {
         font-size: 22px;
         line-height: 25px;
     }
@@ -227,7 +238,7 @@ img {
         margin-top: -7px;
         padding-left: 0;
     }
-    .hashtags {
+    .banner-subtitle {
         font-size: 22px;
         padding-left: 0;
     }
@@ -247,11 +258,10 @@ img {
         font-size: 24px;
         margin-top: -5px;
     }
-    .hashtags {
+    .banner-subtitle {
         font-size: 20px;
     }
 }
-
 
 .grey-bg {
     background-color: #f2f2f2;
@@ -446,4 +456,29 @@ a {
 
 button:focus {
     outline: 0;
+}
+
+.tag {
+    display:inline-block;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    padding: 2px 10px;
+    background-color: #444;
+    color: #fff;
+    border-radius: 15px;
+}
+.tag-theme {
+    background-color: var(--green);
+}
+.tag-size {
+    background-color: var(--grey);
+}
+.tag-scope {
+    background-color: var(--pink);
+}
+.tag-type {
+    background-color: var(--silver);
+}
+.tag-sector {
+    background-color: var(--blue);
 }
