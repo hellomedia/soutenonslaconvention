@@ -25,6 +25,8 @@ requests
 requests-oauthlib
 mailsend >= 1.1.1
 email_validator
+# Pin dnspython: newer versions break email_validator
+dnspython<2.0
 huey
 returns
 markdown
