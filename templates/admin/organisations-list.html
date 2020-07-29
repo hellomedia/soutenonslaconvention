@@ -30,7 +30,7 @@
                 <td>$organisation.size</td>
                 <td>$organisation.scope</td>
                 <td><span class="tag tag-theme" py:for="item in organisation.theme">$item</span></td>
-                <td>$organisation.contact_name</td>
+                <td><a href="${urlfor('admin-organisation-view', id=organisation.id)}">$organisation.contact_name</a></td>
             </tr>
         </tbody>
     </table>
