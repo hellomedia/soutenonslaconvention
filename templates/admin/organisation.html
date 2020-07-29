@@ -8,31 +8,35 @@
         grid-gap: 10px;
     }
     </style>
-    <h1>${organisation.name}</h1>
+    <h1>$organisation.name</h1>
     <dl>
+        <dt>Statut</dt>
+        <dd>$organisation.state</dd>
         <dt>Logo</dt>
         <dd><img src="${organisation.logo_url()}" style="max-width: 15em" /></dd>
         <dt>Type</dt>
-        <dd>${organisation.org_type}</dd>
+        <dd><span class="tag tag-type">$organisation.org_type</span></dd>
         <dt>Secteur</dt>
-        <dd>${organisation.sector}</dd>
+        <dd><span class="tag tag-sector">$organisation.sector</span></dd>
         <dt>Taille</dt>
-        <dd>${organisation.size}</dd>
+        <dd><span class="tag tag-size">$organisation.size</span></dd>
         <dt>Echelle</dt>
-        <dd>${organisation.scope}</dd>
+        <dd><span class="tag tag-scope">$organisation.scope</span></dd>
         <dt>Thématiques</dt>
-        <dd>${','.join(organisation.theme)}</dd>
+        <dd>
+            <span class="tag tag-theme" py:for="item in organisation.theme">$item</span>
+        </dd>
     </dl>
     <h2>Personne de Contact</h2>
     <dl>
         <dt>Nom</dt>
-        <dd>${organisation.contact_name}</dd>
+        <dd>$organisation.contact_name</dd>
         <dt>Rôle</dt>
-        <dd>${organisation.contact_role}</dd>
+        <dd>$organisation.contact_role</dd>
         <dt>Email</dt>
-        <dd>${organisation.contact_email}</dd>
+        <dd>$organisation.contact_email</dd>
         <dt>Phone</dt>
-        <dd>${organisation.contact_phone}</dd>
+        <dd>$organisation.contact_phone</dd>
     </dl>
 
 </py:block>

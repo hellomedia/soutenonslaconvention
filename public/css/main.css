@@ -6,6 +6,10 @@
     --button-bg: var(--green);
     --button-fg: #fff;
     --text-color: #444;
+    --grey: #4B5358;
+    --silver: #727072;
+    --pink: #977280;
+    --blue: #6875CA;
 }
 *, *::before, *::after {
     box-sizing: border-box;
@@ -112,6 +116,7 @@ img {
     transition: 0.3s;
 }
 .banner-subtitle {
+    width: 80%;
     color: #fff;
     font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 300;
@@ -119,7 +124,7 @@ img {
     font-size: 27px;
     margin: 0;
     line-height: 32px;
-    padding-bottom: 60px;
+    padding-bottom: 40px;
     padding-left: 0px;
     transition: 0.3s;
 }
@@ -450,4 +455,29 @@ a {
 
 button:focus {
     outline: 0;
+}
+
+.tag {
+    display:inline-block;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    padding: 2px 10px;
+    background-color: #444;
+    color: #fff;
+    border-radius: 15px;
+}
+.tag-theme {
+    background-color: var(--green);
+}
+.tag-size {
+    background-color: var(--grey);
+}
+.tag-scope {
+    background-color: var(--pink);
+}
+.tag-type {
+    background-color: var(--silver);
+}
+.tag-sector {
+    background-color: var(--blue);
 }

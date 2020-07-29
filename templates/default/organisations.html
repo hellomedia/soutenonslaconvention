@@ -44,7 +44,11 @@ input[type="checkbox"] {
 
 <form py:with="form=form.as_p()" class="organisation-form" action="${urlfor('organisation-form-submit')}" method="post">
 
-    <h2>Organisation</h2>
+    <h2>Ajouter un organisation</h2>
+
+    <p>
+        Une organisation peut être une entreprise, association, collectivité, etc.
+    </p>
 
     <div class="organisation-form-item" py:for="field in form.select(
         ['org_type', 'name'])">

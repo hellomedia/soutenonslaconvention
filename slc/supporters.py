@@ -104,7 +104,7 @@ def add_supporter_from_email(conn, email: str) -> Tuple[int, bool]:
 
 def get_supporter_by_id(conn, id: int) -> Optional[Supporter]:
     try:
-        data = queries.get_supporter_info(conn, id=id)
+        data = queries.supporter_info(conn, id=id)
     except NoResultFound:
         return None
     return Supporter(**data._asdict())

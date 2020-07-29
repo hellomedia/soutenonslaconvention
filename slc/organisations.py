@@ -5,6 +5,8 @@ from typing import List
 from typing import Optional
 from typing import Tuple
 
+from embrace.exceptions import NoResultFound
+
 from slc import queries
 from slc.templating import piglet
 
@@ -46,7 +48,7 @@ def create_organisation(conn, **data) -> int:
 
 def get_organisation_by_id(conn, id: int) -> Optional[Organisation]:
     try:
-        data = queries.get_organisation_info(conn, id=id)
+        data = queries.organisation_info(conn, id=id)
     except NoResultFound:
         return None
     return Organisation(**data._asdict())
