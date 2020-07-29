@@ -30,11 +30,11 @@ class Organisation:
     scope: Optional[str]
     theme: Optional[List[str]]
 
-    def uploaded_image_url(self):
-        return context.app.urlfor("media", path=self.image_path)
-
     def logo_url(self):
-        return context.app.urlfor("media", path=self.logo)
+        if self.logo is None:
+            return ''
+        else:
+            return context.app.urlfor("media", path=self.logo)
 
 
 def organisation_count(conn) -> int:
