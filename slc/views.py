@@ -105,7 +105,7 @@ def oauth_login(request, provider, already_logged_in_redirect="index"):
     url, session["oauth_state"] = oauth.authorization_url(
         provider_info["authorization_base_url"]
     )
-    return Response.redirect(url)
+    return Response.unrestricted_redirect(url)
 
 
 def oauth_callback(request, provider):
