@@ -74,9 +74,7 @@ def support_us_email(request):
 
 
 def email_needs_confirmation(request, email):
-    return piglet.render(
-        "default/email-needs-confirmation.html", {"email": email}
-    )
+    return piglet.render("default/email-needs-confirmation.html", {"email": email})
 
 
 def existing_support(request):
@@ -140,9 +138,7 @@ def support_step(request):
         return Response.redirect(support_us)
 
     occupation_options = supporters.occupation_options(conn)
-    year_of_birth_range_options = supporters.year_of_birth_range_options(
-        supporter
-    )
+    year_of_birth_range_options = supporters.year_of_birth_range_options(supporter)
     template = f"default/support-us-step-{step}.html"
     return piglet.render(
         template,
@@ -171,9 +167,7 @@ def support_step_submit(request):
             )
 
         with queries.transaction(conn):
-            supporters.update_profile(
-                conn, id=request.get_user_id(), **form.data
-            )
+            supporters.update_profile(conn, id=request.get_user_id(), **form.data)
     return Response.redirect(support_step, _query={"step": step + 1})
 
 
